@@ -1,0 +1,79 @@
+﻿@page "/"
+
+<PageTitle>Mon Portfolio</PageTitle>
+
+<div class="hero-section">
+    <h1>🚀 Hello World !</h1>
+    <h2>Bienvenue sur mon portfolio de développeur</h2>
+    <p>Je suis <strong>[Votre Nom]</strong>, développeur d'applications en C# / .NET</p>
+
+    <div class="cta-buttons">
+        <a href="/projets" class="btn btn-primary">Voir mes projets</a>
+        <a href="/contact" class="btn btn-secondary">Me contacter</a>
+    </div>
+</div>
+
+<style>
+    .hero-section {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 15px;
+        margin: 2rem 0;
+    }
+
+    .hero-section h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        animation: fadeInDown 1s;
+    }
+
+    .hero-section h2 {
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
+        margin-top: 2rem;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 12px 30px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.2s;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .btn-primary {
+        background: white;
+        color: #667eea;
+    }
+
+    .btn-secondary {
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+    }
+
+    @@keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
