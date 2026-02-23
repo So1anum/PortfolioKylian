@@ -1,24 +1,25 @@
-# 🚀 Mon Portfolio - Développeur d'Applications
+# Mon Portfolio - Développeur d'Applications
 
 [![Blazor](https://img.shields.io/badge/Blazor-Server-purple?logo=blazor)](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)
 [![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
 [![Azure](https://img.shields.io/badge/Azure-App%20Service-0078D4?logo=microsoft-azure)](https://azure.microsoft.com/)
+[![Déploiement Azure](https://github.com/So1anum/PortfolioKylian/actions/workflows/azure-deploy.yml/badge.svg)](https://github.com/So1anum/PortfolioKylian/actions/workflows/azure-deploy.yml)
 
-## 📖 À propos
+## À propos
 
 Portfolio personnel créé avec **Blazor Server** pour présenter mes projets et compétences en développement d'applications.
 
-🌐 **Site en ligne** : [https://votre-nom-portfolio.azurewebsites.net](https://votre-nom-portfolio.azurewebsites.net)
+**Site en ligne** : [https://kylian-debonne.azurewebsites.net](https://kylian-debonne.azurewebsites.net)
 
-## ✨ Fonctionnalités
+## Fonctionnalités
 
-- 🏠 Page d'accueil avec présentation
-- 💼 Galerie de projets
-- 🛠️ Liste de compétences techniques
-- 📱 Design responsive
-- ⚡ Application temps réel avec Blazor Server
+- Page d'accueil avec présentation
+- Galerie de projets
+- Liste de compétences techniques
+- Design responsive
+- Application temps réel avec Blazor Server
 
-## 🛠️ Technologies utilisées
+## Technologies utilisées
 
 - **Frontend** : Blazor Server, Razor Components
 - **Backend** : ASP.NET Core 8.0
@@ -26,7 +27,7 @@ Portfolio personnel créé avec **Blazor Server** pour présenter mes projets et
 - **Hébergement** : Azure App Service (Plan gratuit)
 - **CI/CD** : GitHub Actions *(à venir)*
 
-## 🚀 Installation locale
+## Installation locale
 
 ### Prérequis
 
@@ -56,7 +57,7 @@ Portfolio personnel créé avec **Blazor Server** pour présenter mes projets et
    https://localhost:5001
    ```
 
-## 📂 Structure du projet
+## Structure du projet
 
 ```
 MonPortfolio/
@@ -69,7 +70,7 @@ MonPortfolio/
 └── appsettings.json     # Configuration
 ```
 
-## 📸 Captures d'écran
+## Captures d'écran
 
 ### Page d'accueil
 ![Accueil](docs/screenshot-home.png)
@@ -78,7 +79,7 @@ MonPortfolio/
 ### Page Projets
 ![Projets](docs/screenshot-projets.png)
 
-## 🚀 Déploiement
+## Déploiement
 
 Ce projet est automatiquement déployé sur **Azure App Service** via GitHub Actions.
 
@@ -88,7 +89,7 @@ Ce projet est automatiquement déployé sur **Azure App Service** via GitHub Act
 2. Sélectionner **Azure App Service**
 3. Suivre l'assistant
 
-## 📈 Roadmap
+## Roadmap
 
 - [x] Structure de base Blazor
 - [x] Page d'accueil
@@ -100,7 +101,7 @@ Ce projet est automatiquement déployé sur **Azure App Service** via GitHub Act
 - [ ] Intégration Google Analytics
 - [ ] CI/CD avec GitHub Actions
 
-## 👨‍💻 Auteur
+## Auteur
 
 **[Votre Nom]**
 - 💼 Développeur d'applications en recherche d'opportunités
@@ -109,7 +110,7 @@ Ce projet est automatiquement déployé sur **Azure App Service** via GitHub Act
 - 💼 LinkedIn : [linkedin.com/in/votre-profil](https://linkedin.com/in/votre-profil)
 - 🐙 GitHub : [@votre-nom](https://github.com/votre-nom)
 
-## 📄 Licence
+## Licence
 
 Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
