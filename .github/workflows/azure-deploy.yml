@@ -1,14 +1,19 @@
-name: Déployer sur Azure
+name: Build et Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop ]
   workflow_dispatch:
 
+env:
+  DOTNET_VERSION: '8.0.x'
+
 jobs:
-  build-and-deploy:
+  # Job 1 : Build et test (pour toutes les branches)
+  build:
+    name: Build et Tests
     runs-on: windows-latest
     
     steps:
@@ -18,12 +23,12 @@ jobs:
     - name: Installer .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: ${{ env.DOTNET_VERSION }}
     
     - name: Restaurer les dépendances
       run: dotnet restore
     
-    - name: Build du projet
+    - name: 🏗Build du projet
       run: dotnet build --configuration Release --no-restore
     
     - name: Exécuter les tests
@@ -33,9 +38,45 @@ jobs:
     - name: Publier l'application
       run: dotnet publish -c Release -o ./publish
     
-    - name: Déployer sur Azure App Service
+    - name: Upload des artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: blazor-app
+        path: ./publish
+
+  # Job 2 : Deploy en production (SEULEMENT pour main)
+  deploy-production:
+    name: Deploy Production
+    needs: build
+    runs-on: windows-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    environment:
+      name: Production
+      url: https://kylian-debonne.azurewebsites.net
+    
+    steps:
+    - name: Télécharger les artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: blazor-app
+        path: ./publish
+    
+    - name: Déployer sur Azure (Production)
       uses: azure/webapps-deploy@v3
       with:
         app-name: 'kylian-debonne'
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ./publish
+
+  # Job 3 : Informations de build (pour develop)
+  info-develop:
+    name: Build Develop terminé
+    needs: build
+    runs-on: windows-latest
+    if: github.ref == 'refs/heads/develop'
+    
+    steps:
+    - name: Confirmation
+      run: |
+        echo "Build réussi sur la branche develop"
+        echo "Pour déployer en production, mergez develop dans main"
