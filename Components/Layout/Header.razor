@@ -1,0 +1,38 @@
+<header class="main-header">
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">Kylian Debonne</a>
+
+            <button class="navbar-toggler" @onclick="ToggleMenu">
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+            </button>
+
+            <ul class="navbar-menu @(isMenuOpen ? "active" : "")">
+                <li><a href="/#presentation" @onclick="CloseMenu">Présentation</a></li>
+                <li><a href="/#about" @onclick="CloseMenu">À propos</a></li>
+                <li><a href="/#languages" @onclick="CloseMenu">Langues</a></li>
+                <li><a href="/#skills" @onclick="CloseMenu">Compétences</a></li>
+                <li><a href="/#education" @onclick="CloseMenu">Formation</a></li>
+                <li><a href="/#cv" @onclick="CloseMenu">CV</a></li>
+                <li><a href="/portfolio" @onclick="CloseMenu">Portfolio</a></li>
+                <li><a href="/#contact" @onclick="CloseMenu" class="btn-contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+@code {
+    private bool isMenuOpen = false;
+
+    private void ToggleMenu()
+    {
+        isMenuOpen = !isMenuOpen;
+    }
+
+    private void CloseMenu()
+    {
+        isMenuOpen = false;
+    }
+}

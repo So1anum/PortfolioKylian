@@ -1,79 +1,460 @@
-﻿@page "/"
+@page "/"
+@layout Components.Layout.FullScreenLayout
+@using PortfolioKylian.Components.Layout
 
-<PageTitle>Mon Portfolio</PageTitle>
+<PageTitle>Kylian Debonne - Développeur Logiciel</PageTitle>
 
-<div class="hero-section">
-    <h1>🚀 Hello World !</h1>
-    <h2>Bienvenue sur mon portfolio de développeur</h2>
-    <p>Je suis <strong>[Votre Nom]</strong>, développeur d'applications en C# / .NET</p>
+<Header @rendermode="InteractiveServer" />
 
-    <div class="cta-buttons">
-        <a href="/projets" class="btn btn-primary">Voir mes projets</a>
-        <a href="/contact" class="btn btn-secondary">Me contacter</a>
+<!-- Section Présentation -->
+<section id="presentation" class="hero-section">
+    <div class="hero-content">
+        <div class="hero-visual">
+            <div class="orb-container">
+                <div class="orb">
+                    <div class="orb-inner">
+                        <img src="/images/profile-photo.jpg" alt="Kylian Debonne" class="profile-image" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-text">
+            <p class="hero-subtitle">Développeur Logiciel</p>
+            <h1 class="hero-title">Kylian Debonne</h1>
+            <p class="hero-description">
+                Développeur logiciel passionné par la création et maintenance d'applications pour répondre
+                à des problèmes complexes. Je suis actuellement en alternance chez 3MO Performance, où je développe des applications
+                .NET complémentaires à l'ERP SAGE. Je recherche un poste de développeur en Europe pour contribuer à des
+                projets challengeants. Disponible dès septembre 2026.
+
+            </p>
+            <div class="hero-actions">
+                <a href="/portfolio" class="btn btn-primary">Voir mes projets</a>
+                <a href="#contact" class="btn btn-secondary">Me contacter</a>
+            </div>
+        </div>
     </div>
-</div>
+    
+    <div class="hero-footer">
+        <div class="social-links">
+            <a href="https://github.com/So1anum" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/kylian-debonne" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
 
-<style>
-    .hero-section {
-        text-align: center;
-        padding: 4rem 2rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        border-radius: 15px;
-        margin: 2rem 0;
+<!-- Section À propos -->
+<section id="about" class="about-section">
+    <div class="section-container">
+        <h2 class="section-title">À propos de moi</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    Développeur logiciel passionné et diplômé d'un <strong>Bachelor Universitaire de Technologie en Informatique</strong>,
+                    je me spécialise dans la création de solutions techniques robustes et évolutivestout en explorant diverses
+                    technologies pour rester polyvalent et adaptable aux besoins des projets.
+                </p>
+                <p>
+                    Pendant deux ans en alternance chez 3MO Performance, j'ai contribué au développement d'applications
+                    .NET complémentaires à l'ERP SAGE, optimisant ainsi la gestion des stocks et des livraisons.
+                    Cette expérience m'a permis de comprendre les enjeux métier de l'industrie automobile et de travailler
+                    dans un environnement <strong>professionnel</strong> exigeant, en appliquant les bonnes pratiques de développement.
+                </p>
+                <p>
+                    Au-delà du code, je m'intéresse à l'architecture logicielle, à la sécurité applicative et à l'amélioration
+                    continue des processus de développement. <strong>Curieux et autodidacte</strong>, j'aime relever de nouveaux défis techniques
+                    et collaborer au sein d'équipes motivées. Je recherche actuellement des opportunités pour contribuer à des
+                    projets innovants et continuer à développer mes compétences dans un environnement stimulant.
+                </p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <div class="stat-number">26</div>
+                    <div class="stat-label">Mois d'alternances</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7+</div>
+                    <div class="stat-label">Langages maîtrisés</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Europe</div>
+                    <div class="stat-label">Ouvert à la relocalisation en Europe (dont Royaume Uni)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Langues -->
+<section id="languages" class="languages-section">
+    <div class="section-container">
+        <h2 class="section-title">Langues</h2>
+        <div class="languages-list">
+            <!-- Français -->
+            <div class="language-item">
+                <div class="language-header">
+                    <h3 class="language-name">Français</h3>
+                    <span class="language-level native">Natif</span>
+                </div>
+                <div class="language-bar">
+                    <div class="language-fill native-fill"></div>
+                </div>
+            </div>
+
+            <!-- Anglais -->
+            <div class="language-item">
+                <div class="language-header">
+                    <h3 class="language-name">Anglais</h3>
+                    <span class="language-level professional">Professionnel</span>
+                </div>
+                <div class="language-bar">
+                    <div class="language-fill professional-fill"></div>
+                </div>
+                <div class="language-certification">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>TOEIC 2026 : 735/990</span>
+                </div>
+            </div>
+
+            <!-- Allemand -->
+            <div class="language-item">
+                <div class="language-header">
+                    <h3 class="language-name">Allemand</h3>
+                    <span class="language-level basic">Fondamentaux</span>
+                </div>
+                <div class="language-bar">
+                    <div class="language-fill basic-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Compétences -->
+<section id="skills" class="skills-section">
+    <div class="section-container">
+        <h2 class="section-title">Mes compétences</h2>
+        <div class="skills-grid">
+            <!-- Langages de programmation -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    Langages de programmation
+                </h3>
+                <div class="skills-badges">
+                    <span class="skill-badge">C#</span>
+                    <span class="skill-badge">Java</span>
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">JavaScript</span>
+                    <span class="skill-badge">Kotlin</span>
+                    <span class="skill-badge">PHP</span>
+                    <span class="skill-badge">C/C++</span>
+                </div>
+            </div>
+
+            <!-- Backend & API -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6m8.66-13.66l-5.2 3m-3.92 3.92l-5.2 3M1 12h6m6 0h6m-8.66 8.66l3-5.2m3.92-3.92l3-5.2"></path>
+                    </svg>
+                    Backend & API
+                </h3>
+                <div class="skills-badges">
+                    <span class="skill-badge">.NET</span>
+                    <span class="skill-badge">ASP.NET Core</span>
+                    <span class="skill-badge">Entity Framework</span>
+                    <span class="skill-badge">Symfony</span>
+                    <span class="skill-badge">Maven</span>
+                    <span class="skill-badge">Gradle</span>
+                </div>
+            </div>
+
+            <!-- Frontend & Web -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    </svg>
+                    Frontend & Web
+                </h3>
+                <div class="skills-badges">
+                    <span class="skill-badge">Blazor</span>
+                    <span class="skill-badge">React</span>
+                    <span class="skill-badge">HTML/CSS</span>
+                    <span class="skill-badge">Bootstrap</span>
+                    <span class="skill-badge">Razor</span>
+                </div>
+            </div>
+
+            <!-- Bases de données -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                    </svg>
+                    Bases de données
+                </h3>
+                <div class="skills-badges">
+                    <span class="skill-badge">SQL Server</span>
+                    <span class="skill-badge">MySQL</span>
+                    <span class="skill-badge">PostgreSQL</span>
+                    <span class="skill-badge">MongoDB</span>
+                    <span class="skill-badge">Neo4J</span>
+                    <span class="skill-badge">Redis</span>
+                </div>
+            </div>
+
+            <!-- DevOps & Infrastructure -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                    DevOps & Infrastructure
+                </h3>
+                <div class="skills-badges">
+                    <span class="skill-badge">Git</span>
+                    <span class="skill-badge">GitHub</span>
+                    <span class="skill-badge">GitLab</span>
+                    <span class="skill-badge">Docker</span>
+                    <span class="skill-badge">Azure</span>
+                    <span class="skill-badge">Linux</span>
+                    <span class="skill-badge">CI/CD</span>
+                </div>
+            </div>
+
+            <!-- Méthodologies & Qualité -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    Méthodologies & Qualité
+                </h3>
+                <div class="skills-badges">
+                    <span class="skill-badge">Agile (Scrum)</span>
+                    <span class="skill-badge">Kanban</span>
+                    <span class="skill-badge">POO</span>
+                    <span class="skill-badge">MVC</span>
+                    <span class="skill-badge">UML</span>
+                    <span class="skill-badge">Tests unitaires</span>
+                    <span class="skill-badge">JUnit</span>
+                    <span class="skill-badge">Selenium</span>
+                    <span class="skill-badge">Jest</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Formation -->
+<section id="education" class="education-section">
+    <div class="section-container">
+        <h2 class="section-title">Ma formation</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2026 (en cours)</span>
+                    <h3 class="timeline-title">Bachelor Universitaire de Technologie Informatique</h3>
+                    <p class="timeline-location">I.U.T. de Laval</p>
+                    <p class="timeline-description">
+                        Spécialisation en développement d'applications : conception logicielle, architectures, sécurité et méthodologies Agiles en alternance.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2025</span>
+                    <h3 class="timeline-title">Diplôme Universitaire de Technologie Informatique</h3>
+                    <p class="timeline-location">I.U.T. de Laval</p>
+                    <p class="timeline-description">
+                        Formation technique de deux ans (dont une en alternance à 3MO Performance) axée sur les fondamentaux
+                        du développement logiciel, les bases de données, les réseaux et la gestion de projet.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                    </svg>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2023</span>
+                    <h3 class="timeline-title">Baccalauréat Technologique STI2D </h3>
+                    <p class="timeline-location">Lycée Immaculée Conception</p>
+                    <p class="timeline-description">
+                        Obtention du baccalauréat Sciences et Technologies de l'Industrie et du Développement Durable avec mention bien.
+                        Spécialités Systèmes d'Information et Numérique.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section CV -->
+<section id="cv" class="cv-section">
+    <div class="section-container">
+        <h2 class="section-title">Mon CV</h2>
+        <div class="cv-content">
+            <div class="cv-description">
+                <p>
+                    Téléchargez mon curriculum vitae complet pour découvrir en détail mon parcours professionnel,
+                    mes compétences techniques et mes réalisations.
+                </p>
+            </div>
+            <div class="cv-download">
+                <a href="/ressources/docs/CV_Kylian_Debonne.pdf" download="CV_Kylian_Debonne.pdf" class="btn btn-cv">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Télécharger mon CV
+                </a>
+                <p class="cv-note">Format PDF • Dernière mise à jour : janvier 2025</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Contact -->
+<section id="contact" class="contact-section">
+    <div class="section-container">
+        <h2 class="section-title">Contactez-moi</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Informations complémentaires</h3>
+                <p>
+                    Je suis toujours ouvert aux nouvelles opportunités. 
+                    N'hésitez pas à me contacter pour quelconques question et/ou échanger.
+                    Ci-dessous, vous trouverez mes différentes méthodes de contact.
+                </p>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <a href="mailto:kylian.debonne@orange.fr">kylian.debonne@orange.fr</a>
+                    </div>
+                    <div class="contact-method">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <a>+33 7 83 88 31 37</a>
+                    </div>
+                    <div class="contact-method">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                        <a href="https://www.linkedin.com/in/kylian-debonne" target="_blank">LinkedIn</a>
+                    </div>
+                    <div class="contact-method">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <a href="https://github.com/So1anum" target="_blank">GitHub</a>
+                    </div>
+                    <div class="contact-method">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 17h14v3a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3zm-1 0h16M5 11l1-7h12l1 7M9 5v2m6-2v2M5 11h14a2 2 0 0 1 2 2v2H3v-2a2 2 0 0 1 2-2z"></path>
+                            <circle cx="7.5" cy="15.5" r="1.5"></circle>
+                            <circle cx="16.5" cy="15.5" r="1.5"></circle>
+                        </svg>
+                        <a>Permis B + Véhicule</a>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" @onsubmit="HandleSubmit" @onsubmit:preventDefault>
+                <div class="form-group">
+                    <label for="name">Nom complet</label>
+                    <input type="text" id="name" @bind="contactForm.Name" required />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" @bind="contactForm.Email" required />
+                </div>
+                <div class="form-group">
+                    <label for="subject">Sujet</label>
+                    <input type="text" id="subject" @bind="contactForm.Subject" required />
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" @bind="contactForm.Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    Envoyer le message
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="https://github.com/So1anum" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/kylian-debonne" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+    </div>
+</footer>
+
+@code {
+    private ContactFormModel contactForm = new();
+
+    private void HandleSubmit()
+    {
+        // TODO: Implémenter l'envoi du formulaire (email, API, etc.)
+        Console.WriteLine($"Form submitted: {contactForm.Name}, {contactForm.Email}");
+        // Reset form
+        contactForm = new();
     }
 
-    .hero-section h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        animation: fadeInDown 1s;
+    private class ContactFormModel
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Subject { get; set; } = string.Empty;
+        public string Message { get; set; } = string.Empty;
     }
-
-    .hero-section h2 {
-        font-size: 1.5rem;
-        font-weight: 300;
-        margin-bottom: 2rem;
-    }
-
-    .cta-buttons {
-        margin-top: 2rem;
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .btn {
-        padding: 12px 30px;
-        border-radius: 25px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: transform 0.2s;
-    }
-
-    .btn:hover {
-        transform: translateY(-2px);
-    }
-
-    .btn-primary {
-        background: white;
-        color: #667eea;
-    }
-
-    .btn-secondary {
-        background: transparent;
-        border: 2px solid white;
-        color: white;
-    }
-
-    @@keyframes fadeInDown {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-</style>
+}
