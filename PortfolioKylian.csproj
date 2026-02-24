@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Include=".github\workflows\azure-deploy.yml" />
+    <None Include="wwwroot\images\profile-photo.jpg" />
   </ItemGroup>
 
 </Project>
