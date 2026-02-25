@@ -1,10 +1,19 @@
 using PortfolioKylian.Components;
+using PortfolioKylian.Services;
+using Blazored.Toast;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Ajout du service de toast
+builder.Services.AddBlazoredToast();
+
+// Ajout du HttpClient et service de contact
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<IContactService, FormspreeContactService>();
 
 var app = builder.Build();
 
