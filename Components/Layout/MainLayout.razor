@@ -1,4 +1,13 @@
 @inherits LayoutComponentBase
+@using Blazored.Toast.Configuration
+
+<BlazoredToasts Position="ToastPosition.TopRight"
+                Timeout="5"
+                IconType="IconType.FontAwesome"
+                SuccessClass="success-toast"
+                ErrorClass="error-toast"
+                InfoClass="info-toast"
+                WarningClass="warning-toast" />
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">

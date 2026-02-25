@@ -11,4 +11,8 @@
     <None Include="wwwroot\images\profile-photo.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Blazored.Toast" Version="4.2.1" />
+  </ItemGroup>
+
 </Project>
