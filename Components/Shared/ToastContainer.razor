@@ -1,0 +1,55 @@
+@using PortfolioKylian.Components.Shared
+@implements IDisposable
+@inject ICustomToastService ToastService
+
+<div class="toast-container">
+    @foreach (var toast in _toasts)
+    {
+        <CustomToast Message="@toast.Message" 
+                     ToastType="@toast.Type" 
+                     OnClose="@(() => RemoveToast(toast.Id))" />
+    }
+</div>
+
+@code {
+    private List<ToastInstance> _toasts = new();
+
+    protected override void OnInitialized()
+    {
+        ToastService.OnShow += ShowToast;
+    }
+
+    private void ShowToast(string message, ToastType type)
+    {
+        var id = Guid.NewGuid();
+        _toasts.Add(new ToastInstance { Id = id, Message = message, Type = type });
+        StateHasChanged();
+
+        _ = Task.Delay(5100).ContinueWith(_ =>
+        {
+            RemoveToast(id);
+        });
+    }
+
+    private void RemoveToast(Guid id)
+    {
+        var toast = _toasts.FirstOrDefault(t => t.Id == id);
+        if (toast != null)
+        {
+            _toasts.Remove(toast);
+            InvokeAsync(StateHasChanged);
+        }
+    }
+
+    public void Dispose()
+    {
+        ToastService.OnShow -= ShowToast;
+    }
+
+    private class ToastInstance
+    {
+        public Guid Id { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public ToastType Type { get; set; }
+    }
+}
