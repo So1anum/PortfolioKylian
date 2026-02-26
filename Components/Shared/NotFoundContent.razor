@@ -1,7 +1,11 @@
 @using PortfolioKylian.Components.Layout
 @using PortfolioKylian.Resources
+@using Microsoft.ApplicationInsights
+@using Microsoft.ApplicationInsights.DataContracts
 @inject LocalizationHelper L
 @inject ICultureService CultureService
+@inject TelemetryClient TelemetryClient
+@inject NavigationManager NavigationManager
 @implements IDisposable
 
 <PageTitle>@L["NotFound.Title"] - Kylian Debonne</PageTitle>
@@ -45,6 +49,15 @@
 @code {
     protected override void OnInitialized()
     {
+        // Tracking personnalisé pour la page 404
+        var pageView = new PageViewTelemetry("404 - Not Found")
+        {
+            Url = new Uri(NavigationManager.Uri)
+        };
+        
+        pageView.Properties.Add("Language", CultureService.CurrentCulture.Name);
+        TelemetryClient.TrackPageView(pageView);
+        
         CultureService.OnCultureChanged += OnCultureChanged;
         L.OnLanguageChanged += OnLanguageChanged;
     }
