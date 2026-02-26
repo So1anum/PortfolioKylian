@@ -29,13 +29,24 @@ public class CultureService : ICultureService
     {
         try
         {
-            // Tente de récupérer la langue du navigateur
-            var browserCulture = await _jsRuntime.InvokeAsync<string>("eval", "navigator.language || navigator.userLanguage");
-            
-            // Si la langue contient "fr", on garde le français, sinon anglais
-            var culture = browserCulture.StartsWith("fr", StringComparison.OrdinalIgnoreCase) ? "fr-FR" : "en-US";
-            
-            await SetCultureAsync(culture);
+            // Essaie de récupérer la langue sauvegardée dans localStorage
+            var savedCulture = await _jsRuntime.InvokeAsync<string>("localStorage.getItem", "preferredCulture");
+
+            if (!string.IsNullOrEmpty(savedCulture))
+            {
+                // Utilise la langue sauvegardée
+                await SetCultureAsync(savedCulture);
+            }
+            else
+            {
+                // Tente de récupérer la langue du navigateur
+                var browserCulture = await _jsRuntime.InvokeAsync<string>("eval", "navigator.language || navigator.userLanguage");
+
+                // Si la langue contient "fr", on garde le français, sinon anglais
+                var culture = browserCulture.StartsWith("fr", StringComparison.OrdinalIgnoreCase) ? "fr-FR" : "en-US";
+
+                await SetCultureAsync(culture);
+            }
         }
         catch
         {
@@ -51,6 +62,16 @@ public class CultureService : ICultureService
 
         CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
         CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
+        // Sauvegarder la préférence dans localStorage
+        try
+        {
+            await _jsRuntime.InvokeVoidAsync("localStorage.setItem", "preferredCulture", culture);
+        }
+        catch
+        {
+            // Ignorer les erreurs de localStorage (peut ne pas être disponible lors du prerendering)
+        }
 
         // Forcer la mise à jour de tous les composants
         await Task.Delay(10); // Petit délai pour s'assurer que tout est prêt
