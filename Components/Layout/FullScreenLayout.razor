@@ -1,8 +1,22 @@
 @inherits LayoutComponentBase
+@using PortfolioKylian.Components.Shared
+@inject ICultureService CultureService
+
+<ToastContainer @rendermode="InteractiveServer" />
 
 <div class="full-screen-layout">
     @Body
 </div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await CultureService.InitializeAsync();
+        }
+    }
+}
 
 <script>
     // Smooth scroll pour les ancres
@@ -15,26 +29,33 @@
 
                 // Si c'est un lien vers la page d'accueil avec ancre (ex: /#about)
                 if (href.startsWith('/#') || href.startsWith('#')) {
-                    e.preventDefault();
                     const hash = href.includes('#') ? href.split('#')[1] : '';
-                    const element = document.getElementById(hash);
+                    const currentPath = window.location.pathname;
 
-                    if (element) {
-                        // Fermer le menu mobile si ouvert
-                        const menu = document.querySelector('.navbar-menu');
-                        if (menu) {
-                            menu.classList.remove('active');
+                    // Si on est déjà sur la page d'accueil, faire un smooth scroll
+                    if (currentPath === '/' || currentPath === '') {
+                        e.preventDefault();
+                        const element = document.getElementById(hash);
+
+                        if (element) {
+                            // Fermer le menu mobile si ouvert
+                            const menu = document.querySelector('.navbar-menu');
+                            if (menu) {
+                                menu.classList.remove('active');
+                            }
+
+                            // Scroll vers l'élément
+                            element.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+
+                            // Mettre à jour l'URL sans recharger
+                            history.pushState(null, null, '#' + hash);
                         }
-
-                        // Scroll vers l'élément
-                        element.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-
-                        // Mettre à jour l'URL sans recharger
-                        history.pushState(null, null, '#' + hash);
                     }
+                    // Sinon, laisser le navigateur rediriger vers la home avec l'ancre
+                    // Le code ci-dessous gérera le scroll une fois sur la page d'accueil
                 }
             }
         });

@@ -1,10 +1,19 @@
 @page "/"
 @layout Components.Layout.FullScreenLayout
 @using PortfolioKylian.Components.Layout
+@using PortfolioKylian.Resources
+@inject LocalizationHelper L
+@implements IDisposable
+@inject ICultureService CultureService
 
-<PageTitle>Kylian Debonne - Développeur Logiciel</PageTitle>
+<PageTitle>Kylian Debonne - @L["Hero.Subtitle"]</PageTitle>
 
 <Header @rendermode="InteractiveServer" />
+
+<!-- Favicon links -->
+<link rel="icon" type="image/png" sizes="32x32" href="/images/code.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/code.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/code.png">
 
 <!-- Section Présentation -->
 <section id="presentation" class="hero-section">
@@ -20,18 +29,13 @@
         </div>
         
         <div class="hero-text">
-            <p class="hero-subtitle">Développeur Logiciel</p>
+            <p class="hero-subtitle">@L["Hero.Subtitle"]</p>
             <h1 class="hero-title">Kylian Debonne</h1>
             <p class="hero-description">
-                Développeur logiciel passionné par la création et maintenance d'applications pour répondre
-                à des problèmes complexes. Je suis actuellement en alternance chez 3MO Performance, où je développe des applications
-                .NET complémentaires à l'ERP SAGE. Je recherche un poste de développeur en Europe pour contribuer à des
-                projets challengeants. Disponible dès septembre 2026.
-
+                @L["Hero.Description"]
             </p>
             <div class="hero-actions">
-                <a href="/portfolio" class="btn btn-primary">Voir mes projets</a>
-                <a href="#contact" class="btn btn-secondary">Me contacter</a>
+                <a href="#contact" class="btn btn-primary">@L["Hero.ContactMe"]</a>
             </div>
         </div>
     </div>
@@ -55,39 +59,25 @@
 <!-- Section À propos -->
 <section id="about" class="about-section">
     <div class="section-container">
-        <h2 class="section-title">À propos de moi</h2>
+        <h2 class="section-title">@L["About.Title"]</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>
-                    Développeur logiciel passionné et diplômé d'un <strong>Bachelor Universitaire de Technologie en Informatique</strong>,
-                    je me spécialise dans la création de solutions techniques robustes et évolutivestout en explorant diverses
-                    technologies pour rester polyvalent et adaptable aux besoins des projets.
-                </p>
-                <p>
-                    Pendant deux ans en alternance chez 3MO Performance, j'ai contribué au développement d'applications
-                    .NET complémentaires à l'ERP SAGE, optimisant ainsi la gestion des stocks et des livraisons.
-                    Cette expérience m'a permis de comprendre les enjeux métier de l'industrie automobile et de travailler
-                    dans un environnement <strong>professionnel</strong> exigeant, en appliquant les bonnes pratiques de développement.
-                </p>
-                <p>
-                    Au-delà du code, je m'intéresse à l'architecture logicielle, à la sécurité applicative et à l'amélioration
-                    continue des processus de développement. <strong>Curieux et autodidacte</strong>, j'aime relever de nouveaux défis techniques
-                    et collaborer au sein d'équipes motivées. Je recherche actuellement des opportunités pour contribuer à des
-                    projets innovants et continuer à développer mes compétences dans un environnement stimulant.
-                </p>
+                <p>@L.Html("About.Paragraph1")</p>
+                <p>@L.Html("About.Paragraph2")</p>
+                <p>@L.Html("About.Paragraph3")</p>
             </div>
             <div class="about-stats">
                 <div class="stat-card">
                     <div class="stat-number">26</div>
-                    <div class="stat-label">Mois d'expériences en alternance (développeur .NET)</div>
+                    <div class="stat-label">@L["About.MonthsExperience"]</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">7+</div>
-                    <div class="stat-label">Langages maîtrisés</div>
+                    <div class="stat-label">@L["About.LanguagesMastered"]</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">Europe</div>
-                    <div class="stat-label">Ouvert à la relocalisation en Europe (dont Royaume Uni)</div>
+                    <div class="stat-label">@L["About.Relocation"]</div>
                 </div>
             </div>
         </div>
@@ -97,13 +87,13 @@
 <!-- Section Langues -->
 <section id="languages" class="languages-section">
     <div class="section-container">
-        <h2 class="section-title">Langues</h2>
+        <h2 class="section-title">@L["Languages.Title"]</h2>
         <div class="languages-list">
             <!-- Français -->
             <div class="language-item">
                 <div class="language-header">
-                    <h3 class="language-name">Français</h3>
-                    <span class="language-level native">Natif</span>
+                    <h3 class="language-name">@L["Languages.French"]</h3>
+                    <span class="language-level native">@L["Languages.Native"]</span>
                 </div>
                 <div class="language-bar">
                     <div class="language-fill native-fill"></div>
@@ -113,8 +103,8 @@
             <!-- Anglais -->
             <div class="language-item">
                 <div class="language-header">
-                    <h3 class="language-name">Anglais</h3>
-                    <span class="language-level professional">Professionnel</span>
+                    <h3 class="language-name">@L["Languages.English"]</h3>
+                    <span class="language-level professional">@L["Languages.Professional"]</span>
                 </div>
                 <div class="language-bar">
                     <div class="language-fill professional-fill"></div>
@@ -131,8 +121,8 @@
             <!-- Allemand -->
             <div class="language-item">
                 <div class="language-header">
-                    <h3 class="language-name">Allemand</h3>
-                    <span class="language-level basic">Fondamentaux</span>
+                    <h3 class="language-name">@L["Languages.German"]</h3>
+                    <span class="language-level basic">@L["Languages.Basic"]</span>
                 </div>
                 <div class="language-bar">
                     <div class="language-fill basic-fill"></div>
@@ -145,7 +135,7 @@
 <!-- Section Compétences -->
 <section id="skills" class="skills-section">
     <div class="section-container">
-        <h2 class="section-title">Mes compétences</h2>
+        <h2 class="section-title">@L["Skills.Title"]</h2>
         <div class="skills-grid">
             <!-- Langages de programmation -->
             <div class="skill-category">
@@ -154,7 +144,7 @@
                         <polyline points="16 18 22 12 16 6"></polyline>
                         <polyline points="8 6 2 12 8 18"></polyline>
                     </svg>
-                    Langages de programmation
+                    @L["Skills.ProgrammingLanguages"]
                 </h3>
                 <div class="skills-badges">
                     <span class="skill-badge">C#</span>
@@ -174,7 +164,7 @@
                         <circle cx="12" cy="12" r="3"></circle>
                         <path d="M12 1v6m0 6v6m8.66-13.66l-5.2 3m-3.92 3.92l-5.2 3M1 12h6m6 0h6m-8.66 8.66l3-5.2m3.92-3.92l3-5.2"></path>
                     </svg>
-                    Backend & API
+                    @L["Skills.BackendAPI"]
                 </h3>
                 <div class="skills-badges">
                     <span class="skill-badge">.NET</span>
@@ -192,7 +182,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                     </svg>
-                    Frontend & Web
+                    @L["Skills.FrontendWeb"]
                 </h3>
                 <div class="skills-badges">
                     <span class="skill-badge">Blazor</span>
@@ -211,15 +201,13 @@
                         <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
                         <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
                     </svg>
-                    Bases de données
+                    @L["Skills.Databases"]
                 </h3>
                 <div class="skills-badges">
                     <span class="skill-badge">SQL Server</span>
                     <span class="skill-badge">MySQL</span>
-                    <span class="skill-badge">PostgreSQL</span>
                     <span class="skill-badge">MongoDB</span>
                     <span class="skill-badge">Neo4J</span>
-                    <span class="skill-badge">Redis</span>
                 </div>
             </div>
 
@@ -231,7 +219,7 @@
                         <line x1="8" y1="21" x2="16" y2="21"></line>
                         <line x1="12" y1="17" x2="12" y2="21"></line>
                     </svg>
-                    DevOps & Infrastructure
+                    @L["Skills.DevOps"]
                 </h3>
                 <div class="skills-badges">
                     <span class="skill-badge">Git</span>
@@ -251,7 +239,7 @@
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                         <polyline points="22 4 12 14.01 9 11.01"></polyline>
                     </svg>
-                    Méthodologies & Qualité
+                    @L["Skills.Methodologies"]
                 </h3>
                 <div class="skills-badges">
                     <span class="skill-badge">Agile (Scrum)</span>
@@ -259,7 +247,7 @@
                     <span class="skill-badge">POO</span>
                     <span class="skill-badge">MVC</span>
                     <span class="skill-badge">UML</span>
-                    <span class="skill-badge">Tests unitaires</span>
+                    <span class="skill-badge">@L["Skills.UnitTests"]</span>
                     <span class="skill-badge">JUnit</span>
                     <span class="skill-badge">Selenium</span>
                     <span class="skill-badge">Jest</span>
@@ -272,7 +260,7 @@
 <!-- Section Formation -->
 <section id="education" class="education-section">
     <div class="section-container">
-        <h2 class="section-title">Ma formation</h2>
+        <h2 class="section-title">@L["Education.Title"]</h2>
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-icon">
@@ -282,12 +270,10 @@
                     </svg>
                 </div>
                 <div class="timeline-content">
-                    <span class="timeline-date">2026 (en cours)</span>
-                    <h3 class="timeline-title">Bachelor Universitaire de Technologie Informatique</h3>
-                    <p class="timeline-location">I.U.T. de Laval</p>
-                    <p class="timeline-description">
-                        Spécialisation en développement d'applications : conception logicielle, architectures, sécurité et méthodologies Agiles en alternance.
-                    </p>
+                    <span class="timeline-date">2026 (@L["Education.InProgress"])</span>
+                    <h3 class="timeline-title">@L["Education.BUT"]</h3>
+                    <p class="timeline-location">@L["Education.University"]</p>
+                    <p class="timeline-description">@L["Education.BUTDescription"]</p>
                 </div>
             </div>
 
@@ -300,12 +286,9 @@
                 </div>
                 <div class="timeline-content">
                     <span class="timeline-date">2025</span>
-                    <h3 class="timeline-title">Diplôme Universitaire de Technologie Informatique</h3>
-                    <p class="timeline-location">I.U.T. de Laval</p>
-                    <p class="timeline-description">
-                        Formation technique de deux ans (dont une en alternance à 3MO Performance) axée sur les fondamentaux
-                        du développement logiciel, les bases de données, les réseaux et la gestion de projet.
-                    </p>
+                    <h3 class="timeline-title">@L["Education.DUT"]</h3>
+                    <p class="timeline-location">@L["Education.University"]</p>
+                    <p class="timeline-description">@L["Education.DUTDescription"]</p>
                 </div>
             </div>
 
@@ -318,12 +301,9 @@
                 </div>
                 <div class="timeline-content">
                     <span class="timeline-date">2023</span>
-                    <h3 class="timeline-title">Baccalauréat Technologique STI2D </h3>
-                    <p class="timeline-location">Lycée Immaculée Conception</p>
-                    <p class="timeline-description">
-                        Obtention du baccalauréat Sciences et Technologies de l'Industrie et du Développement Durable avec mention bien.
-                        Spécialités Systèmes d'Information et Numérique.
-                    </p>
+                    <h3 class="timeline-title">@L["Education.BAC"]</h3>
+                    <p class="timeline-location">@L["Education.HighSchool"]</p>
+                    <p class="timeline-description">@L["Education.BACDescription"]</p>
                 </div>
             </div>
         </div>
@@ -333,12 +313,9 @@
 <!-- Section CV -->
 <section id="cv" class="cv-section">
     <div class="section-container">
-        <h2 class="section-title">Mon CV</h2>
+        <h2 class="section-title">@L["CV.Title"]</h2>
         <div class="cv-intro">
-            <p>
-                Téléchargez la version de mon curriculum vitae adaptée à vos besoins.
-                Chaque version met l'accent sur des compétences spécifiques.
-            </p>
+            <p>@L["CV.Intro"]</p>
         </div>
         <div class="cv-grid">
             <!-- CV Général -->
@@ -352,50 +329,50 @@
                         <polyline points="10 9 9 9 8 9"></polyline>
                     </svg>
                 </div>
-                <h3 class="cv-card-title">Développeur Logiciel</h3>
+                <h3 class="cv-card-title">@L["CV.General.Title"]</h3>
                 <p class="cv-card-description">
-                    Version complète présentant l'ensemble de mes compétences et expériences en développement logiciel.
+                    @L["CV.General.Description"]
                 </p>
                 <ul class="cv-highlights">
-                    <li>Polyvalence technique</li>
-                    <li>Tous langages et frameworks</li>
-                    <li>Profil généraliste</li>
+                    <li>@L["CV.General.Highlight1"]</li>
+                    <li>@L["CV.General.Highlight2"]</li>
+                    <li>@L["CV.General.Highlight3"]</li>
                 </ul>
-                <a href="/ressources/docs/CV_Kylian_DEBONNE_Développeur_Logiciel.pdf" download class="btn-cv-download">
+                <a href="@L["CV.General.DownloadLink"]" download class="btn-cv-download">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    Télécharger
+                    @L["CV.Download"]
                 </a>
             </div>
 
             <!-- CV .NET -->
             <div class="cv-card featured">
-                <div class="cv-badge">Recommandé</div>
+                <div class="cv-badge">@L["CV.Recommended"]</div>
                 <div class="cv-icon dotnet">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="3"></circle>
                         <path d="M12 1v6m0 6v6m8.66-13.66l-5.2 3m-3.92 3.92l-5.2 3M1 12h6m6 0h6m-8.66 8.66l3-5.2m3.92-3.92l3-5.2"></path>
                     </svg>
                 </div>
-                <h3 class="cv-card-title">Développeur .NET</h3>
+                <h3 class="cv-card-title">@L["CV.DotNet.Title"]</h3>
                 <p class="cv-card-description">
-                    Version spécialisée mettant en avant mon expertise en C#, .NET, et l'écosystème Microsoft.
+                    @L["CV.DotNet.Description"]
                 </p>
                 <ul class="cv-highlights">
                     <li>C# & .NET Core/Framework</li>
                     <li>ASP.NET & Blazor</li>
-                    <li>Azure & SAGE ERP</li>
+                    <li>Azure</li>
                 </ul>
-                <a href="/ressources/docs/CV_Kylian_DEBONNE_Développeur_DotNet.pdf" download class="btn-cv-download">
+                <a href="@L["CV.DotNet.DownloadLink"]" download class="btn-cv-download">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    Télécharger
+                    @L["CV.Download"]
                 </a>
             </div>
 
@@ -409,40 +386,38 @@
                         <polyline points="16 10 12 14 8 10"></polyline>
                     </svg>
                 </div>
-                <h3 class="cv-card-title">Développeur Web Full Stack</h3>
+                <h3 class="cv-card-title">@L["CV.FullStack.Title"]</h3>
                 <p class="cv-card-description">
-                    Version axée sur le développement web complet, frontend et backend, avec les technologies modernes.
+                    @L["CV.FullStack.Description"]
                 </p>
                 <ul class="cv-highlights">
-                    <li>Frontend : React, Blazor</li>
-                    <li>Backend : .NET, PHP, Node.js</li>
-                    <li>Bases de données & APIs</li>
+                    <li>@L["CV.FullStack.Highlight1"]</li>
+                    <li>@L["CV.FullStack.Highlight2"]</li>
+                    <li>@L["CV.FullStack.Highlight3"]</li>
                 </ul>
-                <a href="/ressources/docs/CV_Kylian_DEBONNE_Développeur_Web_FullStack.pdf" download class="btn-cv-download">
+                <a href="@L["CV.FullStack.DownloadLink"]" download class="btn-cv-download">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    Télécharger
+                    @L["CV.Download"]
                 </a>
             </div>
         </div>
-        <p class="cv-footer-note">Format PDF • Dernière mise à jour : janvier 2025</p>
+        <p class="cv-footer-note">@L["CV.FooterNote"]</p>
     </div>
 </section>
 
 <!-- Section Contact -->
 <section id="contact" class="contact-section">
     <div class="section-container">
-        <h2 class="section-title">Contactez-moi</h2>
+        <h2 class="section-title">@L["Contact.Title"]</h2>
         <div class="contact-content">
             <div class="contact-info">
-                <h3>Informations complémentaires</h3>
+                <h3>@L["Contact.AdditionalInfo"]</h3>
                 <p>
-                    Je suis toujours ouvert aux nouvelles opportunités. 
-                    N'hésitez pas à me contacter pour quelconques question et/ou échanger.
-                    Ci-dessous, vous trouverez mes différentes méthodes de contact.
+                    @L["Contact.IntroText"]
                 </p>
                 <div class="contact-methods">
                     <div class="contact-method">
@@ -476,36 +451,36 @@
                             <circle cx="7.5" cy="15.5" r="1.5"></circle>
                             <circle cx="16.5" cy="15.5" r="1.5"></circle>
                         </svg>
-                        <a>Permis B + Véhicule</a>
+                        <a>@L["Contact.DrivingLicense"]</a>
                     </div>
                 </div>
             </div>
 
             <form class="contact-form" @onsubmit="HandleSubmit" @onsubmit:preventDefault>
                 <div class="form-group">
-                    <label for="name">Nom complet</label>
+                    <label for="name">@L["Contact.Form.FullName"]</label>
                     <input type="text" id="name" @bind="contactForm.Name" required />
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">@L["Contact.Form.Email"]</label>
                     <input type="email" id="email" @bind="contactForm.Email" required />
                 </div>
                 <div class="form-group">
-                    <label for="subject">Sujet</label>
+                    <label for="subject">@L["Contact.Form.Subject"]</label>
                     <input type="text" id="subject" @bind="contactForm.Subject" required />
                 </div>
                 <div class="form-group">
-                    <label for="message">Message</label>
+                    <label for="message">@L["Contact.Form.Message"]</label>
                     <textarea id="message" rows="5" @bind="contactForm.Message" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" disabled="@isSubmitting">
                     @if (isSubmitting)
                     {
-                        <span>Envoi en cours...</span>
+                        <span>@L["Contact.Form.Sending"]</span>
                     }
                     else
                     {
-                        <span>Envoyer le message</span>
+                        <span>@L["Contact.Form.Send"]</span>
                     }
                 </button>
             </form>
@@ -524,7 +499,7 @@
 
 @code {
     [Inject] private IContactService ContactService { get; set; } = default!;
-    [Inject] private IToastService ToastService { get; set; } = default!;
+    [Inject] private ICustomToastService ToastService { get; set; } = default!;
 
     private ContactFormModel contactForm = new();
     private bool isSubmitting = false;
@@ -547,23 +522,45 @@
 
             if (success)
             {
-                ToastService.ShowSuccess("Votre message a été envoyé avec succès ! Je vous répondrai dans les plus brefs délais.");
+                ToastService.ShowSuccess(L["Toast.Success"]);
                 contactForm = new();
             }
             else
             {
-                ToastService.ShowError("Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer ou me contacter directement par email.");
+                ToastService.ShowError(L["Toast.Error"]);
             }
         }
         catch (Exception ex)
         {
-            ToastService.ShowError("Une erreur inattendue s'est produite. Veuillez réessayer plus tard.");
+            ToastService.ShowError(L["Toast.ErrorUnexpected"]);
             Console.WriteLine($"Erreur lors de l'envoi: {ex.Message}");
         }
         finally
         {
             isSubmitting = false;
         }
+    }
+
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+        L.OnLanguageChanged += OnLanguageChanged;
+    }
+
+    private void OnCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void OnLanguageChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+        L.OnLanguageChanged -= OnLanguageChanged;
     }
 
     private class ContactFormModel

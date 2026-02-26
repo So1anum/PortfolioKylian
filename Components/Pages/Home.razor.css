@@ -356,7 +356,13 @@ section {
 }
 
 .about-text strong {
-    color: #9333ea;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, #9333ea 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    letter-spacing: 0.5px;
 }
 
 .about-stats {

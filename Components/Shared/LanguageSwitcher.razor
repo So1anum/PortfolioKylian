@@ -1,0 +1,50 @@
+@inject ICultureService CultureService
+@implements IDisposable
+
+<div class="language-switcher">
+    <button class="lang-btn @(currentLang == "fr" ? "active" : "")" 
+            @onclick="SwitchToFrench"
+            title="Français">
+        <span class="flag">🇫🇷</span>
+    </button>
+    <button class="lang-btn @(currentLang == "en" ? "active" : "")" 
+            @onclick="SwitchToEnglish"
+            title="English">
+        <span class="flag">🇬🇧</span>
+    </button>
+</div>
+
+@code {
+    private string currentLang = "fr";
+
+    protected override void OnInitialized()
+    {
+        currentLang = CultureService.GetCurrentCultureCode();
+        CultureService.OnCultureChanged += OnCultureChanged;
+    }
+
+    private async Task SwitchToFrench()
+    {
+        await CultureService.SetCultureAsync("fr-FR");
+        currentLang = CultureService.GetCurrentCultureCode();
+        StateHasChanged();
+    }
+
+    private async Task SwitchToEnglish()
+    {
+        await CultureService.SetCultureAsync("en-US");
+        currentLang = CultureService.GetCurrentCultureCode();
+        StateHasChanged();
+    }
+
+    private void OnCultureChanged()
+    {
+        currentLang = CultureService.GetCurrentCultureCode();
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+    }
+}

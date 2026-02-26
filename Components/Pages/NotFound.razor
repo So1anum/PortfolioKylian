@@ -1,0 +1,70 @@
+@page "/404"
+@page "/not-found"
+@layout Components.Layout.FullScreenLayout
+@using PortfolioKylian.Components.Layout
+@using PortfolioKylian.Resources
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@implements IDisposable
+
+<PageTitle>@L["NotFound.Title"] - Kylian Debonne</PageTitle>
+
+<style>
+    body, html {
+        background: #0a0a0a !important;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<Header @rendermode="InteractiveServer" />
+
+<section class="error-section">
+    <div class="error-content">
+        <div class="error-visual">
+            <div class="error-code">404</div>
+        </div>
+
+        <div class="error-text">
+            <h1 class="error-title">@L["NotFound.Title"]</h1>
+            <p class="error-subtitle">@L["NotFound.Subtitle"]</p>
+            <p class="error-description">@L["NotFound.Message"]</p>
+            <div class="error-actions">
+                <a href="/" class="btn btn-primary">@L["NotFound.BackToHome"]</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="https://github.com/So1anum" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/kylian-debonne-5b359a3b3/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+    </div>
+</footer>
+
+@code {
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+        L.OnLanguageChanged += OnLanguageChanged;
+    }
+
+    private void OnCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void OnLanguageChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+        L.OnLanguageChanged -= OnLanguageChanged;
+    }
+}

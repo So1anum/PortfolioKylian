@@ -1,3 +1,8 @@
+﻿@using PortfolioKylian.Resources
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@implements IDisposable
+
 <header class="main-header">
     <nav class="navbar">
         <div class="navbar-container">
@@ -10,14 +15,28 @@
             </button>
 
             <ul class="navbar-menu @(isMenuOpen ? "active" : "")">
-                <li><a href="/#presentation" @onclick="CloseMenu">Présentation</a></li>
-                <li><a href="/#about" @onclick="CloseMenu">À propos</a></li>
-                <li><a href="/#languages" @onclick="CloseMenu">Langues</a></li>
-                <li><a href="/#skills" @onclick="CloseMenu">Compétences</a></li>
-                <li><a href="/#education" @onclick="CloseMenu">Formation</a></li>
-                <li><a href="/#cv" @onclick="CloseMenu">CV</a></li>
-                <li><a href="/portfolio" @onclick="CloseMenu">Portfolio</a></li>
-                <li><a href="/#contact" @onclick="CloseMenu" class="btn-contact">Contact</a></li>
+                <li><a href="/#presentation" @onclick="CloseMenu">@L["Header.Presentation"]</a></li>
+                <li><a href="/#about" @onclick="CloseMenu">@L["Header.About"]</a></li>
+                <li><a href="/#languages" @onclick="CloseMenu">@L["Header.Languages"]</a></li>
+                <li><a href="/#skills" @onclick="CloseMenu">@L["Header.Skills"]</a></li>
+                <li><a href="/#education" @onclick="CloseMenu">@L["Header.Education"]</a></li>
+                <li><a href="/#cv" @onclick="CloseMenu">@L["Header.CV"]</a></li>
+                <li><a href="/portfolio" @onclick="CloseMenu">@L["Header.Portfolio"]</a></li>
+                <li><a href="/#contact" @onclick="CloseMenu" class="btn-contact">@L["Header.Contact"]</a></li>
+                <li class="language-switcher-item">
+                    <div class="language-switcher">
+                        <button class="lang-btn @(currentLang == "fr" ? "active" : "")" 
+                                @onclick="SwitchToFrench"
+                                title="Français">
+                            <span class="flag">🇫🇷</span>
+                        </button>
+                        <button class="lang-btn @(currentLang == "en" ? "active" : "")" 
+                                @onclick="SwitchToEnglish"
+                                title="English">
+                            <span class="flag">🇬🇧</span>
+                        </button>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>
@@ -25,6 +44,39 @@
 
 @code {
     private bool isMenuOpen = false;
+    private string currentLang = "fr";
+
+    protected override void OnInitialized()
+    {
+        currentLang = CultureService.GetCurrentCultureCode();
+        CultureService.OnCultureChanged += OnCultureChanged;
+        L.OnLanguageChanged += OnLanguageChanged;
+    }
+
+    private async Task SwitchToFrench()
+    {
+        await CultureService.SetCultureAsync("fr-FR");
+        currentLang = CultureService.GetCurrentCultureCode();
+        StateHasChanged();
+    }
+
+    private async Task SwitchToEnglish()
+    {
+        await CultureService.SetCultureAsync("en-US");
+        currentLang = CultureService.GetCurrentCultureCode();
+        StateHasChanged();
+    }
+
+    private void OnCultureChanged()
+    {
+        currentLang = CultureService.GetCurrentCultureCode();
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void OnLanguageChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
 
     private void ToggleMenu()
     {
@@ -34,5 +86,11 @@
     private void CloseMenu()
     {
         isMenuOpen = false;
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+        L.OnLanguageChanged -= OnLanguageChanged;
     }
 }
