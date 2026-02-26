@@ -3,6 +3,14 @@ using PortfolioKylian.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Ajouter Application Insights avec JavaScript tracking
+builder.Services.AddApplicationInsightsTelemetry(options =>
+{
+    options.ConnectionString = builder.Configuration["ApplicationInsights:ConnectionString"];
+    options.EnableAdaptiveSampling = true; // Optimisation des coûts
+    options.EnableQuickPulseMetricStream = true; // Monitoring en temps réel
+});
+
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -26,11 +34,9 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
-// Rediriger les 404 vers notre page personnalisée même en développement
 app.UseStatusCodePagesWithReExecute("/404");
 
 app.UseHttpsRedirection();
