@@ -1,0 +1,81 @@
+@page "/portfolio/post-but"
+@layout Components.Layout.PortfolioLayout
+@using PortfolioKylian.Resources
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@implements IDisposable
+
+<link rel="stylesheet" href="css/portfolio-shared.css" />
+
+<PageTitle>@L["Portfolio.PostBachelor.Title"] - Kylian Debonne</PageTitle>
+
+<div class="portfolio-page">
+    <header class="page-header">
+        <h1 class="page-title">@L["Portfolio.PostBachelor.Title"]</h1>
+        <p class="page-subtitle">@L["Portfolio.PostBachelor.Subtitle"]</p>
+    </header>
+
+    <div class="page-content">
+        <section class="content-section">
+            <h2>@L["Portfolio.PostBachelor.Ambitions.Title"]</h2>
+            <p>@L["Portfolio.PostBachelor.Ambitions.Content"]</p>
+        </section>
+
+        <section class="content-section">
+            <h2>@L["Portfolio.PostBachelor.Goals.Title"]</h2>
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                        </svg>
+                    </div>
+                    <h3>@L["Portfolio.PostBachelor.Goal1.Title"]</h3>
+                    <p>@L["Portfolio.PostBachelor.Goal1.Content"]</p>
+                </div>
+
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h3>@L["Portfolio.PostBachelor.Goal2.Title"]</h3>
+                    <p>@L["Portfolio.PostBachelor.Goal2.Content"]</p>
+                </div>
+
+                <div class="goal-card">
+                    <div class="goal-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>@L["Portfolio.PostBachelor.Goal3.Title"]</h3>
+                    <p>@L["Portfolio.PostBachelor.Goal3.Content"]</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+    }
+
+    private void OnCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+    }
+}

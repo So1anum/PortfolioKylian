@@ -1,0 +1,219 @@
+.portfolio-layout {
+    display: flex;
+    min-height: 100vh;
+    background: #0a0a0a;
+    padding-top: 70px;
+}
+
+.portfolio-sidebar {
+    position: fixed;
+    left: 0;
+    top: 70px;
+    bottom: 0;
+    width: 280px;
+    background: rgba(15, 15, 20, 0.95);
+    border-right: 1px solid rgba(147, 51, 234, 0.2);
+    backdrop-filter: blur(10px);
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+    z-index: 100;
+}
+
+.portfolio-sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.portfolio-sidebar::-webkit-scrollbar-track {
+    background: rgba(20, 20, 30, 0.3);
+}
+
+.portfolio-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(147, 51, 234, 0.3);
+    border-radius: 4px;
+}
+
+.portfolio-sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(147, 51, 234, 0.5);
+}
+
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 1rem;
+    z-index: 101;
+    background: rgba(147, 51, 234, 0.2);
+    border: 1px solid rgba(147, 51, 234, 0.3);
+    border-radius: 8px;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+    background: rgba(147, 51, 234, 0.3);
+    transform: scale(1.05);
+}
+
+.toggle-icon {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    position: relative;
+}
+
+.toggle-icon::before,
+.toggle-icon::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    left: 0;
+}
+
+.toggle-icon::before {
+    top: -6px;
+}
+
+.toggle-icon::after {
+    bottom: -6px;
+}
+
+.sidebar-nav {
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-item,
+.nav-item.group-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: transparent;
+    width: 100%;
+    font-size: 0.95rem;
+}
+
+.nav-item:hover,
+.nav-item.group-toggle:hover {
+    background: rgba(147, 51, 234, 0.1);
+    color: #fff;
+    border-color: rgba(147, 51, 234, 0.3);
+}
+
+.nav-item.active {
+    background: rgba(147, 51, 234, 0.2);
+    color: #fff;
+    border-color: rgba(147, 51, 234, 0.4);
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+}
+
+.nav-text {
+    flex: 1;
+}
+
+.chevron {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.chevron.open {
+    transform: rotate(180deg);
+}
+
+.nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.nav-submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 2.5rem;
+}
+
+.nav-submenu.open {
+    max-height: 500px;
+    margin-top: 0.5rem;
+}
+
+.nav-subitem {
+    padding: 0.5rem 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    border-left: 2px solid transparent;
+}
+
+.nav-subitem:hover {
+    background: rgba(147, 51, 234, 0.1);
+    color: #fff;
+    border-left-color: rgba(147, 51, 234, 0.5);
+}
+
+.nav-subitem.active {
+    background: rgba(147, 51, 234, 0.15);
+    color: #fff;
+    border-left-color: rgba(147, 51, 234, 0.8);
+}
+
+.portfolio-main {
+    flex: 1;
+    margin-left: 280px;
+    padding: 2rem;
+    min-height: calc(100vh - 70px);
+}
+
+@media (max-width: 1024px) {
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .portfolio-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .portfolio-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .portfolio-main {
+        margin-left: 0;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-sidebar {
+        width: 250px;
+    }
+
+    .portfolio-main {
+        padding: 1rem;
+    }
+}

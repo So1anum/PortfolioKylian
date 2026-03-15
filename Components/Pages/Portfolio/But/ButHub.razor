@@ -1,0 +1,82 @@
+@page "/portfolio/but"
+@layout Components.Layout.PortfolioLayout
+@using PortfolioKylian.Resources
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@implements IDisposable
+
+<link rel="stylesheet" href="css/portfolio-hub.css" />
+
+<PageTitle>@L["Portfolio.Hub.But.Title"] - Kylian Debonne</PageTitle>
+
+<div class="portfolio-hub">
+    <header class="hub-header">
+        <h1 class="hub-title">@L["Portfolio.But.Hub.Title"]</h1>
+        <p class="hub-subtitle">@L["Portfolio.But.Hub.Subtitle"]</p>
+    </header>
+
+    <div class="hub-cards">
+        <a href="/portfolio/but/year-1" class="hub-card">
+            <div class="card-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    <circle cx="10" cy="8" r="2"></circle>
+                </svg>
+            </div>
+            <h3 class="card-title">@L["Portfolio.But.Hub.Year1.Title"]</h3>
+            <p class="card-description">@L["Portfolio.But.Hub.Year1.Description"]</p>
+        </a>
+
+        <a href="/portfolio/but/year-2" class="hub-card">
+            <div class="card-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    <path d="M8 7h8"></path>
+                    <path d="M8 11h8"></path>
+                </svg>
+            </div>
+            <h3 class="card-title">@L["Portfolio.But.Hub.Year2.Title"]</h3>
+            <p class="card-description">@L["Portfolio.But.Hub.Year2.Description"]</p>
+        </a>
+
+        <a href="/portfolio/but/year-3" class="hub-card">
+            <div class="card-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    <path d="M8 7h8"></path>
+                    <path d="M8 11h8"></path>
+                    <path d="M8 15h5"></path>
+                </svg>
+            </div>
+            <h3 class="card-title">@L["Portfolio.But.Hub.Year3.Title"]</h3>
+            <p class="card-description">@L["Portfolio.But.Hub.Year3.Description"]</p>
+        </a>
+    </div>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+        L.OnLanguageChanged += OnLanguageChanged;
+    }
+
+    private void OnCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void OnLanguageChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+        L.OnLanguageChanged -= OnLanguageChanged;
+    }
+}

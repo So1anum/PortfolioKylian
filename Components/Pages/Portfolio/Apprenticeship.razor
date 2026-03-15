@@ -1,0 +1,222 @@
+@page "/portfolio/apprenticeship"
+@layout Components.Layout.PortfolioLayout
+@using PortfolioKylian.Resources
+@using PortfolioKylian.Models
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@implements IDisposable
+
+<link rel="stylesheet" href="css/portfolio-shared.css" />
+
+<PageTitle>@L["Portfolio.Apprenticeship.Title"] - Kylian Debonne</PageTitle>
+
+<div class="portfolio-page">
+    <header class="page-header">
+        <h1 class="page-title">@L["Portfolio.Apprenticeship.Title"]</h1>
+        <p class="page-subtitle">@L["Portfolio.Apprenticeship.Subtitle"]</p>
+    </header>
+
+    <div class="page-content">
+        <section class="content-section carousel-section">
+            <h2>@L["Portfolio.Apprenticeship.Gallery.Title"]</h2>
+            <div class="image-carousel">
+                <button class="carousel-button carousel-prev" @onclick="PreviousImage" aria-label="Image précédente">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="carousel-container">
+                    <div class="carousel-track" style="transform: translateX(-@(currentImageIndex * 100)%);">
+                        @foreach (var media in carouselImages)
+                        {
+                            <div class="carousel-slide">
+                                @if (media.IsVideo)
+                                {
+                                    <video src="@media.Url" class="carousel-image carousel-video" 
+                                           controls muted loop preload="metadata"
+                                           @key="@media.Url">
+                                        Votre navigateur ne supporte pas la lecture de vidéos.
+                                    </video>
+                                }
+                                else
+                                {
+                                    <img src="@media.Url" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
+                                }
+                                @if (!string.IsNullOrEmpty(media.CaptionKey))
+                                {
+                                    <div class="carousel-caption">
+                                        <p>@L[media.CaptionKey]</p>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+                
+                <button class="carousel-button carousel-next" @onclick="NextImage" aria-label="Image suivante">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+
+                <div class="carousel-indicators">
+                @for (int i = 0; i < carouselImages.Count; i++)
+                {
+                    var index = i;
+                    <button 
+                        class="carousel-indicator @(currentImageIndex == index ? "active" : "")" 
+                        @onclick="() => GoToImage(index)"
+                        aria-label="Aller à l'image @(index + 1)">
+                    </button>
+                }
+            </div>
+
+            </div>
+            
+        </section>
+
+        <section class="content-section">
+            <h2>Informations</h2>
+            <div class="company-info">
+                <h3>@L["Portfolio.Apprenticeship.Context.Title"]</h3>
+                <p class="company-period">@L["Portfolio.Apprenticeship.Period"]</p>
+                <p>@L["Portfolio.Apprenticeship.Context.Description"]</p>
+            </div>
+
+            <br />
+
+            <div class="company-info">
+                <h3>@L["Portfolio.Apprenticeship.Company.Title"]</h3>
+                <p>@L["Portfolio.Apprenticeship.Company.Description"]</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>@L["Portfolio.Apprenticeship.Missions.Title"]</h2>
+            <div class="missions-list">
+                <div class="mission-item">
+                    <h3>@L["Portfolio.Apprenticeship.Mission1.Title"]</h3>
+                    <p>@L["Portfolio.Apprenticeship.Mission1.Description"]</p>
+                    <div class="mission-tags">
+                        <span class="tag">C#</span>
+                        <span class="tag">.NET</span>
+                        <span class="tag">WPF</span>
+                        <span class="tag">SQL Server</span>
+                    </div>
+                </div>
+
+                <div class="mission-item">
+                    <h3>@L["Portfolio.Apprenticeship.Mission2.Title"]</h3>
+                    <p>@L["Portfolio.Apprenticeship.Mission2.Description"]</p>
+                    <div class="mission-tags">
+                        <span class="tag">SQL Server</span>
+                        <span class="tag">Visual Basic</span>
+                    </div>
+                </div>
+
+                <div class="mission-item">
+                    <h3>@L["Portfolio.Apprenticeship.Mission3.Title"]</h3>
+                    <p>@L["Portfolio.Apprenticeship.Mission3.Description"]</p>
+                    <div class="mission-tags">
+                        <span class="tag">@L["Portfolio.Apprenticeship.Mission3.Tag1"]</span>
+                        <span class="tag">Helpdesk</span>
+                        <span class="tag">SAGE</span>
+                        <span class="tag">Troubleshooting</span>
+                        <span class="tag">@L["Portfolio.Apprenticeship.Mission3.Tag5"]</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>@L["Portfolio.Apprenticeship.Skills.Title"]</h2>
+            <ul class="skills-list">
+                <li>@L["Portfolio.Apprenticeship.Skill1"]</li>
+                <li>@L["Portfolio.Apprenticeship.Skill2"]</li>
+                <li>@L["Portfolio.Apprenticeship.Skill3"]</li>
+                <li>@L["Portfolio.Apprenticeship.Skill4"]</li>
+            </ul>
+        </section>
+    </div>
+</div>
+
+@code {
+    private int currentImageIndex = 0;
+
+    private List<CarouselItem> carouselImages = new()
+    {
+        new CarouselItem 
+        { 
+            Url = "/images/portfolio/apprenticeship/workspace.jpg", 
+            AltKey = "Portfolio.Apprenticeship.Gallery.Image1.Alt",
+            CaptionKey = "Portfolio.Apprenticeship.Gallery.Image1.Caption"
+        },
+        new CarouselItem
+        {
+            Url = "/images/portfolio/apprenticeship/fraiseuse_mazak_630.jpg",
+            AltKey = "Portfolio.Apprenticeship.Gallery.Image2.Alt",
+            CaptionKey = "Portfolio.Apprenticeship.Gallery.Image2.Caption"
+        },
+        new CarouselItem 
+        { 
+            Url = "/images/portfolio/apprenticeship/ui_display_nomenc.png",
+            AltKey = "Portfolio.Apprenticeship.Gallery.Image3.Alt",
+            CaptionKey = "Portfolio.Apprenticeship.Gallery.Image3.Caption"
+        },
+        new CarouselItem 
+        { 
+            Url = "/images/portfolio/apprenticeship/display_nomenc.mp4",
+            AltKey = "Portfolio.Apprenticeship.Gallery.Image4.Alt",
+            CaptionKey = "Portfolio.Apprenticeship.Gallery.Image4.Caption"
+        },
+        new CarouselItem
+        {
+            Url = "/images/portfolio/apprenticeship/Boite_de_vitesse.png",
+            AltKey = "Portfolio.Apprenticeship.Gallery.Image5.Alt",
+            CaptionKey = "Portfolio.Apprenticeship.Gallery.Image5.Caption"
+        },
+        new CarouselItem
+        {
+            Url = "/images/portfolio/apprenticeship/Boite_de_vitesse_RX489.jpg",
+            AltKey = "Portfolio.Apprenticeship.Gallery.Image6.Alt",
+            CaptionKey = "Portfolio.Apprenticeship.Gallery.Image6.Caption"
+        },
+        new CarouselItem
+        {
+            Url = "/images/portfolio/apprenticeship/Alpine_A110_rallye.jpg",
+            AltKey = "Portfolio.Apprenticeship.Gallery.Image7.Alt",
+            CaptionKey = "Portfolio.Apprenticeship.Gallery.Image7.Caption"
+        }
+    };
+
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+    }
+
+    private void OnCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void NextImage()
+    {
+        currentImageIndex = (currentImageIndex + 1) % carouselImages.Count;
+    }
+
+    private void PreviousImage()
+    {
+        currentImageIndex = currentImageIndex == 0 ? carouselImages.Count - 1 : currentImageIndex - 1;
+    }
+
+    private void GoToImage(int index)
+    {
+        currentImageIndex = index;
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+    }
+}

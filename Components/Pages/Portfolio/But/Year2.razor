@@ -1,0 +1,82 @@
+@page "/portfolio/but/year-2"
+@layout Components.Layout.PortfolioLayout
+@using PortfolioKylian.Resources
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@implements IDisposable
+
+<link rel="stylesheet" href="css/portfolio-shared.css" />
+
+<PageTitle>@L["Portfolio.But.Year2.Title"] - Kylian Debonne</PageTitle>
+
+<div class="portfolio-page">
+    <header class="page-header">
+        <h1 class="page-title">@L["Portfolio.But.Year2.Title"]</h1>
+        <p class="page-subtitle">@L["Portfolio.But.Year2.Subtitle"]</p>
+    </header>
+
+    <div class="page-content">
+        <section class="content-section">
+            <h2>@L["Portfolio.But.Year2.Overview.Title"]</h2>
+            <p>@L["Portfolio.But.Year2.Overview.Content"]</p>
+        </section>
+
+        <section class="content-section">
+            <h2>@L["Portfolio.But.Year2.Competences.Title"]</h2>
+            <div class="competences-grid">
+                <a href="/portfolio/but/year-2/skill-1" class="competence-card">
+                    <div class="competence-number">1</div>
+                    <h3>@L["Portfolio.But.Year2.Competence1.Title"]</h3>
+                    <p>@L["Portfolio.But.Year2.Competence1.Short"]</p>
+                </a>
+
+                <a href="/portfolio/but/year-2/skill-2" class="competence-card">
+                    <div class="competence-number">2</div>
+                    <h3>@L["Portfolio.But.Year2.Competence2.Title"]</h3>
+                    <p>@L["Portfolio.But.Year2.Competence2.Short"]</p>
+                </a>
+
+                <a href="/portfolio/but/year-2/skill-3" class="competence-card">
+                    <div class="competence-number">3</div>
+                    <h3>@L["Portfolio.But.Year2.Competence3.Title"]</h3>
+                    <p>@L["Portfolio.But.Year2.Competence3.Short"]</p>
+                </a>
+
+                <a href="/portfolio/but/year-2/skill-4" class="competence-card">
+                    <div class="competence-number">4</div>
+                    <h3>@L["Portfolio.But.Year2.Competence4.Title"]</h3>
+                    <p>@L["Portfolio.But.Year2.Competence4.Short"]</p>
+                </a>
+
+                <a href="/portfolio/but/year-2/skill-5" class="competence-card">
+                    <div class="competence-number">5</div>
+                    <h3>@L["Portfolio.But.Year2.Competence5.Title"]</h3>
+                    <p>@L["Portfolio.But.Year2.Competence5.Short"]</p>
+                </a>
+
+                <a href="/portfolio/but/year-2/skill-6" class="competence-card">
+                    <div class="competence-number">6</div>
+                    <h3>@L["Portfolio.But.Year2.Competence6.Title"]</h3>
+                    <p>@L["Portfolio.But.Year2.Competence6.Short"]</p>
+                </a>
+            </div>
+        </section>
+    </div>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+    }
+
+    private void OnCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+    }
+}

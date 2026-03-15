@@ -1,0 +1,279 @@
+@page "/portfolio/pre-but/scratch"
+@layout Components.Layout.PortfolioLayout
+@using PortfolioKylian.Resources
+@using PortfolioKylian.Models
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@implements IDisposable
+
+<link rel="stylesheet" href="css/portfolio-shared.css" />
+
+<PageTitle>@L["Portfolio.Scratch.Title"] - Kylian Debonne</PageTitle>
+
+<div class="portfolio-page">
+    <header class="page-header">
+        <h1 class="page-title">@L["Portfolio.Scratch.Title"]</h1>
+        <p class="page-subtitle">@L["Portfolio.Scratch.Subtitle"]</p>
+    </header>
+
+    <div class="page-content">
+        <!-- Intro Section -->
+        <section class="content-section">
+            <h2>@L["Portfolio.Scratch.Intro.Title"]</h2>
+            <p>@L["Portfolio.Scratch.Intro.Description"]</p>
+        </section>
+
+        <!-- Game 1 -->
+        <section class="content-section carousel-section">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>@L["Portfolio.Scratch.Game1.Title"]</h2>
+                <a href="@Game1Url" target="_blank" class="cyber-button play-button">
+                    @L["Portfolio.Scratch.PlayButton"]
+                </a>
+            </div>
+            <p>@L["Portfolio.Scratch.Game1.Description"]</p>
+
+            <div class="image-carousel mb-4">
+                <button class="carousel-button carousel-prev" @onclick="() => PreviousImage(1)" aria-label="Image précédente">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="carousel-container">
+                    <div class="carousel-track" style="transform: translateX(-@(currentImageIndex1 * 100)%);">
+                        @foreach (var media in carouselGame1)
+                        {
+                            <div class="carousel-slide">
+                                <img src="@media.Url" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
+                                @if (!string.IsNullOrEmpty(media.CaptionKey))
+                                {
+                                    <div class="carousel-caption">
+                                        <p>@L[media.CaptionKey]</p>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+                
+                <button class="carousel-button carousel-next" @onclick="() => NextImage(1)" aria-label="Image suivante">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+
+                <div class="carousel-indicators">
+                    @for (int i = 0; i < carouselGame1.Count; i++)
+                    {
+                        var index = i;
+                        <button 
+                            class="carousel-indicator @(currentImageIndex1 == index ? "active" : "")" 
+                            @onclick="() => GoToImage(1, index)"
+                            aria-label="Aller à l'image @(index + 1)">
+                        </button>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Game 2 -->
+        <section class="content-section carousel-section">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>@L["Portfolio.Scratch.Game2.Title"]</h2>
+                <a href="@Game2Url" target="_blank" class="cyber-button play-button">
+                    @L["Portfolio.Scratch.PlayButton"]
+                </a>
+            </div>
+            <p>@L["Portfolio.Scratch.Game2.Description"]</p>
+
+            <div class="image-carousel mb-4">
+                <button class="carousel-button carousel-prev" @onclick="() => PreviousImage(2)" aria-label="Image précédente">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="carousel-container">
+                    <div class="carousel-track" style="transform: translateX(-@(currentImageIndex2 * 100)%);">
+                        @foreach (var media in carouselGame2)
+                        {
+                            <div class="carousel-slide">
+                                <img src="@media.Url" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
+                                @if (!string.IsNullOrEmpty(media.CaptionKey))
+                                {
+                                    <div class="carousel-caption">
+                                        <p>@L[media.CaptionKey]</p>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+                
+                <button class="carousel-button carousel-next" @onclick="() => NextImage(2)" aria-label="Image suivante">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+
+                <div class="carousel-indicators">
+                    @for (int i = 0; i < carouselGame2.Count; i++)
+                    {
+                        var index = i;
+                        <button 
+                            class="carousel-indicator @(currentImageIndex2 == index ? "active" : "")" 
+                            @onclick="() => GoToImage(2, index)"
+                            aria-label="Aller à l'image @(index + 1)">
+                        </button>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Game 3 -->
+        <section class="content-section carousel-section">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>@L["Portfolio.Scratch.Game3.Title"]</h2>
+                <a href="@Game3Url" target="_blank" class="cyber-button play-button">
+                    @L["Portfolio.Scratch.PlayButton"]
+                </a>
+            </div>
+            <p>@L["Portfolio.Scratch.Game3.Description"]</p>
+
+            <div class="image-carousel mb-4">
+                <button class="carousel-button carousel-prev" @onclick="() => PreviousImage(3)" aria-label="Image précédente">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="carousel-container">
+                    <div class="carousel-track" style="transform: translateX(-@(currentImageIndex3 * 100)%);">
+                        @foreach (var media in carouselGame3)
+                        {
+                            <div class="carousel-slide">
+                                <img src="@media.Url" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
+                                @if (!string.IsNullOrEmpty(media.CaptionKey))
+                                {
+                                    <div class="carousel-caption">
+                                        <p>@L[media.CaptionKey]</p>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+                
+                <button class="carousel-button carousel-next" @onclick="() => NextImage(3)" aria-label="Image suivante">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+
+                <div class="carousel-indicators">
+                    @for (int i = 0; i < carouselGame3.Count; i++)
+                    {
+                        var index = i;
+                        <button 
+                            class="carousel-indicator @(currentImageIndex3 == index ? "active" : "")" 
+                            @onclick="() => GoToImage(3, index)"
+                            aria-label="Aller à l'image @(index + 1)">
+                        </button>
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<style>
+    .d-flex { display: flex; }
+    .justify-content-between { justify-content: space-between; }
+    .align-items-center { align-items: center; }
+    .mb-3 { margin-bottom: 1rem; }
+    .mb-4 { margin-bottom: 1.5rem; }
+
+    .play-button {
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background: linear-gradient(135deg, #4299e1, #9333ea);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .play-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
+        color: white;
+    }
+</style>
+
+@code {
+    private int currentImageIndex1 = 0;
+    private int currentImageIndex2 = 0;
+    private int currentImageIndex3 = 0;
+
+    private string Game1Url = "https://scratch.mit.edu/projects/284095662/";
+    private string Game2Url = "https://scratch.mit.edu/projects/280987697/";
+    private string Game3Url = "https://scratch.mit.edu/projects/317939963/";
+
+    private List<CarouselItem> carouselGame1 = new()
+    {
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/RodWorld1.png", AltKey = "Portfolio.Scratch.Game1.Image1Alt", CaptionKey = "Portfolio.Scratch.Game1.Image1Cap" },
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/RodWorld2.png", AltKey = "Portfolio.Scratch.Game1.Image2Alt", CaptionKey = "Portfolio.Scratch.Game1.Image2Cap" }
+    };
+
+    private List<CarouselItem> carouselGame2 = new()
+    {
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Games-Duels1.png", AltKey = "Portfolio.Scratch.Game2.Image1Alt", CaptionKey = "Portfolio.Scratch.Game2.Image1Cap" },
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Games-Duels2.png", AltKey = "Portfolio.Scratch.Game2.Image2Alt", CaptionKey = "Portfolio.Scratch.Game2.Image2Cap" },
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Games-Duels3.png", AltKey = "Portfolio.Scratch.Game3.Image2Alt", CaptionKey = "Portfolio.Scratch.Game2.Image3Cap" },
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/insides.png", AltKey = "Portfolio.Scratch.Game2.Image4Alt", CaptionKey = "Portfolio.Scratch.Game2.Image4Cap" }
+    };
+
+    private List<CarouselItem> carouselGame3 = new()
+    {
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Calculator-Race1.png", AltKey = "Portfolio.Scratch.Game3.Image1Alt", CaptionKey = "Portfolio.Scratch.Game3.Image1Cap" },
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Calculator-Race2.png", AltKey = "Portfolio.Scratch.Game3.Image2Alt", CaptionKey = "Portfolio.Scratch.Game3.Image2Cap" }
+    };
+
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+    }
+
+    private void PreviousImage(int gallery)
+    {
+        if (gallery == 1) currentImageIndex1 = (currentImageIndex1 - 1 + carouselGame1.Count) % carouselGame1.Count;
+        else if (gallery == 2) currentImageIndex2 = (currentImageIndex2 - 1 + carouselGame2.Count) % carouselGame2.Count;
+        else if (gallery == 3) currentImageIndex3 = (currentImageIndex3 - 1 + carouselGame3.Count) % carouselGame3.Count;
+    }
+
+    private void NextImage(int gallery)
+    {
+        if (gallery == 1) currentImageIndex1 = (currentImageIndex1 + 1) % carouselGame1.Count;
+        else if (gallery == 2) currentImageIndex2 = (currentImageIndex2 + 1) % carouselGame2.Count;
+        else if (gallery == 3) currentImageIndex3 = (currentImageIndex3 + 1) % carouselGame3.Count;
+    }
+
+    private void GoToImage(int gallery, int index)
+    {
+        if (gallery == 1) currentImageIndex1 = index;
+        else if (gallery == 2) currentImageIndex2 = index;
+        else if (gallery == 3) currentImageIndex3 = index;
+    }
+
+    private void OnCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+    }
+}
