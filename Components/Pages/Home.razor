@@ -17,7 +17,7 @@
             <div class="orb-container">
                 <div class="orb">
                     <div class="orb-inner">
-                        <img src="/images/profile-photo.jpg" alt="Kylian Debonne" class="profile-image" />
+                        <img src="@($"{Configuration["Media:BaseUrl"]}images/profile-photo.jpg")" alt="Kylian Debonne" class="profile-image" />
                     </div>
                 </div>
             </div>
@@ -333,7 +333,7 @@
                     <li>@L["CV.General.Highlight2"]</li>
                     <li>@L["CV.General.Highlight3"]</li>
                 </ul>
-                <a href="@L["CV.General.DownloadLink"]" target="_blank" rel="noopener noreferrer" class="btn-cv-download">
+                <a href="@($"{Configuration["Media:BaseUrl"]}{L["CV.General.DownloadLink"]}")" target="_blank" rel="noopener noreferrer" class="btn-cv-download">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                         <circle cx="12" cy="12" r="3"></circle>
@@ -359,7 +359,7 @@
                     <li>ASP.NET & Blazor</li>
                     <li>Azure</li>
                 </ul>
-                <a href="@L["CV.DotNet.DownloadLink"]" target="_blank" rel="noopener noreferrer" class="btn-cv-download">
+                <a href="@($"{Configuration["Media:BaseUrl"]}{@L["CV.DotNet.DownloadLink"]}")" target="_blank" rel="noopener noreferrer" class="btn-cv-download">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                         <circle cx="12" cy="12" r="3"></circle>
@@ -387,7 +387,7 @@
                     <li>@L["CV.FullStack.Highlight2"]</li>
                     <li>@L["CV.FullStack.Highlight3"]</li>
                 </ul>
-                <a href="@L["CV.FullStack.DownloadLink"]" target="_blank" rel="noopener noreferrer" class="btn-cv-download">
+                <a href="@($"{Configuration["Media:BaseUrl"]}{@L["CV.FullStack.DownloadLink"]}")" target="_blank" rel="noopener noreferrer" class="btn-cv-download">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                         <circle cx="12" cy="12" r="3"></circle>

@@ -144,16 +144,16 @@
                         <div class="ac-content">
                             <div class="ac-main-image">
                                 <h4>@L["Portfolio.But.Year3.Competence2.SkillsTable"]</h4>
-                                <img src="@L["Portfolio.But.Year3.Competence2.AC1.Table"]" alt="Tableau de compétences AC1" />
+                                <img src="@BuildMediaUrl(L["Portfolio.But.Year3.Competence2.AC1.Table"])" alt="Tableau de compétences AC1" />
                             </div>
                             <div class="ac-examples">
                                 <div class="ac-example">
                                     <h4>@L["Portfolio.But.Year3.Competence2.AC1.Example1"]</h4>
-                                    <img src="/images/portfolio/butinfo/year3/skill2/genetic_problem_result.png" alt="Exemple AC1-1" />
+                                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/BUTInfo/Year3/Skill2/genetic_problem_result.png")" alt="Exemple AC1-1" />
                                 </div>
                                 <div class="ac-example">
                                     <h4>@L["Portfolio.But.Year3.Competence2.AC1.Example2"]</h4>
-                                    <img src="/images/portfolio/butinfo/year3/skill2/doc.png" alt="Exemple AC1-1" />
+                                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/BUTInfo/Year3/Skill2/doc.png")" alt="Exemple AC1-1" />
                                 </div>
                             </div>
                         </div>
@@ -171,12 +171,12 @@
                         <div class="ac-content">
                             <div class="ac-main-image">
                                 <h4>@L["Portfolio.But.Year3.Competence2.SkillsTable"]</h4>
-                                <img src="@L["Portfolio.But.Year3.Competence2.AC2.Table"]" alt="Tableau de compétences AC2" />
+                                <img src="@BuildMediaUrl(L["Portfolio.But.Year3.Competence2.AC2.Table"])" alt="Tableau de compétences AC2" />
                             </div>
                             <div class="ac-examples">
                                 <div class="ac-example">
                                     <h4>@L["Portfolio.But.Year3.Competence2.AC2.Example1"]</h4>
-                                    <img src="/images/portfolio/butinfo/year3/skill2/profiling.png" alt="Exemple AC2-1" />
+                                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/BUTInfo/Year3/Skill2/profiling.png")" alt="Exemple AC2-1" />
                                 </div>
                             </div>
                         </div>
@@ -194,24 +194,24 @@
                         <div class="ac-content">
                             <div class="ac-main-image">
                                 <h4>@L["Portfolio.But.Year3.Competence2.SkillsTable"]</h4>
-                                <img src="@L["Portfolio.But.Year3.Competence2.AC3.Table"]" alt="Tableau de compétences AC3" />
+                                <img src="@BuildMediaUrl(L["Portfolio.But.Year3.Competence2.AC3.Table"])" alt="Tableau de compétences AC3" />
                             </div>
                             <div class="ac-examples">
                                 <div class="ac-example">
                                     <h4>@L["Portfolio.But.Year3.Competence2.AC3.Example1"]</h4>
-                                    <img src="/images/portfolio/butinfo/year3/skill2/bibliothèque.png" alt="Exemple AC3-1" />
+                                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/BUTInfo/Year3/Skill2/bibliothèque.png")" alt="Exemple AC3-1" />
                                 </div>
                                 <div class="ac-example">
                                     <h4>@L["Portfolio.But.Year3.Competence2.AC3.Example2"]</h4>
-                                    <img src="/images/portfolio/butinfo/year3/skill2/correlation_matrix.png" alt="Exemple AC3-2" />
+                                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/BUTInfo/Year3/Skill2/correlation_matrix.png")" alt="Exemple AC3-2" />
                                 </div>
                                 <div class="ac-example">
                                     <h4>@L["Portfolio.But.Year3.Competence2.AC3.Example3"]</h4>
-                                    <img src="/images/portfolio/butinfo/year3/skill2/confusion_matrix.png" alt="Exemple AC3-3" />
+                                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/BUTInfo/Year3/Skill2/confusion_matrix.png")" alt="Exemple AC3-3" />
                                 </div>
                                 <div class="ac-example">
                                     <h4>@L["Portfolio.But.Year3.Competence2.AC3.Example4"]</h4>
-                                    <img src="/images/portfolio/butinfo/year3/skill2/alzeihmer_prediction.png" alt="Exemple AC3-4" />
+                                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/BUTInfo/Year3/Skill2/alzeihmer_prediction.png")" alt="Exemple AC3-4" />
                                 </div>
                             </div>
                         </div>
@@ -234,6 +234,13 @@
     protected override void OnInitialized()
     {
         CultureService.OnCultureChanged += OnCultureChanged;
+    }
+
+    private string BuildMediaUrl(string path)
+    {
+        var baseUrl = Configuration["Media:BaseUrl"]?.TrimEnd('/') ?? string.Empty;
+        var cleanPath = path.TrimStart('/');
+        return $"{baseUrl}/{cleanPath}";
     }
 
     private void OnCultureChanged()

@@ -31,7 +31,7 @@
                     <p>@L["Portfolio.DeathIre.GameExpl.Description"]</p>
                 </div>
                 <div class="col-md-5 text-center">
-                    <video src="images/portfolio/PreBUT/DeathIre/Gameplay_RedmiNote11Pro.mp4" 
+                    <video src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/PreBUT/DeathIre/Gameplay_RedmiNote11Pro.mp4")" 
                            class="img-fluid rounded shadow" 
                            controls muted loop preload="metadata"
                            style="max-height: 400px; border: 1px solid rgba(147, 51, 234, 0.2);">
@@ -42,7 +42,7 @@
         </section>
 
         <!-- Game Design & Menus Section (Carousel) -->
-        <section class="content-section carousel-section">
+        <section class="content-section carousel-section deathire-carousel-section">
             <h2>@L["Portfolio.DeathIre.GameDesign.Title"]</h2>
             <p>@L["Portfolio.DeathIre.GameDesign.Description"]</p>
 
@@ -60,7 +60,7 @@
                             <div class="carousel-slide">
                                 @if (media.IsVideo)
                                 {
-                                    <video src="@media.Url" class="carousel-image carousel-video" 
+                                    <video src="@BuildMediaUrl(media.Url)" class="carousel-image carousel-video"
                                            controls muted loop preload="metadata"
                                            @key="@media.Url">
                                         @L["VideoError"]
@@ -68,7 +68,7 @@
                                 }
                                 else
                                 {
-                                    <img src="@media.Url" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
+                                    <img src="@BuildMediaUrl(media.Url)" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
                                 }
                                 @if (!string.IsNullOrEmpty(media.CaptionKey))
                                 {
@@ -109,7 +109,7 @@
                     <p>@L["Portfolio.DeathIre.LevelGen.Description"]</p>
                 </div>
                 <div class="col-md-5 text-center">
-                    <video src="images/portfolio/PreBUT/DeathIre/DeathIre_Load_Level.mp4" 
+                    <video src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/PreBUT/DeathIre/DeathIre_Load_Level.mp4")" 
                            class="img-fluid rounded shadow" 
                            controls muted loop preload="metadata"
                            style="border: 1px solid rgba(147, 51, 234, 0.2);">
@@ -126,16 +126,22 @@
                 <div class="col-md-7 mb-3 mb-md-0">
                     <p>@L["Portfolio.DeathIre.Conclusion.Description"]</p>
                     <div class="mt-4 text-center">
-                        <img src="images/portfolio/PreBUT/DeathIre/CaptureUnity3.png" alt="Aperçu du jeu Boss" class="img-fluid rounded shadow" style="max-height: 250px; border: 1px solid rgba(147, 51, 234, 0.2);" />
+                        <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/PreBUT/DeathIre/CaptureUnity3.png")" alt="Aperçu du jeu Boss" class="img-fluid rounded shadow" style="max-height: 250px; border: 1px solid rgba(147, 51, 234, 0.2);" />
                     </div>
                 </div>
                 <div class="col-md-5 text-center">
-                    <img src="images/portfolio/PreBUT/DeathIre/Code_MovePlayer.png" alt="Extrait de code du mouvement du personnage" class="img-fluid rounded shadow" style="max-height: 400px; border: 1px solid rgba(147, 51, 234, 0.2);" />
+                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/PreBUT/DeathIre/Code_MovePlayer.png")" alt="Extrait de code du mouvement du personnage" class="img-fluid rounded shadow" style="max-height: 400px; border: 1px solid rgba(147, 51, 234, 0.2);" />
                 </div>
             </div>
         </section>
     </div>
 </div>
+
+<style>
+    .deathire-carousel-section .carousel-video::-webkit-media-controls-panel {
+        background: transparent;
+    }
+</style>
 
 @code {
     private int currentImageIndex = 0;
@@ -169,6 +175,13 @@
     private void OnCultureChanged()
     {
         InvokeAsync(StateHasChanged);
+    }
+
+    private string BuildMediaUrl(string path)
+    {
+        var baseUrl = Configuration["Media:BaseUrl"]?.TrimEnd('/') ?? string.Empty;
+        var cleanPath = path.TrimStart('/');
+        return $"{baseUrl}/{cleanPath}";
     }
 
     private void NextImage()
