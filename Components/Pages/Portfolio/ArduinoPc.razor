@@ -109,31 +109,40 @@
 @code {
     private int currentImageIndex = 0;
 
-    private List<CarouselItem> carouselImages = new()
-    {
-        new CarouselItem 
-        { 
-            Url = "images/portfolio/PreBUT/PCommande/Hard1.jpg", 
-            AltKey = "Portfolio.ArduinoPc.Carousel.Image1Alt", 
-            CaptionKey = "Portfolio.ArduinoPc.Carousel.Image1Cap"
-        },
-        new CarouselItem 
-        { 
-            Url = "images/portfolio/PreBUT/PCommande/Hard2.jpg", 
-            AltKey = "Portfolio.ArduinoPc.Carousel.Image2Alt", 
-            CaptionKey = "Portfolio.ArduinoPc.Carousel.Image2Cap"
-        },
-        new CarouselItem 
-        { 
-            Url = "images/portfolio/PreBUT/PCommande/Soft.jpg", 
-            AltKey = "Portfolio.ArduinoPc.Carousel.Image3Alt", 
-            CaptionKey = "Portfolio.ArduinoPc.Carousel.Image3Cap"
-        }
-    };
+    private List<CarouselItem> carouselImages = new();
 
     protected override void OnInitialized()
     {
         CultureService.OnCultureChanged += OnCultureChanged;
+
+        carouselImages = new List<CarouselItem>
+        {
+            new CarouselItem
+            {
+                Url = BuildMediaUrl("images/portfolio/PreBUT/PCommande/Hard1.jpg"),
+                AltKey = "Portfolio.ArduinoPc.Carousel.Image1Alt",
+                CaptionKey = "Portfolio.ArduinoPc.Carousel.Image1Cap"
+            },
+            new CarouselItem
+            {
+                Url = BuildMediaUrl("images/portfolio/PreBUT/PCommande/Hard2.jpg"),
+                AltKey = "Portfolio.ArduinoPc.Carousel.Image2Alt",
+                CaptionKey = "Portfolio.ArduinoPc.Carousel.Image2Cap"
+            },
+            new CarouselItem
+            {
+                Url = BuildMediaUrl("images/portfolio/PreBUT/PCommande/Soft.jpg"),
+                AltKey = "Portfolio.ArduinoPc.Carousel.Image3Alt",
+                CaptionKey = "Portfolio.ArduinoPc.Carousel.Image3Cap"
+            }
+        };
+    }
+
+    private string BuildMediaUrl(string path)
+    {
+        var baseUrl = Configuration["Media:BaseUrl"]?.TrimEnd('/') ?? string.Empty;
+        var cleanPath = path.TrimStart('/');
+        return $"{baseUrl}/{cleanPath}";
     }
 
     private void OnCultureChanged()

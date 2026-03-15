@@ -45,7 +45,7 @@
                         @foreach (var media in carouselGame1)
                         {
                             <div class="carousel-slide">
-                                <img src="@media.Url" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
+                                <img src="@BuildMediaUrl(media.Url)" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
                                 @if (!string.IsNullOrEmpty(media.CaptionKey))
                                 {
                                     <div class="carousel-caption">
@@ -99,7 +99,7 @@
                         @foreach (var media in carouselGame2)
                         {
                             <div class="carousel-slide">
-                                <img src="@media.Url" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
+                                <img src="@BuildMediaUrl(media.Url)" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
                                 @if (!string.IsNullOrEmpty(media.CaptionKey))
                                 {
                                     <div class="carousel-caption">
@@ -153,7 +153,7 @@
                         @foreach (var media in carouselGame3)
                         {
                             <div class="carousel-slide">
-                                <img src="@media.Url" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
+                                <img src="@BuildMediaUrl(media.Url)" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
                                 @if (!string.IsNullOrEmpty(media.CaptionKey))
                                 {
                                     <div class="carousel-caption">
@@ -223,27 +223,41 @@
 
     private List<CarouselItem> carouselGame1 = new()
     {
-        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/RodWorld1.png", AltKey = "Portfolio.Scratch.Game1.Image1Alt", CaptionKey = "Portfolio.Scratch.Game1.Image1Cap" },
-        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/RodWorld2.png", AltKey = "Portfolio.Scratch.Game1.Image2Alt", CaptionKey = "Portfolio.Scratch.Game1.Image2Cap" }
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/RodWorld1.PNG", AltKey = "Portfolio.Scratch.Game1.Image1Alt", CaptionKey = "Portfolio.Scratch.Game1.Image1Cap" },
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/RodWorld2.PNG", AltKey = "Portfolio.Scratch.Game1.Image2Alt", CaptionKey = "Portfolio.Scratch.Game1.Image2Cap" }
     };
 
     private List<CarouselItem> carouselGame2 = new()
     {
-        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Games-Duels1.png", AltKey = "Portfolio.Scratch.Game2.Image1Alt", CaptionKey = "Portfolio.Scratch.Game2.Image1Cap" },
-        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Games-Duels2.png", AltKey = "Portfolio.Scratch.Game2.Image2Alt", CaptionKey = "Portfolio.Scratch.Game2.Image2Cap" },
-        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Games-Duels3.png", AltKey = "Portfolio.Scratch.Game3.Image2Alt", CaptionKey = "Portfolio.Scratch.Game2.Image3Cap" },
-        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/insides.png", AltKey = "Portfolio.Scratch.Game2.Image4Alt", CaptionKey = "Portfolio.Scratch.Game2.Image4Cap" }
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Games-Duels1.PNG", AltKey = "Portfolio.Scratch.Game2.Image1Alt", CaptionKey = "Portfolio.Scratch.Game2.Image1Cap" },
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Games-Duels2.PNG", AltKey = "Portfolio.Scratch.Game2.Image2Alt", CaptionKey = "Portfolio.Scratch.Game2.Image2Cap" },
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Games-Duels3.PNG", AltKey = "Portfolio.Scratch.Game3.Image2Alt", CaptionKey = "Portfolio.Scratch.Game2.Image3Cap" },
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Insides.png", AltKey = "Portfolio.Scratch.Game2.Image4Alt", CaptionKey = "Portfolio.Scratch.Game2.Image4Cap" }
     };
 
     private List<CarouselItem> carouselGame3 = new()
     {
-        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Calculator-Race1.png", AltKey = "Portfolio.Scratch.Game3.Image1Alt", CaptionKey = "Portfolio.Scratch.Game3.Image1Cap" },
-        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Calculator-Race2.png", AltKey = "Portfolio.Scratch.Game3.Image2Alt", CaptionKey = "Portfolio.Scratch.Game3.Image2Cap" }
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Calculator-Race1.PNG", AltKey = "Portfolio.Scratch.Game3.Image1Alt", CaptionKey = "Portfolio.Scratch.Game3.Image1Cap" },
+        new CarouselItem { Url = "images/portfolio/PreBUT/Scratch/Calculator-Race2.PNG", AltKey = "Portfolio.Scratch.Game3.Image2Alt", CaptionKey = "Portfolio.Scratch.Game3.Image2Cap" }
     };
 
     protected override void OnInitialized()
     {
         CultureService.OnCultureChanged += OnCultureChanged;
+    }
+
+    private string BuildMediaUrl(string path)
+    {
+        if (string.IsNullOrWhiteSpace(path))
+            return string.Empty;
+
+        if (path.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+            path.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            return path;
+
+        var baseUrl = Configuration["Media:BaseUrl"]?.TrimEnd('/') ?? string.Empty;
+        var cleanPath = path.TrimStart('/');
+        return $"{baseUrl}/{cleanPath}";
     }
 
     private void PreviousImage(int gallery)

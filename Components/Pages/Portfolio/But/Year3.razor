@@ -81,7 +81,7 @@
 
                 <div class="project-item">
                     <h3>@L["Portfolio.But.Year3.Research.MindMap.Title"]</h3>
-                    <img src="@L["Portfolio.But.Year3.Research.MindMap.Path"]" alt="@L["Portfolio.But.Year3.Research.MindMap.Alt"]" style="width: 100%; border-radius: 10px; margin-top: 1rem;" />
+                    <img src="@BuildMediaUrl(L["Portfolio.But.Year3.Research.MindMap.Path"])" alt="@L["Portfolio.But.Year3.Research.MindMap.Alt"]" style="width: 100%; border-radius: 10px; margin-top: 1rem;" />
                 </div>
             </div>
         </section>
@@ -92,6 +92,13 @@
     protected override void OnInitialized()
     {
         CultureService.OnCultureChanged += OnCultureChanged;
+    }
+
+    private string BuildMediaUrl(string path)
+    {
+        var baseUrl = Configuration["Media:BaseUrl"]?.TrimEnd('/') ?? string.Empty;
+        var cleanPath = path.TrimStart('/');
+        return $"{baseUrl}/{cleanPath}";
     }
 
     private void OnCultureChanged()

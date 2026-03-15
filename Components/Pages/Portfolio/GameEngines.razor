@@ -53,7 +53,7 @@
                                 <div class="carousel-slide">
                                     @if (media.IsVideo)
                                     {
-                                        <video src="@media.Url" class="carousel-image carousel-video" 
+                                        <video src="@BuildMediaUrl(media.Url)" class="carousel-image carousel-video" 
                                                controls muted loop preload="metadata"
                                                @key="@media.Url">
                                             Votre navigateur ne supporte pas la lecture de vidéos.
@@ -61,7 +61,7 @@
                                     }
                                     else
                                     {
-                                        <img src="@media.Url" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
+                                        <img src="@BuildMediaUrl(media.Url)" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
                                     }
                                     @if (!string.IsNullOrEmpty(media.CaptionKey))
                                     {
@@ -131,6 +131,20 @@
     {
         CultureService.OnCultureChanged += OnCultureChanged;
         L.OnLanguageChanged += OnLanguageChanged;
+    }
+
+    private string BuildMediaUrl(string path)
+    {
+        if (string.IsNullOrWhiteSpace(path))
+            return string.Empty;
+
+        if (path.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+            path.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            return path;
+
+        var baseUrl = Configuration["Media:BaseUrl"]?.TrimEnd('/') ?? string.Empty;
+        var cleanPath = path.TrimStart('/');
+        return $"{baseUrl}/{cleanPath}";
     }
 
     private void OnCultureChanged()

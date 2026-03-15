@@ -144,55 +144,64 @@
 @code {
     private int currentImageIndex = 0;
 
-    private List<CarouselItem> carouselImages = new()
-    {
-        new CarouselItem 
-        { 
-            Url = "/images/portfolio/apprenticeship/workspace.jpg", 
-            AltKey = "Portfolio.Apprenticeship.Gallery.Image1.Alt",
-            CaptionKey = "Portfolio.Apprenticeship.Gallery.Image1.Caption"
-        },
-        new CarouselItem
-        {
-            Url = "/images/portfolio/apprenticeship/fraiseuse_mazak_630.jpg",
-            AltKey = "Portfolio.Apprenticeship.Gallery.Image2.Alt",
-            CaptionKey = "Portfolio.Apprenticeship.Gallery.Image2.Caption"
-        },
-        new CarouselItem 
-        { 
-            Url = "/images/portfolio/apprenticeship/ui_display_nomenc.png",
-            AltKey = "Portfolio.Apprenticeship.Gallery.Image3.Alt",
-            CaptionKey = "Portfolio.Apprenticeship.Gallery.Image3.Caption"
-        },
-        new CarouselItem 
-        { 
-            Url = "/images/portfolio/apprenticeship/display_nomenc.mp4",
-            AltKey = "Portfolio.Apprenticeship.Gallery.Image4.Alt",
-            CaptionKey = "Portfolio.Apprenticeship.Gallery.Image4.Caption"
-        },
-        new CarouselItem
-        {
-            Url = "/images/portfolio/apprenticeship/Boite_de_vitesse.png",
-            AltKey = "Portfolio.Apprenticeship.Gallery.Image5.Alt",
-            CaptionKey = "Portfolio.Apprenticeship.Gallery.Image5.Caption"
-        },
-        new CarouselItem
-        {
-            Url = "/images/portfolio/apprenticeship/Boite_de_vitesse_RX489.jpg",
-            AltKey = "Portfolio.Apprenticeship.Gallery.Image6.Alt",
-            CaptionKey = "Portfolio.Apprenticeship.Gallery.Image6.Caption"
-        },
-        new CarouselItem
-        {
-            Url = "/images/portfolio/apprenticeship/Alpine_A110_rallye.jpg",
-            AltKey = "Portfolio.Apprenticeship.Gallery.Image7.Alt",
-            CaptionKey = "Portfolio.Apprenticeship.Gallery.Image7.Caption"
-        }
-    };
+    private List<CarouselItem> carouselImages = new();
 
     protected override void OnInitialized()
     {
         CultureService.OnCultureChanged += OnCultureChanged;
+
+        carouselImages = new List<CarouselItem>
+        {
+            new CarouselItem
+            {
+                Url = BuildMediaUrl("images/portfolio/Apprenticeship/workspace.jpg"),
+                AltKey = "Portfolio.Apprenticeship.Gallery.Image1.Alt",
+                CaptionKey = "Portfolio.Apprenticeship.Gallery.Image1.Caption"
+            },
+            new CarouselItem
+            {
+                Url = BuildMediaUrl("images/portfolio/Apprenticeship/Fraiseuse_Mazak_630.jpg"),
+                AltKey = "Portfolio.Apprenticeship.Gallery.Image2.Alt",
+                CaptionKey = "Portfolio.Apprenticeship.Gallery.Image2.Caption"
+            },
+            new CarouselItem
+            {
+                Url = BuildMediaUrl("images/portfolio/Apprenticeship/UI_display_nomenc.png"),
+                AltKey = "Portfolio.Apprenticeship.Gallery.Image3.Alt",
+                CaptionKey = "Portfolio.Apprenticeship.Gallery.Image3.Caption"
+            },
+            new CarouselItem
+            {
+                Url = BuildMediaUrl("images/portfolio/Apprenticeship/display_nomenc.mp4"),
+                AltKey = "Portfolio.Apprenticeship.Gallery.Image4.Alt",
+                CaptionKey = "Portfolio.Apprenticeship.Gallery.Image4.Caption"
+            },
+            new CarouselItem
+            {
+                Url = BuildMediaUrl("images/portfolio/Apprenticeship/Boite_de_vitesse.png"),
+                AltKey = "Portfolio.Apprenticeship.Gallery.Image5.Alt",
+                CaptionKey = "Portfolio.Apprenticeship.Gallery.Image5.Caption"
+            },
+            new CarouselItem
+            {
+                Url = BuildMediaUrl("images/portfolio/Apprenticeship/Boite_de_vitesse_RX489.jpg"),
+                AltKey = "Portfolio.Apprenticeship.Gallery.Image6.Alt",
+                CaptionKey = "Portfolio.Apprenticeship.Gallery.Image6.Caption"
+            },
+            new CarouselItem
+            {
+                Url = BuildMediaUrl("images/portfolio/Apprenticeship/Alpine_A110_rallye.jpg"),
+                AltKey = "Portfolio.Apprenticeship.Gallery.Image7.Alt",
+                CaptionKey = "Portfolio.Apprenticeship.Gallery.Image7.Caption"
+            }
+        };
+    }
+
+    private string BuildMediaUrl(string path)
+    {
+        var baseUrl = Configuration["Media:BaseUrl"]?.TrimEnd('/') ?? string.Empty;
+        var cleanPath = path.TrimStart('/');
+        return $"{baseUrl}/{cleanPath}";
     }
 
     private void OnCultureChanged()

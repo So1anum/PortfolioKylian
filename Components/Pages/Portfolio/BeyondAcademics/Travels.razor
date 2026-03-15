@@ -65,7 +65,7 @@
                                         @foreach (var photo in voyage.Photos)
                                         {
                                             <div class="travel-photo" @onclick="() => OpenLightbox(voyage.Id, photo)" @onclick:stopPropagation="true">
-                                                <img src="@photo.Path" alt="@photo.Alt" loading="lazy" />
+                                                <img src="@BuildMediaUrl(photo.Path)" alt="@photo.Alt" loading="lazy" />
                                                 <div class="photo-overlay">
                                                     <span class="photo-zoom-icon">🔍</span>
                                                 </div>
@@ -101,7 +101,7 @@
             }
 
             <div class="lightbox-content">
-                <img src="@lightboxPhoto.Path" alt="@lightboxPhoto.Alt" />
+                <img src="@BuildMediaUrl(lightboxPhoto.Path)" alt="@lightboxPhoto.Alt" />
                 @if (!string.IsNullOrEmpty(lightboxPhoto.Caption))
                 {
                     <div class="lightbox-caption">@lightboxPhoto.Caption</div>
@@ -390,6 +390,20 @@
     {
         InitializeVoyages();
         InvokeAsync(StateHasChanged);
+    }
+
+    private string BuildMediaUrl(string path)
+    {
+        if (string.IsNullOrWhiteSpace(path))
+            return string.Empty;
+
+        if (path.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+            path.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            return path;
+
+        var baseUrl = Configuration["Media:BaseUrl"]?.TrimEnd('/') ?? string.Empty;
+        var cleanPath = path.TrimStart('/');
+        return $"{baseUrl}/{cleanPath}";
     }
 
     public void Dispose()
