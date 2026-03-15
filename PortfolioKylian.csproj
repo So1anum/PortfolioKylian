@@ -15,4 +15,9 @@
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\portfolio\travels\" />
+    <Folder Include="wwwroot\ressources\pictures\" />
+  </ItemGroup>
+
 </Project>

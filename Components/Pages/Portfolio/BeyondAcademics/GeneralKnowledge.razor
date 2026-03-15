@@ -1,0 +1,617 @@
+@page "/portfolio/beyond-academics/general-knowledge"
+@layout Components.Layout.PortfolioLayout
+@using PortfolioKylian.Resources
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@inject NavigationManager NavigationManager
+@implements IDisposable
+
+<link rel="stylesheet" href="css/portfolio-shared.css" />
+
+<PageTitle>@L["Portfolio.BeyondAcademics.Culture.Title"] - Kylian Debonne</PageTitle>
+
+<div class="portfolio-page">
+    <header class="page-header">
+        <h1 class="page-title">@L["Portfolio.BeyondAcademics.Culture.Title"]</h1>
+        <p class="page-subtitle">@L["Portfolio.BeyondAcademics.Culture.Subtitle"]</p>
+    </header>
+
+    <div class="page-content">
+        <section class="content-section">
+            <h2>@L["Portfolio.BeyondAcademics.Culture.Intro.Title"]</h2>
+            <p>@L["Portfolio.BeyondAcademics.Culture.Intro.Content"]</p>
+        </section>
+
+        <section class="content-section">
+            <h2>@L["Portfolio.BeyondAcademics.Culture.Timeline.Title"]</h2>
+            <div class="tabs-container">
+                <div class="tabs-nav">
+                    <button class="tab-btn @(activeTab == 1 ? "active" : "")" @onclick="() => SetActiveTab(1)">
+                        @L["Portfolio.BeyondAcademics.Culture.Year1.Title"]
+                    </button>
+                    <button class="tab-btn @(activeTab == 2 ? "active" : "")" @onclick="() => SetActiveTab(2)">
+                        @L["Portfolio.BeyondAcademics.Culture.Year2.Title"]
+                    </button>
+                    <button class="tab-btn @(activeTab == 3 ? "active" : "")" @onclick="() => SetActiveTab(3)">
+                        @L["Portfolio.BeyondAcademics.Culture.Year3.Title"]
+                    </button>
+                </div>
+
+                <div class="tabs-content">
+                    @if (activeTab == 1)
+                    {
+                        <div class="tab-pane">
+                            <div class="culture-section">
+                                <h4>@L["Portfolio.BeyondAcademics.Culture.Year1.Paris.Title"]</h4>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year1.Paris.Intro"]</p>
+                                <ul>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year1.Paris.List1"]</li>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year1.Paris.List2"]</li>
+                                </ul>
+                                <div class="image-gallery">
+                                    <div class="gallery-item">
+                                        <img src="images/portfolio/BeyondAcademics/GeneralKnowledge/Year1/Palais_de_justice.png" alt="@L["Portfolio.BeyondAcademics.Culture.Year1.Paris.Img1"]" />
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="images/portfolio/BeyondAcademics/GeneralKnowledge/Year1/Louvre1.png" alt="@L["Portfolio.BeyondAcademics.Culture.Year1.Paris.Img2"]" />
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="images/portfolio/BeyondAcademics/GeneralKnowledge/Year1/Louvre2.png" alt="@L["Portfolio.BeyondAcademics.Culture.Year1.Paris.Img3"]" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="culture-section">
+                                <h4>@L["Portfolio.BeyondAcademics.Culture.Year1.EcritPlus.Title"]</h4>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year1.EcritPlus.Content"]</p>
+                                <div class="image-gallery">
+                                    <div class="gallery-item">
+                                        <img src="images/portfolio/BeyondAcademics/GeneralKnowledge/Year1/EcritPlus.png" alt="@L["Portfolio.BeyondAcademics.Culture.Year1.EcritPlus.Img1"]" />
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="images/portfolio/BeyondAcademics/GeneralKnowledge/Year1/EcritPlusSkills.png" alt="@L["Portfolio.BeyondAcademics.Culture.Year1.EcritPlus.Img2"]" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else if (activeTab == 2)
+                    {
+                        <div class="tab-pane">
+                            <h4 class="semester-title">@L["Portfolio.BeyondAcademics.Culture.Year2.S3.Title"]</h4>
+
+                            <div class="culture-section">
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year2.S3.Intro"]</p>
+                                <ul>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year2.S3.List1"]</li>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year2.S3.List2"]</li>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year2.S3.List3"]</li>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year2.S3.List4"]</li>
+                                </ul>
+                            </div>
+
+                            <div class="culture-section">
+                                <h4>@L["Portfolio.BeyondAcademics.Culture.Year2.CriticalThinking.Title"]</h4>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year2.CriticalThinking.P1.Text"]<a href="https://www.kisskissbankbank.com/fr/projects/lespritcritique" target="_blank" rel="noopener noreferrer">@L["Portfolio.BeyondAcademics.Culture.Year2.CriticalThinking.P1.Link"]</a>)</p>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year2.CriticalThinking.P2"]</p>
+                                <div class="image-gallery">
+                                    <div class="gallery-item">
+                                        <img src="images/portfolio/BeyondAcademics/GeneralKnowledge/Year2/Cogito.jpg" alt="@L["Portfolio.BeyondAcademics.Culture.Year2.CriticalThinking.Img"]" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="culture-section">
+                                <h4>@L["Portfolio.BeyondAcademics.Culture.Year2.Travels.Title"]</h4>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year2.Travels.Intro"]</p>
+                                <ul>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year2.Travels.List1"]</li>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year2.Travels.List2"]</li>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year2.Travels.List3"]</li>
+                                </ul>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year2.Travels.P1"]</p>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year2.Travels.P2"]</p>
+                                <a href="/portfolio/beyond-academics/travels" class="btn-link">@L["Portfolio.BeyondAcademics.Culture.Year2.Travels.Link"]</a>
+
+                                <div class="image-gallery">
+                                    <div class="gallery-item">
+                                        <img src="images/portfolio/BeyondAcademics/GeneralKnowledge/Year2/Berlaymont.jpg" alt="Berlaymon" />
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="images/portfolio/BeyondAcademics/GeneralKnowledge/Year2/Musée_royal_des_beaux_arts_bruxelles.jpg" alt="Musée royal des beaux arts bruxelles" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="culture-section">
+                                <h4>@L["Portfolio.BeyondAcademics.Culture.Year1.EcritPlus.Title"]</h4>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year2.EcritPlus.P1"]</p>
+                                <div class="image-gallery">
+                                    <div class="gallery-item">
+                                        <img src="images/portfolio/BeyondAcademics/GeneralKnowledge/Year2/Ecritplus.png" alt="@L["Portfolio.BeyondAcademics.Culture.Year1.EcritPlus.Img1"]" />
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="images/portfolio/BeyondAcademics/GeneralKnowledge/Year2/Ecritplus_Skills.png" alt="@L["Portfolio.BeyondAcademics.Culture.Year1.EcritPlus.Img2"]" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h4 class="semester-title">@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Title"]</h4>
+
+                            <div class="culture-section">
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Intro"]</p>
+
+                                <h5 class="method-title">@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Method.Title"]</h5>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Method.P1"]</p>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Method.P2"]</p>
+                                <ul>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.W1"]</strong> &rarr; @L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.T1"]</li>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.W2"]</strong> &rarr; @L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.T2"]</li>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.W3"]</strong> &rarr; @L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.T3"]</li>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.W4"]</strong> &rarr; @L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.T4"]</li>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.W5"]</strong> &rarr; @L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.T5"]</li>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.W6"]</strong> &rarr; @L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.T6"]</li>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.W7"]</strong> &rarr; @L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.T7"]</li>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.W8"]</strong> &rarr; @L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.T8"]</li>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.W9"]</strong> &rarr; @L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.T9"]</li>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.W10"]</strong> &rarr; @L["Portfolio.BeyondAcademics.Culture.Year2.S4.Vocab.T10"]</li>
+                                </ul>
+
+                                <h5 class="conclusion-title">@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Conclusion.Title"]</h5>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year2.S4.Conclusion.Text"]</p>
+                            </div>
+                        </div>
+                    }
+                    else if (activeTab == 3)
+                    {
+                        <div class="tab-pane">
+                            <h4 class="semester-title">@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Title"]</h4>
+
+                            <div class="culture-section">
+                                <h4>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Objectives.Title"]</h4>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Objectives.P1"]</p>
+                                <ol style="margin-bottom: 1.5rem; padding-left: 1.5rem; color: var(--text-color, #cbd5e1);">
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Objectives.L1"])</li>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Objectives.L2"]</strong></li>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Objectives.L3"]</strong></li>
+                                </ol>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Objectives.P2"]</p>
+                                <ul>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Objectives.C1"]</strong></li>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Objectives.C2"]</strong></li>
+                                    <li><strong>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Objectives.C3"]</strong></li>
+                                </ul>
+                                <p>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Objectives.P3"])</p>
+                            </div>
+
+                            <div class="culture-section">
+                                <h4>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.Title"]</h4>
+
+                                <h5>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.Sub1"]</h5>
+                                <p>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.Book"])</p>
+
+                                <div class="image-gallery">
+                                    <div class="gallery-item">
+                                        <img src="images/portfolio/BeyondAcademics/GeneralKnowledge/Year3/darwin1.jpg" alt="Page de couverture du livre étudié" />
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="images/portfolio/BeyondAcademics/GeneralKnowledge/Year3/darwin2.jpg" alt="Intérieur du livre étudié" />
+                                    </div>
+                                </div>
+
+                                <h5>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.Sub2"]</h5>
+                                <p>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.Why.P1"])</p>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.Why.P2"]</p>
+                                <p>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.Why.P3"])</p>
+
+                                <h5>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.Sub3"]</h5>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.Work.P1"]</p>
+                                <ul>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.Work.L1"])</li>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.Work.L2"])</li>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.Work.L3"])</li>
+                                </ul>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.Work.P2"]</p>
+
+                                <h5 class="conclusion-title">@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.Sub4"]</h5>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.App.P1"]</p>
+                                <ul>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.App.L1"])</li>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.App.L2"])</li>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.App.L3"])</li>
+                                </ul>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj1.App.P2"]</p>
+                            </div>
+
+                            <div class="culture-section">
+                                <h4>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Title"]</h4>
+                                <p>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Obj"])</p>
+
+                                <h5>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Sub1"]</h5>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.P1"]</p>
+
+                                <h6>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.T1"]</h6>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A1.P1"]</p>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A1.P2"]</p>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A1.P3"]</p>
+                                <ul>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A1.L1"])</li>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A1.L2"])</li>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A1.L3"])</li>
+                                </ul>
+
+                                <h6>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.T2"]</h6>
+                                <p>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A2.P1"])</p>
+                                <ul>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A2.L1"])</li>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A2.L2"])</li>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A2.L3"])</li>
+                                </ul>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A2.P2"]</p>
+
+                                <h6>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.T3"]</h6>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A3.P1"]</p>
+                                <ul>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A3.L1"])</li>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A3.L2"]</li>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A3.L3"]</li>
+                                </ul>
+                                <p>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.Axes.A3.P2"])</p>
+
+                                <h5 class="conclusion-title">@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.App.Title"]</h5>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.App.P1"]</p>
+                                <ul>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.App.L1"])</li>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.App.L2"])</li>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj2.App.L3"])</li>
+                                </ul>
+                            </div>
+
+                            <div class="culture-section">
+                                <h4>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Title"]</h4>
+                                <p>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Obj1"])</p>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Obj2"]</p>
+
+                                <h5>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Sub1"]</h5>
+                                <p>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Prog.P1"])</p>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Prog.P2"]</p>
+                                <ul>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Prog.L1"])</li>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Prog.L2"])</li>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Prog.L3"])</li>
+                                </ul>
+
+                                <div class="image-gallery">
+                                    <div class="gallery-item">
+                                        <img src="images/portfolio/BeyondAcademics/GeneralKnowledge/Year3/Ecritplus.png" alt="@L["Portfolio.BeyondAcademics.Culture.Year1.EcritPlus.Img1"]" />
+                                    </div>
+                                    <div class="gallery-item">
+                                        <img src="images/portfolio/BeyondAcademics/GeneralKnowledge/Year3/Ecritplus_Skills.png" alt="@L["Portfolio.BeyondAcademics.Culture.Year1.EcritPlus.Img2"]" />
+                                    </div>
+                                </div>
+
+                                <h5>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Sub2"]</h5>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Work.P1"]</p>
+                                <ul>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Work.L1"]</li>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Work.L2"]</li>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Work.L3"]</li>
+                                </ul>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Work.P2"]</p>
+
+                                <h5 class="conclusion-title">@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.Sub3"]</h5>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.App.P1"]</p>
+                                <ul>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.App.L1"])</li>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.App.L2"])</li>
+                                    <li>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.App.L3"])</li>
+                                </ul>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Obj3.App.P2"]</p>
+                            </div>
+
+                            <div class="culture-section">
+                                <h4 class="semester-title">@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Title"]</h4>
+
+                                <h5>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Sub1"]</h5>
+                                <div class="table-container">
+                                    <table class="styled-table">
+                                        <thead>
+                                            <tr>
+                                                <th>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Th1"]</th>
+                                                <th>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Th2"]</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T1"]</td>
+                                                <td>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C1"])</td>
+                                            </tr>
+                                            <tr>
+                                                <td>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T2"]</td>
+                                                <td>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C2"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T3"]</td>
+                                                <td>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C3"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T4"]</td>
+                                                <td>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C4"]</td>
+                                            </tr>
+                                            <tr>
+                                                <td>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T5"]</td>
+                                                <td>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C5"]</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <h5>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Sub2"]</h5>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Cor.P1"]</p>
+                                <ul>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Cor.L1"]</li>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Cor.L2"]</li>
+                                    <li>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Cor.L3"]</li>
+                                </ul>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Cor.P2"]</p>
+
+                                <h5 class="conclusion-title">@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Sub3"]</h5>
+                                <p>@L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Bil.P1"]</p>
+                                <p>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Bil.P2"])</p>
+                                <p>@((MarkupString)L["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Bil.P3"])</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<style>
+    .tabs-container {
+        margin-top: 2rem;
+    }
+
+    .tabs-nav {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 2.5rem;
+        background-color: var(--bg-surface, rgba(255, 255, 255, 0.05));
+        padding: 0.5rem;
+        border-radius: 16px;
+        width: fit-content;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(255, 255, 255, 0.05);
+    }
+
+    .tab-btn {
+        background: transparent;
+        border: none;
+        padding: 0.75rem 1.75rem;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--text-muted, #94a3b8);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 12px;
+        position: relative;
+    }
+
+    .tab-btn:hover {
+        color: var(--heading-color, #f8fafc);
+        background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .tab-btn.active {
+        color: #ffffff;
+        background-color: var(--primary-color, #3b82f6);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    }
+
+    .tabs-content {
+        padding: 1.5rem 0;
+    }
+
+    .culture-section {
+        margin-bottom: 3rem;
+    }
+
+    .culture-section h4 {
+        color: var(--heading-color, #f8fafc);
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .culture-section h5 {
+        color: var(--primary-color, #3b82f6);
+        font-size: 1.15rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .culture-section h6 {
+        color: var(--heading-color, #f8fafc);
+        font-size: 1.05rem;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .culture-section p {
+        margin-bottom: 0.75rem;
+        line-height: 1.6;
+    }
+
+    .culture-section ul {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+        color: var(--text-color, #cbd5e1);
+    }
+
+    .culture-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .image-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item img:hover {
+        transform: scale(1.02);
+    }
+
+    .table-container {
+        overflow-x: auto;
+        margin: 1.5rem 0;
+    }
+
+    .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: var(--bg-surface, rgba(255, 255, 255, 0.03));
+        color: var(--text-color, #cbd5e1);
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+    }
+
+    .styled-table th {
+        background-color: rgba(59, 130, 246, 0.15);
+        color: var(--primary-color, #3b82f6);
+        font-weight: 600;
+    }
+
+    .styled-table tbody tr:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .tab-pane {
+        animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .tab-pane h3 {
+        color: var(--heading-color, #f8fafc);
+        font-size: 1.5rem;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .tab-date {
+        color: var(--primary-color, #3b82f6);
+        font-style: italic;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background-color: rgba(59, 130, 246, 0.1);
+        border-radius: 999px;
+        font-size: 0.9rem;
+    }
+
+    .semester-title {
+        color: var(--primary-color, #3b82f6);
+        font-size: 1.6rem;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+        padding-bottom: 0.5rem;
+    }
+
+    .method-title, .conclusion-title {
+        color: var(--heading-color, #f8fafc);
+        font-size: 1.2rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .btn-link {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--primary-color, #3b82f6);
+        border-radius: 6px;
+        color: var(--primary-color, #3b82f6);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-link:hover {
+        background-color: var(--primary-color, #3b82f6);
+        color: #ffffff;
+    }
+
+    @@keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+@code {
+    private int activeTab = 1;
+
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+        NavigationManager.LocationChanged += OnLocationChanged;
+        SetActiveTabFromUrl();
+    }
+
+    private void SetActiveTabFromUrl()
+    {
+        var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+        if (uri.Fragment.StartsWith("#"))
+        {
+            if (int.TryParse(uri.Fragment.Substring(1), out int tab))
+            {
+                if (tab >= 1 && tab <= 3)
+                {
+                    activeTab = tab;
+                }
+            }
+        }
+    }
+
+    private void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+    {
+        SetActiveTabFromUrl();
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void SetActiveTab(int tab)
+    {
+        activeTab = tab;
+        var newUri = NavigationManager.Uri.Split('#')[0] + "#" + tab;
+        // avoid forcing a full reload, replace=true ne rajoute pas une nouvelle entrée dans l'historique
+        NavigationManager.NavigateTo(newUri, replace: true);
+    }
+
+    private void OnCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+        NavigationManager.LocationChanged -= OnLocationChanged;
+    }
+}

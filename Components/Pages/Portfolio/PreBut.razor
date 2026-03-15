@@ -1,0 +1,177 @@
+@page "/portfolio/pre-but"
+@layout Components.Layout.PortfolioLayout
+@using PortfolioKylian.Resources
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@implements IDisposable
+
+<link rel="stylesheet" href="css/portfolio-shared.css" />
+
+<PageTitle>@L["Portfolio.PreBachelor.Title"] - Kylian Debonne</PageTitle>
+
+<div class="portfolio-page">
+    <header class="page-header">
+        <h1 class="page-title">@L["Portfolio.PreBachelor.Title"]</h1>
+        <p class="page-subtitle">@L["Portfolio.PreBachelor.Subtitle"]</p>
+    </header>
+
+    <div class="page-content">
+        <style>
+            .projects-timeline {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                margin-top: 1rem;
+            }
+
+            .project-card {
+                display: flex;
+                flex-direction: row;
+                border: 1px solid rgba(147, 51, 234, 0.2);
+                border-radius: 12px;
+                overflow: hidden;
+                text-decoration: none;
+                color: #fff;
+                background: rgba(20, 20, 30, 0.3);
+                transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            }
+
+            .project-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 15px rgba(147, 51, 234, 0.15);
+                border-color: rgba(147, 51, 234, 0.5);
+            }
+
+            .project-image {
+                width: 280px;
+                background-color: rgba(10, 10, 15, 0.5);
+                border-right: 1px solid rgba(147, 51, 234, 0.2);
+                position: relative;
+                overflow: hidden;
+                flex-shrink: 0;
+            }
+
+            .project-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0.85;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            .project-card:hover .project-image img {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+            .project-info {
+                padding: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .project-info h3 {
+                margin: 0 0 0.5rem 0;
+                font-size: 1.25rem;
+                color: #fff;
+            }
+
+            .project-date {
+                font-size: 0.9rem;
+                color: #4299e1;
+                margin-bottom: 0.5rem;
+                font-weight: 600;
+            }
+
+            .project-info p {
+                margin: 0;
+                color: rgba(255, 255, 255, 0.7);
+            }
+
+            @@media (max-width: 768px) {
+                .project-card {
+                    flex-direction: column;
+                }
+                .project-image {
+                    width: 100%;
+                    height: 200px;
+                    border-right: none;
+                    border-bottom: 1px solid rgba(147, 51, 234, 0.2);
+                }
+            }
+        </style>
+
+        <div class="projects-timeline">
+            <!-- Projet 1 -->
+            <a href="/portfolio/pre-but/scratch" class="project-card">
+                <div class="project-image">
+                    <img src="images/portfolio/PreBUT/Scratch/Insides.png" alt="@L["Portfolio.PreBachelor.Project1.ImageAlt"]" />
+                </div>
+                <div class="project-info">
+                    <h3>@L["Portfolio.PreBachelor.Project1.Title"]</h3>
+                    <span class="project-date">@L["Portfolio.PreBachelor.Project1.Date"]</span>
+                    <p>@L["Portfolio.PreBachelor.Project1.Description"]</p>
+                </div>
+            </a>
+
+            <!-- Projet 2 -->
+            <a href="/portfolio/pre-but/arduino-pc" class="project-card">
+                <div class="project-image">
+                    <img src="images/portfolio/PreBUT/PCommande/Soft.jpg" alt="@L["Portfolio.PreBachelor.Project2.ImageAlt"]" />
+                </div>
+                <div class="project-info">
+                    <h3>@L["Portfolio.PreBachelor.Project2.Title"]</h3>
+                    <span class="project-date">@L["Portfolio.PreBachelor.Project2.Date"]</span>
+                    <p>@L["Portfolio.PreBachelor.Project2.Description"]</p>
+                </div>
+            </a>
+
+            <!-- Projet 3 -->
+            <a href="/portfolio/pre-but/death-ire" class="project-card">
+                <div class="project-image">
+                    <img src="images/portfolio/PreBUT/DeathIre/CaptureUnity1.png" alt="@L["Portfolio.PreBachelor.Project3.ImageAlt"]" />
+                </div>
+                <div class="project-info">
+                    <h3>@L["Portfolio.PreBachelor.Project3.Title"]</h3>
+                    <span class="project-date">@L["Portfolio.PreBachelor.Project3.Date"]</span>
+                    <p>@L["Portfolio.PreBachelor.Project3.Description"]</p>
+                </div>
+            </a>
+
+            <!-- Projet 4 -->
+            <a href="/portfolio/pre-but/bac-sti2d" class="project-card">
+                <div class="project-image">
+                    <img src="images/portfolio/PreBUT/kart/kart_pc.jpg" alt="@L["Portfolio.PreBachelor.Project4.ImageAlt"]" />
+                </div>
+                <div class="project-info">
+                    <h3>@L["Portfolio.PreBachelor.Project4.Title"]</h3>
+                    <span class="project-date">@L["Portfolio.PreBachelor.Project4.Date"]</span>
+                    <p>@L["Portfolio.PreBachelor.Project4.Description"]</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+    }
+
+    private void OnCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+    }
+}

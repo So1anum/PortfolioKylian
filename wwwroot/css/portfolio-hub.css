@@ -1,0 +1,99 @@
+.portfolio-hub {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hub-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.hub-title {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #4299e1, #9333ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 1rem 0;
+}
+
+.hub-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+.hub-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.hub-card {
+    background: rgba(20, 20, 30, 0.5);
+    border: 1px solid rgba(147, 51, 234, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.hub-card:hover {
+    background: rgba(147, 51, 234, 0.1);
+    border-color: rgba(147, 51, 234, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(147, 51, 234, 0.3);
+}
+
+.card-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(147, 51, 234, 0.2);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.hub-card:hover .card-icon {
+    background: rgba(147, 51, 234, 0.3);
+    transform: scale(1.1);
+}
+
+.card-icon svg {
+    stroke: rgba(147, 51, 234, 1);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+}
+
+.card-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .hub-title {
+        font-size: 2rem;
+    }
+
+    .hub-subtitle {
+        font-size: 1rem;
+    }
+
+    .hub-cards {
+        grid-template-columns: 1fr;
+    }
+}

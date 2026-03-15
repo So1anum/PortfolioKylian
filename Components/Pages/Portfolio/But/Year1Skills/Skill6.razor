@@ -1,0 +1,237 @@
+﻿@page "/portfolio/but/year-1/skill-6"
+@layout Components.Layout.PortfolioLayout
+@using PortfolioKylian.Resources
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@implements IDisposable
+
+<link rel="stylesheet" href="css/portfolio-shared.css" />
+
+<style>
+    .ac-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .ac-item {
+        background: rgba(20, 20, 30, 0.3);
+        border: 1px solid rgba(147, 51, 234, 0.2);
+        border-bottom: none;
+    }
+
+        .ac-item:first-child {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .ac-item:last-child {
+            border-bottom: 1px solid rgba(147, 51, 234, 0.2);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+    .ac-header {
+        padding: 1.25rem 1.5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background-color 0.2s ease;
+    }
+
+        .ac-header:hover {
+            background: rgba(147, 51, 234, 0.1);
+        }
+
+    .ac-title {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .ac-toggle {
+        font-size: 1.5rem;
+        color: rgba(147, 51, 234, 1);
+        font-weight: 300;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ac-content {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+        background: rgba(20, 20, 30, 0.3);
+        border-top: 1px solid rgba(147, 51, 234, 0.2);
+    }
+
+    .ac-main-image {
+        margin-bottom: 2rem;
+        padding-top: 1rem;
+    }
+
+        .ac-main-image h4 {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .ac-main-image img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid rgba(147, 51, 234, 0.2);
+        }
+
+    .ac-examples {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .ac-example h4 {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 0 0 1rem 0;
+        font-weight: 600;
+    }
+
+    .ac-example img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid rgba(147, 51, 234, 0.2);
+    }
+</style>
+
+<PageTitle>@L["Portfolio.But.Year1.Competence6.Title"] - Kylian Debonne</PageTitle>
+
+<div class="portfolio-page">
+    <nav class="breadcrumb">
+        <a href="/portfolio">Portfolio</a>
+        <span class="separator">/</span>
+        <a href="/portfolio/but/year-1">@L["Portfolio.But.Year1.Title"]</a>
+        <span class="separator">/</span>
+        <span>@L["Portfolio.But.Year1.Competence6.Title"]</span>
+    </nav>
+
+    <header class="page-header">
+        <div class="competence-badge">
+            <span class="badge-number">6</span>
+        </div>
+        <h1 class="page-title">@L["Portfolio.But.Year1.Competence6.Title"]</h1>
+        <p class="page-subtitle">@L["Portfolio.But.Year1.Competence6.Full"]</p>
+    </header>
+
+    <div class="page-content">
+        <section class="content-section">
+            <h2>@L["Portfolio.But.CriticalLearning"]</h2>
+
+            <div class="ac-list">
+                <!-- AC 1 -->
+                <div class="ac-item">
+                    <div class="ac-header" @onclick="() => ToggleSection(1)">
+                        <span class="ac-title">@L["Portfolio.But.Year1.Competence6.AC1.Title"]</span>
+                        <span class="ac-toggle">@(expandedSections[1] ? "−" : "+")</span>
+                    </div>
+                    @if (expandedSections[1])
+                    {
+                        <div class="ac-content">
+                            <div class="ac-main-image">
+                                <h4>@L["Portfolio.But.Year1.Competence6.SkillsTable"]</h4>
+                                <img src="/images/portfolio/butinfo/year1/skill6/ac1.png" alt="Tableau de compétences AC1" />
+                            </div>
+                            <div class="ac-examples">
+                                <div class="ac-example">
+                                    <h4>@L["Portfolio.But.Year1.Competence6.AC1.Example1"]</h4>
+                                    <img src="/images/portfolio/butinfo/year1/skill6/Ex_doc.png" alt="Exemple AC1-1" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- AC 2 -->
+                <div class="ac-item">
+                    <div class="ac-header" @onclick="() => ToggleSection(2)">
+                        <span class="ac-title">@L["Portfolio.But.Year1.Competence6.AC2.Title"]</span>
+                        <span class="ac-toggle">@(expandedSections[2] ? "−" : "+")</span>
+                    </div>
+                    @if (expandedSections[2])
+                    {
+                        <div class="ac-content">
+                            <div class="ac-main-image">
+                                <h4>@L["Portfolio.But.Year1.Competence6.SkillsTable"]</h4>
+                                <img src="/images/portfolio/butinfo/year1/skill6/ac2.png" alt="Tableau de compétences AC2" />
+                            </div>
+                            <div class="ac-examples">
+                                <div class="ac-example">
+                                    <h4>@L["Portfolio.But.Year1.Competence6.AC2.Example1"]</h4>
+                                    <img src="/images/portfolio/butinfo/year1/skill6/Channel_organization.png" alt="Exemple AC2-1" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- AC 3 -->
+                <div class="ac-item">
+                    <div class="ac-header" @onclick="() => ToggleSection(3)">
+                        <span class="ac-title">@L["Portfolio.But.Year1.Competence6.AC3.Title"]</span>
+                        <span class="ac-toggle">@(expandedSections[3] ? "−" : "+")</span>
+                    </div>
+                    @if (expandedSections[3])
+                    {
+                        <div class="ac-content">
+                            <div class="ac-main-image">
+                                <h4>@L["Portfolio.But.Year1.Competence6.SkillsTable"]</h4>
+                                <img src="/images/portfolio/butinfo/year1/skill6/ac3.png" alt="Tableau de compétences AC3" />
+                            </div>
+                            <div class="ac-examples">
+                                <div class="ac-example">
+                                    <h4>@L["Portfolio.But.Year1.Competence6.AC3.Example1"]</h4>
+                                    <img src="/images/portfolio/butinfo/year1/skill6/Repartition.png" alt="Exemple AC3-1" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+@code {
+    private Dictionary<int, bool> expandedSections = new()
+    {
+        { 1, false },
+        { 2, false },
+        { 3, false },
+        { 4, false }
+    };
+
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+    }
+
+    private void OnCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void ToggleSection(int sectionNumber)
+    {
+        expandedSections[sectionNumber] = !expandedSections[sectionNumber];
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+    }
+}

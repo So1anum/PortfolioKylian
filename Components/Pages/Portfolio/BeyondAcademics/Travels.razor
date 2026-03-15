@@ -1,0 +1,412 @@
+@page "/portfolio/beyond-academics/travels"
+@layout Components.Layout.PortfolioLayout
+@using PortfolioKylian.Resources
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@implements IDisposable
+
+<link rel="stylesheet" href="css/portfolio-shared.css" />
+<link rel="stylesheet" href="css/travels-timeline.css" />
+
+<PageTitle>@L["Portfolio.BeyondAcademics.Travels.Title"] - Kylian Debonne</PageTitle>
+
+<div class="portfolio-page">
+    <header class="page-header">
+        <h1 class="page-title">@L["Portfolio.BeyondAcademics.Travels.Title"]</h1>
+        <p class="page-subtitle">@L["Portfolio.BeyondAcademics.Travels.Subtitle"]</p>
+    </header>
+
+    <div class="page-content">
+        <section class="content-section">
+            <h2>@L["Portfolio.BeyondAcademics.Travels.Intro.Title"]</h2>
+            <p>@L["Portfolio.BeyondAcademics.Travels.Intro.Content"]</p>
+        </section>
+
+        <section class="content-section">
+            <h2>@L["Portfolio.BeyondAcademics.Travels.Timeline.Title"]</h2>
+            <div class="travels-timeline">
+                @foreach (var voyage in voyages)
+                {
+                    <div class="timeline-item @(activeVoyageId == voyage.Id ? "active" : "")" 
+                         @onclick="() => ToggleVoyage(voyage.Id)">
+                        <div class="timeline-dot"></div>
+                        <div class="travel-card">
+                            <div class="travel-header">
+                                <div class="travel-flag">
+                                    <img src="https://flagcdn.com/w80/@(L[$"Portfolio.BeyondAcademics.Travels.Voyage{voyage.Id}.FlagCode"]).png" 
+                                         alt="@L[$"Portfolio.BeyondAcademics.Travels.Voyage{voyage.Id}.Country"]"
+                                         class="flag-image" />
+                                </div>
+                                <div class="travel-title">
+                                    <h3 class="travel-city">@L[$"Portfolio.BeyondAcademics.Travels.Voyage{voyage.Id}.City"]</h3>
+                                    <p class="travel-country">@L[$"Portfolio.BeyondAcademics.Travels.Voyage{voyage.Id}.Country"]</p>
+                                </div>
+                            </div>
+
+                            <div class="travel-meta">
+                                <span class="travel-date">@L[$"Portfolio.BeyondAcademics.Travels.Voyage{voyage.Id}.Date"]</span>
+                                <span class="travel-duration">@L[$"Portfolio.BeyondAcademics.Travels.Voyage{voyage.Id}.Duration"]</span>
+                            </div>
+
+                            <div class="travel-expandable">
+                                <p class="travel-description">
+                                    @L[$"Portfolio.BeyondAcademics.Travels.Voyage{voyage.Id}.Description"]
+                                </p>
+
+                                <div class="travel-highlights">
+                                    <span class="highlight-tag">@L[$"Portfolio.BeyondAcademics.Travels.Voyage{voyage.Id}.Highlight1"]</span>
+                                    <span class="highlight-tag">@L[$"Portfolio.BeyondAcademics.Travels.Voyage{voyage.Id}.Highlight2"]</span>
+                                    <span class="highlight-tag">@L[$"Portfolio.BeyondAcademics.Travels.Voyage{voyage.Id}.Highlight3"]</span>
+                                </div>
+
+                                @if (voyage.Photos.Any())
+                                {
+                                    <div class="travel-gallery">
+                                        @foreach (var photo in voyage.Photos)
+                                        {
+                                            <div class="travel-photo" @onclick="() => OpenLightbox(voyage.Id, photo)" @onclick:stopPropagation="true">
+                                                <img src="@photo.Path" alt="@photo.Alt" loading="lazy" />
+                                                <div class="photo-overlay">
+                                                    <span class="photo-zoom-icon">🔍</span>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="expand-indicator">
+                                <span>@(activeVoyageId == voyage.Id ? "Réduire" : "Voir plus")</span>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    </div>
+</div>
+
+@* Lightbox Modal *@
+@if (lightboxPhoto != null)
+{
+    <div class="lightbox-overlay" @onclick="CloseLightbox">
+        <div class="lightbox-container" @onclick:stopPropagation="true">
+            <button class="lightbox-close" @onclick="CloseLightbox" aria-label="Fermer">✕</button>
+
+            @if (currentVoyagePhotos.Count > 1)
+            {
+                <button class="lightbox-nav lightbox-prev" @onclick="PreviousPhoto" aria-label="Photo précédente">❮</button>
+                <button class="lightbox-nav lightbox-next" @onclick="NextPhoto" aria-label="Photo suivante">❯</button>
+            }
+
+            <div class="lightbox-content">
+                <img src="@lightboxPhoto.Path" alt="@lightboxPhoto.Alt" />
+                @if (!string.IsNullOrEmpty(lightboxPhoto.Caption))
+                {
+                    <div class="lightbox-caption">@lightboxPhoto.Caption</div>
+                }
+            </div>
+
+            @if (currentVoyagePhotos.Count > 1)
+            {
+                <div class="lightbox-counter">
+                    @(currentPhotoIndex + 1) / @currentVoyagePhotos.Count
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    private int? activeVoyageId = null;
+    private PhotoInfo? lightboxPhoto = null;
+    private List<PhotoInfo> currentVoyagePhotos = new();
+    private int currentPhotoIndex = 0;
+
+    private List<TravelInfo> voyages = new();
+
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+        InitializeVoyages();
+    }
+
+    private void InitializeVoyages()
+    {
+        voyages = new List<TravelInfo>
+        {
+            new TravelInfo
+            {
+                Id = 9,
+                Photos = new List<PhotoInfo>
+                {
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Netherlands2.jpg",
+                        Alt = "Netherlands",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage9.PicsCaption1"]
+                    }
+                }
+            },
+            new TravelInfo
+            {
+                Id = 8,
+                Photos = new List<PhotoInfo>
+                {
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Mourne.jpg",
+                        Alt = "The Mournes",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage8.PicsCaption1"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Dublin.jpg",
+                        Alt = "Dublin",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage8.PicsCaption2"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/top.jpg",
+                        Alt = "Twenty One Pilots",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage8.PicsCaption3"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/GoT.jpg",
+                        Alt = "Studio Game of Thrones",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage8.PicsCaption4"]
+                    }
+                }
+            },
+            new TravelInfo
+            {
+                Id = 7,
+                Photos = new List<PhotoInfo>
+                {
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Van_Gogh.jpg",
+                        Alt = "Van Gogh",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage7.PicsCaption1"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Netherlands1.jpg",
+                        Alt = "Netherlands",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage7.PicsCaption2"]
+                    }
+                }
+            },
+            new TravelInfo
+            {
+                Id = 6,
+                Photos = new List<PhotoInfo>
+                {
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Amsterdam1.jpg",
+                        Alt = "Amsterdam",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage6.PicsCaption1"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Amsterdam2.jpg",
+                        Alt = "Amsterdam",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage6.PicsCaption2"]
+                    }
+                }
+            },
+            new TravelInfo
+            {
+                Id = 5,
+                Photos = new List<PhotoInfo>
+                {
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Luxembourg1.jpg",
+                        Alt = "Luxembourg",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage5.PicsCaption1"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Luxembourg2.jpg",
+                        Alt = "Luxembourg",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage5.PicsCaption2"]
+                    }
+                }
+            },
+            new TravelInfo
+            {
+                Id = 4,
+                Photos = new List<PhotoInfo>
+                {
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Bruxelles1.jpg",
+                        Alt = "Bruxelles",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage4.PicsCaption1"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Bruxelles2.jpg",
+                        Alt = "Bruxelles",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage4.PicsCaption2"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Bruxelles3.jpg",
+                        Alt = "Atomium",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage4.PicsCaption3"]
+                    }
+                }
+            },
+            new TravelInfo
+            {
+                Id = 3,
+                Photos = new List<PhotoInfo>
+                {
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Buckingham_Palace.jpg",
+                        Alt = "Buckingham Palace",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage3.PicsCaption1"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Big_Ben.jpg",
+                        Alt = "Big Ben",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage3.PicsCaption2"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Tower_Bridge.jpg",
+                        Alt = "Tower Bridge",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage3.PicsCaption3"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Northampton1.jpg",
+                        Alt = "Northampton",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage3.PicsCaption4"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Northampton2.jpg",
+                        Alt = "Northampton",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage3.PicsCaption5"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Northampton3.jpg",
+                        Alt = "Northampton",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage3.PicsCaption6"]
+                    }
+                }
+            },
+            new TravelInfo
+            {
+                Id = 2,
+                Photos = new List<PhotoInfo>
+                {
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Empire_State_Building.jpg",
+                        Alt = "Empire State Building",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage2.PicsCaption1"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Liberty_Statue.jpg",
+                        Alt = "Liberty Statue",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage2.PicsCaption2"]
+                    },
+                    new PhotoInfo
+                    {
+                        Path = "/images/portfolio/BeyondAcademics/Travels/Time_Square.jpg",
+                        Alt = "Time Square",
+                        Caption = L["Portfolio.BeyondAcademics.Travels.Voyage2.PicsCaption3"]
+                    }
+                }
+            },
+            new TravelInfo 
+            { 
+                Id = 1,
+                Photos = new List<PhotoInfo>()
+            }
+        };
+    }
+
+    private void ToggleVoyage(int voyageId)
+    {
+        if (activeVoyageId == voyageId)
+        {
+            activeVoyageId = null;
+        }
+        else
+        {
+            activeVoyageId = voyageId;
+        }
+    }
+
+    private void OpenLightbox(int voyageId, PhotoInfo photo)
+    {
+        var voyage = voyages.FirstOrDefault(v => v.Id == voyageId);
+        if (voyage != null)
+        {
+            currentVoyagePhotos = voyage.Photos;
+            currentPhotoIndex = currentVoyagePhotos.IndexOf(photo);
+            lightboxPhoto = photo;
+        }
+    }
+
+    private void CloseLightbox()
+    {
+        lightboxPhoto = null;
+        currentVoyagePhotos = new();
+        currentPhotoIndex = 0;
+    }
+
+    private void NextPhoto()
+    {
+        if (currentVoyagePhotos.Any())
+        {
+            currentPhotoIndex = (currentPhotoIndex + 1) % currentVoyagePhotos.Count;
+            lightboxPhoto = currentVoyagePhotos[currentPhotoIndex];
+        }
+    }
+
+    private void PreviousPhoto()
+    {
+        if (currentVoyagePhotos.Any())
+        {
+            currentPhotoIndex = (currentPhotoIndex - 1 + currentVoyagePhotos.Count) % currentVoyagePhotos.Count;
+            lightboxPhoto = currentVoyagePhotos[currentPhotoIndex];
+        }
+    }
+
+    private void OnCultureChanged()
+    {
+        InitializeVoyages();
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+    }
+
+    private class TravelInfo
+    {
+        public int Id { get; set; }
+        public List<PhotoInfo> Photos { get; set; } = new();
+    }
+
+    private class PhotoInfo
+    {
+        public string Path { get; set; } = string.Empty;
+        public string Alt { get; set; } = string.Empty;
+        public string Caption { get; set; } = string.Empty;
+    }
+}

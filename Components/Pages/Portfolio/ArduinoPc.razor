@@ -1,0 +1,163 @@
+@page "/portfolio/pre-but/arduino-pc"
+@layout Components.Layout.PortfolioLayout
+@using PortfolioKylian.Resources
+@using PortfolioKylian.Models
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@implements IDisposable
+
+<link rel="stylesheet" href="css/portfolio-shared.css" />
+
+<PageTitle>@L["Portfolio.ArduinoPc.Title"] - Kylian Debonne</PageTitle>
+
+<div class="portfolio-page">
+    <header class="page-header">
+        <h1 class="page-title">@L["Portfolio.ArduinoPc.Title"]</h1>
+        <p class="page-subtitle">@L["Portfolio.ArduinoPc.Subtitle"]</p>
+    </header>
+
+    <div class="page-content">
+        <!-- Intro Arduino Section -->
+        <section class="content-section">
+            <div class="row align-items-center mb-4">
+                <div class="col-md-3 text-center mb-3 mb-md-0">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg" alt="Arduino Logo" class="img-fluid" style="max-height: 150px; filter: drop-shadow(0 0 10px rgba(0, 151, 157, 0.5));" />
+                </div>
+                <div class="col-md-9">
+                    <h2>@L["Portfolio.ArduinoPc.IntroArduino.Title"]</h2>
+                    <p>@L["Portfolio.ArduinoPc.IntroArduino.Description"]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intro Unity Section -->
+        <section class="content-section">
+            <div class="row align-items-center flex-row-reverse mb-4">
+                <div class="col-md-3 text-center mb-3 mb-md-0">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Unity_Technologies_logo.svg" alt="Unity Logo" class="img-fluid" style="max-height: 120px; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));" />
+                </div>
+                <div class="col-md-9">
+                    <h2>@L["Portfolio.ArduinoPc.IntroUnity.Title"]</h2>
+                    <p>@L["Portfolio.ArduinoPc.IntroUnity.Description"]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Section with Carousel -->
+        <section class="content-section carousel-section">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-3">
+                <h2 class="mb-0">@L["Portfolio.ArduinoPc.Project.Title"]</h2>
+                <div class="action-buttons d-flex gap-2">
+                    <a href="https://github.com/So1anum/TwitchListener" target="_blank" class="cyber-button play-button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        @L["Portfolio.ArduinoPc.ViewGithub"]
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=T_lw20qJ10w" target="_blank" class="cyber-button play-button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2C5.12 19.5 12 19.5 12 19.5s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                        @L["Portfolio.ArduinoPc.ViewYoutube"]
+                    </a>
+                </div>
+            </div>
+            <p>@L["Portfolio.ArduinoPc.Project.Description"]</p>
+
+            <div class="image-carousel mb-4">
+                <button class="carousel-button carousel-prev" @onclick="PreviousImage" aria-label="Image précédente">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="carousel-container">
+                    <div class="carousel-track" style="transform: translateX(-@(currentImageIndex * 100)%);">
+                        @foreach (var media in carouselImages)
+                        {
+                            <div class="carousel-slide">
+                                <img src="@media.Url" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
+                                @if (!string.IsNullOrEmpty(media.CaptionKey))
+                                {
+                                    <div class="carousel-caption">
+                                        <p>@L[media.CaptionKey]</p>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+                
+                <button class="carousel-button carousel-next" @onclick="NextImage" aria-label="Image suivante">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+
+                <div class="carousel-indicators">
+                    @for (int i = 0; i < carouselImages.Count; i++)
+                    {
+                        var index = i;
+                        <button 
+                            class="carousel-indicator @(currentImageIndex == index ? "active" : "")" 
+                            @onclick="() => GoToImage(index)"
+                            aria-label="Aller à l'image @(index + 1)">
+                        </button>
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+@code {
+    private int currentImageIndex = 0;
+
+    private List<CarouselItem> carouselImages = new()
+    {
+        new CarouselItem 
+        { 
+            Url = "images/portfolio/PreBUT/PCommande/Hard1.jpg", 
+            AltKey = "Portfolio.ArduinoPc.Carousel.Image1Alt", 
+            CaptionKey = "Portfolio.ArduinoPc.Carousel.Image1Cap"
+        },
+        new CarouselItem 
+        { 
+            Url = "images/portfolio/PreBUT/PCommande/Hard2.jpg", 
+            AltKey = "Portfolio.ArduinoPc.Carousel.Image2Alt", 
+            CaptionKey = "Portfolio.ArduinoPc.Carousel.Image2Cap"
+        },
+        new CarouselItem 
+        { 
+            Url = "images/portfolio/PreBUT/PCommande/Soft.jpg", 
+            AltKey = "Portfolio.ArduinoPc.Carousel.Image3Alt", 
+            CaptionKey = "Portfolio.ArduinoPc.Carousel.Image3Cap"
+        }
+    };
+
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+    }
+
+    private void OnCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void NextImage()
+    {
+        currentImageIndex = (currentImageIndex + 1) % carouselImages.Count;
+    }
+
+    private void PreviousImage()
+    {
+        currentImageIndex = currentImageIndex == 0 ? carouselImages.Count - 1 : currentImageIndex - 1;
+    }
+
+    private void GoToImage(int index)
+    {
+        currentImageIndex = index;
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+    }
+}

@@ -1,0 +1,168 @@
+@page "/portfolio/game-engines"
+@layout Components.Layout.PortfolioLayout
+@using PortfolioKylian.Resources
+@using PortfolioKylian.Models
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@implements IDisposable
+
+<link rel="stylesheet" href="css/portfolio-shared.css" />
+
+<PageTitle>@L["Portfolio.GameEngines.Title"] - Kylian Debonne</PageTitle>
+
+<div class="portfolio-page">
+    <header class="page-header">
+        <h1 class="page-title">@L["Portfolio.GameEngines.Title"]</h1>
+        <p class="page-subtitle">@L["Portfolio.GameEngines.Subtitle"]</p>
+    </header>
+
+    <div class="page-content">
+        <section class="content-section">
+            <h2>@L["Portfolio.GameEngines.Unity.Title"]</h2>
+            <p>@L["Portfolio.GameEngines.Unity.Desc"]</p>
+
+            <div class="projects-list mt-4">
+                <div class="project-item">
+                    <h3>@L["Portfolio.Nav.PreBut.DeathIre"]</h3>
+                    <p>@L["Portfolio.PreBachelor.Project3.Title"]</p>
+                    <a href="/portfolio/pre-but/death-ire" class="btn-portfolio mt-3">@L["Portfolio.GameEngines.MoreDetails"]</a>
+                </div>
+
+                <div class="project-item">
+                    <h3>@L["Portfolio.Nav.PreBut.ArduinoPc"]</h3>
+                    <p>@L["Portfolio.PreBachelor.Project2.Title"]</p>
+                    <a href="/portfolio/pre-but/arduino-pc" class="btn-portfolio mt-3">@L["Portfolio.GameEngines.MoreDetails"]</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section carousel-section">
+            <h2>@L["Portfolio.GameEngines.Unreal.Title"]</h2>
+            <p style="margin-bottom: 2rem;">@L["Portfolio.GameEngines.Unreal.Desc"]</p>
+                <div class="image-carousel">
+                    <button class="carousel-button carousel-prev" @onclick="PreviousImage" aria-label="Image précédente">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="carousel-container">
+                        <div class="carousel-track" style="transform: translateX(-@(currentImageIndex * 100)%);">
+                            @foreach (var media in carouselImages)
+                            {
+                                <div class="carousel-slide">
+                                    @if (media.IsVideo)
+                                    {
+                                        <video src="@media.Url" class="carousel-image carousel-video" 
+                                               controls muted loop preload="metadata"
+                                               @key="@media.Url">
+                                            Votre navigateur ne supporte pas la lecture de vidéos.
+                                        </video>
+                                    }
+                                    else
+                                    {
+                                        <img src="@media.Url" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
+                                    }
+                                    @if (!string.IsNullOrEmpty(media.CaptionKey))
+                                    {
+                                        <div class="carousel-caption">
+                                            <p>@L[media.CaptionKey]</p>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <button class="carousel-button carousel-next" @onclick="NextImage" aria-label="Image suivante">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="carousel-indicators">
+                        @for (int i = 0; i < carouselImages.Count; i++)
+                        {
+                            var index = i;
+                            <button 
+                                class="carousel-indicator @(currentImageIndex == index ? "active" : "")" 
+                                @onclick="() => GoToImage(index)"
+                                aria-label="Aller à l'image @(index + 1)">
+                            </button>
+                        }
+                    </div>
+                </div>
+        </section>
+    </div>
+</div>
+
+@code {
+    private int currentImageIndex = 0;
+
+    private List<CarouselItem> carouselImages = new()
+    {
+        new CarouselItem 
+        { 
+            Url = "/images/portfolio/UnrealEngine/ue1.png", 
+            AltKey = "Image of an Unreal Engine exercice",
+            CaptionKey = ""
+        },
+        new CarouselItem
+        {
+            Url = "/images/portfolio/UnrealEngine/ue2.png",
+            AltKey = "Image of an Unreal Engine exercice",
+            CaptionKey = ""
+        },
+        new CarouselItem
+        {
+            Url = "/images/portfolio/UnrealEngine/ue3.png",
+            AltKey = "Image of an Unreal Engine exercice",
+            CaptionKey = ""
+        },
+        new CarouselItem
+        {
+            Url = "/images/portfolio/UnrealEngine/ue4.png",
+            AltKey = "Image of an Unreal Engine exercice",
+            CaptionKey = ""
+        }
+    };
+
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+        L.OnLanguageChanged += OnLanguageChanged;
+    }
+
+    private void OnCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void OnLanguageChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void NextImage()
+    {
+        if (carouselImages.Count > 0)
+            currentImageIndex = (currentImageIndex + 1) % carouselImages.Count;
+    }
+
+    private void PreviousImage()
+    {
+        if (carouselImages.Count > 0)
+            currentImageIndex = currentImageIndex == 0 ? carouselImages.Count - 1 : currentImageIndex - 1;
+    }
+
+    private void GoToImage(int index)
+    {
+        currentImageIndex = index;
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+        L.OnLanguageChanged -= OnLanguageChanged;
+    }
+}
