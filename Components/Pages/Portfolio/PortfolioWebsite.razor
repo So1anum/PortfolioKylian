@@ -1,0 +1,63 @@
+@page "/portfolio/my-projects/portfolio-website"
+@layout Components.Layout.PortfolioLayout
+@using PortfolioKylian.Resources
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@implements IDisposable
+
+<link rel="stylesheet" href="css/portfolio-shared.css" />
+
+<PageTitle>@L["Portfolio.PortfolioWebsite.Title"] - Kylian Debonne</PageTitle>
+
+<div class="portfolio-page">
+    <header class="page-header">
+        <h1 class="page-title">@L["Portfolio.PortfolioWebsite.Title"]</h1>
+        <p class="page-subtitle">@L["Portfolio.PortfolioWebsite.Subtitle"]</p>
+    </header>
+
+    <div class="page-content">
+        <section class="content-section">
+            <h2>@L["Portfolio.PortfolioWebsite.Context.Title"]</h2>
+            <p>@L["Portfolio.PortfolioWebsite.Context.Description"]</p>
+        </section>
+
+        <section class="content-section">
+            <h2>@L["Portfolio.PortfolioWebsite.Realization.Title"]</h2>
+            <p>@L["Portfolio.PortfolioWebsite.Realization.Description"]</p>
+        </section>
+
+        <section class="content-section">
+            <h2>@L["Portfolio.PortfolioWebsite.Features.Title"]</h2>
+            <p>@L["Portfolio.PortfolioWebsite.Features.Description"]</p>
+        </section>
+
+        <section class="content-section">
+            <h2>@L["Portfolio.PortfolioWebsite.Conclusion.Title"]</h2>
+            <p>@L["Portfolio.PortfolioWebsite.Conclusion.Description"]</p>
+            <div class="mt-3">
+                <a href="@RepositoryUrl" target="_blank" rel="noopener noreferrer" class="btn-portfolio">
+                    @L["Portfolio.PortfolioWebsite.Conclusion.VisitRepoButton"]
+                </a>
+            </div>
+        </section>
+    </div>
+</div>
+
+@code {
+    private const string RepositoryUrl = "https://github.com/So1anum/PortfolioKylian";
+
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+    }
+
+    private void OnCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+    }
+}

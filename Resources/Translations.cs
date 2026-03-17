@@ -112,6 +112,7 @@ public static class Translations
         ["Portfolio.Nav.Home"] = "Accueil",
         ["Portfolio.Nav.PreBut"] = "Pre-BUT",
         ["Portfolio.Nav.PreBut.Hub"] = "Vue d'ensemble",
+        ["Portfolio.Nav.PreBut.Portfolio"] = "Portfolio",
         ["Portfolio.Nav.PreBut.AspiHotel"] = "ASP .NET Hôtel",
         ["Portfolio.Nav.PreBut.Scratch"] = "Scratch",
         ["Portfolio.Nav.PreBut.ArduinoPc"] = "Arduino PC",
@@ -195,6 +196,10 @@ public static class Translations
         ["Portfolio.PreBachelor.Project5.Date"] = "2025",
         ["Portfolio.PreBachelor.Project5.Description"] = "Application web réservation hôtelière",
         ["Portfolio.PreBachelor.Project5.ImageAlt"] = "ASP .NET application web avec base de données SQL Server",
+        ["Portfolio.PreBachelor.Project6.Title"] = "Ce portfolio personnel",
+        ["Portfolio.PreBachelor.Project6.Date"] = "2026",
+        ["Portfolio.PreBachelor.Project6.Description"] = "Site Blazor multilingue pour présenter mon parcours",
+        ["Portfolio.PreBachelor.Project6.ImageAlt"] = "Aperçu du dépôt GitHub de mon portfolio",
 
         // BUT - Année 1
         ["Portfolio.But.Year1.Title"] = "Année 1 - BUT Informatique",
@@ -798,6 +803,19 @@ public static class Translations
         ["Portfolio.BeyondAcademics.Travels.Voyage9.Highlight3"] = "Famille",
         ["Portfolio.BeyondAcademics.Travels.Voyage9.PicsCaption1"] = "Photo dans les rues",
 
+        // Portfolio website page
+        ["Portfolio.PortfolioWebsite.Title"] = "Ce portfolio personnel",
+        ["Portfolio.PortfolioWebsite.Subtitle"] = "Projet 2026 : vitrine technique et multilingue",
+        ["Portfolio.PortfolioWebsite.Context.Title"] = "Contexte",
+        ["Portfolio.PortfolioWebsite.Context.Description"] = "Ce site est devenu un vrai projet logiciel pour présenter mon parcours, mes réalisations et mon profil de développeur de façon claire et professionnelle.",
+        ["Portfolio.PortfolioWebsite.Realization.Title"] = "Réalisation",
+        ["Portfolio.PortfolioWebsite.Realization.Description"] = "Le portfolio est développé en Blazor avec une interface moderne, responsive et cohérente avec ma charte graphique. L'architecture est pensée pour faciliter l'ajout de nouvelles pages de projets et l'évolution du contenu.",
+        ["Portfolio.PortfolioWebsite.Features.Title"] = "Points clés",
+        ["Portfolio.PortfolioWebsite.Features.Description"] = "Le projet inclut un système de traduction FR/EN centralisé, une navigation structurée, des composants réutilisables et une organisation du code orientée maintenabilité.",
+        ["Portfolio.PortfolioWebsite.Conclusion.Title"] = "Dépôt du projet",
+        ["Portfolio.PortfolioWebsite.Conclusion.Description"] = "Le code source est versionné sur GitHub avec une approche itérative. Ce dépôt reflète mon niveau actuel en développement web .NET et en structuration d'un projet réel.",
+        ["Portfolio.PortfolioWebsite.Conclusion.VisitRepoButton"] = "Voir le dépôt GitHub",
+
         // Aspi Hotel Booking page
         ["Portfolio.AspiHotel.Title"] = "Site web réservation de chambres d'hôtel ASP .NET",
         ["Portfolio.AspiHotel.Subtitle"] = "Projet web ASP.NET autour d'un système de réservation",
@@ -1053,6 +1071,7 @@ public static class Translations
         ["Portfolio.Nav.Home"] = "Home",
         ["Portfolio.Nav.PreBut"] = "Pre-BUT",
         ["Portfolio.Nav.PreBut.Hub"] = "Overview",
+        ["Portfolio.Nav.PreBut.Portfolio"] = "Portfolio",
         ["Portfolio.Nav.PreBut.AspiHotel"] = "ASP .NET Hotel",
         ["Portfolio.Nav.PreBut.Scratch"] = "Scratch",
         ["Portfolio.Nav.PreBut.ArduinoPc"] = "Arduino PC",
@@ -1136,6 +1155,10 @@ public static class Translations
         ["Portfolio.PreBachelor.Project5.Date"] = "2025",
         ["Portfolio.PreBachelor.Project5.Description"] = "Web application for hotel booking",
         ["Portfolio.PreBachelor.Project5.ImageAlt"] = "ASP .NET web application with SQL Server database",
+        ["Portfolio.PreBachelor.Project6.Title"] = "This personal portfolio",
+        ["Portfolio.PreBachelor.Project6.Date"] = "2026",
+        ["Portfolio.PreBachelor.Project6.Description"] = "Multilingual Blazor website to showcase my journey",
+        ["Portfolio.PreBachelor.Project6.ImageAlt"] = "Preview of my portfolio GitHub repository",
 
         // BUT - Year 1
         ["Portfolio.But.Year1.Title"] = "Year 1 - BUT Computer Science",
@@ -1754,6 +1777,19 @@ public static class Translations
         ["Portfolio.BeyondAcademics.Travels.Voyage9.Highlight2"] = "Dutch culture",
         ["Portfolio.BeyondAcademics.Travels.Voyage9.Highlight3"] = "Family",
         ["Portfolio.BeyondAcademics.Travels.Voyage9.PicsCaption1"] = "Photo in the streets",
+
+        // Portfolio website page
+        ["Portfolio.PortfolioWebsite.Title"] = "This personal portfolio",
+        ["Portfolio.PortfolioWebsite.Subtitle"] = "2026 project: technical and multilingual showcase",
+        ["Portfolio.PortfolioWebsite.Context.Title"] = "Context",
+        ["Portfolio.PortfolioWebsite.Context.Description"] = "This website has become a real software project to present my background, my achievements, and my developer profile in a clear and professional way.",
+        ["Portfolio.PortfolioWebsite.Realization.Title"] = "Implementation",
+        ["Portfolio.PortfolioWebsite.Realization.Description"] = "The portfolio is built with Blazor, with a modern and responsive interface aligned with my visual identity. The architecture is designed to make it easy to add new project pages and evolve content over time.",
+        ["Portfolio.PortfolioWebsite.Features.Title"] = "Key points",
+        ["Portfolio.PortfolioWebsite.Features.Description"] = "The project includes a centralized FR/EN translation system, structured navigation, reusable components, and a code organization focused on maintainability.",
+        ["Portfolio.PortfolioWebsite.Conclusion.Title"] = "Project repository",
+        ["Portfolio.PortfolioWebsite.Conclusion.Description"] = "The source code is versioned on GitHub with an iterative approach. This repository reflects my current level in .NET web development and in structuring a real-world project.",
+        ["Portfolio.PortfolioWebsite.Conclusion.VisitRepoButton"] = "View GitHub repository",
 
         // Aspi Hotel Booking page
         ["Portfolio.AspiHotel.Title"] = "ASP .NET hotel room booking website",
