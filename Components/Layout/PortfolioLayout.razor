@@ -28,7 +28,7 @@
             </a>
 
             <div class="nav-group">
-                <button class="nav-item group-toggle @(IsActive("/portfolio/pre-but"))" @onclick="TogglePreButMenu">
+                <button class="nav-item group-toggle @(IsActive("/portfolio/my-projects"))" @onclick="ToggleMyProjectsMenu">
                     <span class="nav-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
@@ -37,19 +37,20 @@
                         </svg>
                     </span>
                     <span class="nav-text">@L["Portfolio.Nav.PreBut"]</span>
-                    <span class="chevron @(isPreButMenuOpen ? "open" : "")">
+                    <span class="chevron @(isMyProjectsMenuOpen ? "open" : "")">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </span>
                 </button>
 
-                <div class="nav-submenu @(isPreButMenuOpen ? "open" : "")">
-                    <a href="/portfolio/pre-but" class="nav-subitem @(IsExactActive("/portfolio/pre-but"))">@L["Portfolio.Nav.PreBut.Hub"]</a>
-                    <a href="/portfolio/pre-but/scratch" class="nav-subitem @(IsActive("/portfolio/pre-but/scratch"))">@L["Portfolio.Nav.PreBut.Scratch"]</a>
-                    <a href="/portfolio/pre-but/arduino-pc" class="nav-subitem @(IsActive("/portfolio/pre-but/arduino-pc"))">@L["Portfolio.Nav.PreBut.ArduinoPc"]</a>
-                    <a href="/portfolio/pre-but/death-ire" class="nav-subitem @(IsActive("/portfolio/pre-but/death-ire"))">@L["Portfolio.Nav.PreBut.DeathIre"]</a>
-                    <a href="/portfolio/pre-but/bac-sti2d" class="nav-subitem @(IsActive("/portfolio/pre-but/bac-sti2d"))">@L["Portfolio.Nav.PreBut.Bac"]</a>
+                <div class="nav-submenu @(isMyProjectsMenuOpen ? "open" : "")">
+                    <a href="/portfolio/my-projects" class="nav-subitem @(IsExactActive("/portfolio/my-projects"))">@L["Portfolio.Nav.PreBut.Hub"]</a>
+                    <a href="/portfolio/my-projects/aspi-hotel-booking" class="nav-subitem @(IsActive("/portfolio/my-projects/aspi-hotel-booking"))">@L["Portfolio.Nav.PreBut.AspiHotel"]</a>
+                    <a href="/portfolio/my-projects/scratch" class="nav-subitem @(IsActive("/portfolio/my-projects/scratch"))">@L["Portfolio.Nav.PreBut.Scratch"]</a>
+                    <a href="/portfolio/my-projects/arduino-pc" class="nav-subitem @(IsActive("/portfolio/my-projects/arduino-pc"))">@L["Portfolio.Nav.PreBut.ArduinoPc"]</a>
+                    <a href="/portfolio/my-projects/death-ire" class="nav-subitem @(IsActive("/portfolio/my-projects/death-ire"))">@L["Portfolio.Nav.PreBut.DeathIre"]</a>
+                    <a href="/portfolio/my-projects/bac-sti2d" class="nav-subitem @(IsActive("/portfolio/my-projects/bac-sti2d"))">@L["Portfolio.Nav.PreBut.Bac"]</a>
                 </div>
             </div>
 
@@ -141,7 +142,7 @@
 
 @code {
 private bool isSidebarOpen = true;
-private bool isPreButMenuOpen = false;
+private bool isMyProjectsMenuOpen = false;
 private bool isButMenuOpen = true;
 private bool isHorsLesMursMenuOpen = false;
 
@@ -166,9 +167,9 @@ private void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.R
 private void UpdateMenuState()
 {
     var currentUrl = Navigation.Uri;
-    if (currentUrl.Contains("/portfolio/pre-but"))
+    if (currentUrl.Contains("/portfolio/my-projects"))
     {
-        isPreButMenuOpen = true;
+        isMyProjectsMenuOpen = true;
     }
     if (currentUrl.Contains("/portfolio/but"))
     {
@@ -185,9 +186,9 @@ private void ToggleSidebar()
     isSidebarOpen = !isSidebarOpen;
 }
 
-private void TogglePreButMenu()
+private void ToggleMyProjectsMenu()
 {
-    isPreButMenuOpen = !isPreButMenuOpen;
+    isMyProjectsMenuOpen = !isMyProjectsMenuOpen;
 }
 
 private void ToggleButMenu()

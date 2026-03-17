@@ -1,4 +1,4 @@
-@page "/portfolio/pre-but"
+@page "/portfolio/my-projects"
 @layout Components.Layout.PortfolioLayout
 @using PortfolioKylian.Resources
 @inject LocalizationHelper L
@@ -108,32 +108,32 @@
         </style>
 
         <div class="projects-timeline">
-            <!-- Projet 1 -->
-            <a href="/portfolio/pre-but/scratch" class="project-card">
+            <!-- Projet 5 -->
+            <a href="/portfolio/my-projects/aspi-hotel-booking" class="project-card">
                 <div class="project-image">
-                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/PreBUT/Scratch/Insides.png")" alt="@L["Portfolio.PreBachelor.Project1.ImageAlt"]" />
+                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/BUTInfo/Year3/Skill1/result_skull_king.png")" alt="@L["Portfolio.PreBachelor.Project5.ImageAlt"]" />
                 </div>
                 <div class="project-info">
-                    <h3>@L["Portfolio.PreBachelor.Project1.Title"]</h3>
-                    <span class="project-date">@L["Portfolio.PreBachelor.Project1.Date"]</span>
-                    <p>@L["Portfolio.PreBachelor.Project1.Description"]</p>
+                    <h3>@L["Portfolio.PreBachelor.Project5.Title"]</h3>
+                    <span class="project-date">@L["Portfolio.PreBachelor.Project5.Date"]</span>
+                    <p>@L["Portfolio.PreBachelor.Project5.Description"]</p>
                 </div>
             </a>
 
-            <!-- Projet 2 -->
-            <a href="/portfolio/pre-but/arduino-pc" class="project-card">
+            <!-- Projet 4 -->
+            <a href="/portfolio/my-projects/bac-sti2d" class="project-card">
                 <div class="project-image">
-                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/PreBUT/PCommande/Soft.jpg")" alt="@L["Portfolio.PreBachelor.Project2.ImageAlt"]" />
+                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/PreBUT/kart/kart_pc.jpg")" alt="@L["Portfolio.PreBachelor.Project4.ImageAlt"]" />
                 </div>
                 <div class="project-info">
-                    <h3>@L["Portfolio.PreBachelor.Project2.Title"]</h3>
-                    <span class="project-date">@L["Portfolio.PreBachelor.Project2.Date"]</span>
-                    <p>@L["Portfolio.PreBachelor.Project2.Description"]</p>
+                    <h3>@L["Portfolio.PreBachelor.Project4.Title"]</h3>
+                    <span class="project-date">@L["Portfolio.PreBachelor.Project4.Date"]</span>
+                    <p>@L["Portfolio.PreBachelor.Project4.Description"]</p>
                 </div>
             </a>
 
             <!-- Projet 3 -->
-            <a href="/portfolio/pre-but/death-ire" class="project-card">
+            <a href="/portfolio/my-projects/death-ire" class="project-card">
                 <div class="project-image">
                     <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/PreBUT/DeathIre/CaptureUnity1.png")" alt="@L["Portfolio.PreBachelor.Project3.ImageAlt"]" />
                 </div>
@@ -144,17 +144,30 @@
                 </div>
             </a>
 
-            <!-- Projet 4 -->
-            <a href="/portfolio/pre-but/bac-sti2d" class="project-card">
+            <!-- Projet 2 -->
+            <a href="/portfolio/my-projects/arduino-pc" class="project-card">
                 <div class="project-image">
-                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/PreBUT/kart/kart_pc.jpg")" alt="@L["Portfolio.PreBachelor.Project4.ImageAlt"]" />
+                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/PreBUT/PCommande/Soft.jpg")" alt="@L["Portfolio.PreBachelor.Project2.ImageAlt"]" />
                 </div>
                 <div class="project-info">
-                    <h3>@L["Portfolio.PreBachelor.Project4.Title"]</h3>
-                    <span class="project-date">@L["Portfolio.PreBachelor.Project4.Date"]</span>
-                    <p>@L["Portfolio.PreBachelor.Project4.Description"]</p>
+                    <h3>@L["Portfolio.PreBachelor.Project2.Title"]</h3>
+                    <span class="project-date">@L["Portfolio.PreBachelor.Project2.Date"]</span>
+                    <p>@L["Portfolio.PreBachelor.Project2.Description"]</p>
                 </div>
             </a>
+
+            <!-- Projet 1 -->
+            <a href="/portfolio/my-projects/scratch" class="project-card">
+                <div class="project-image">
+                    <img src="@($"{Configuration["Media:BaseUrl"]}images/portfolio/PreBUT/Scratch/Insides.png")" alt="@L["Portfolio.PreBachelor.Project1.ImageAlt"]" />
+                </div>
+                <div class="project-info">
+                    <h3>@L["Portfolio.PreBachelor.Project1.Title"]</h3>
+                    <span class="project-date">@L["Portfolio.PreBachelor.Project1.Date"]</span>
+                    <p>@L["Portfolio.PreBachelor.Project1.Description"]</p>
+                </div>
+            </a>
+            
         </div>
     </div>
 </div>
