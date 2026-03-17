@@ -23,6 +23,12 @@
     align-items: center;
 }
 
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .navbar-brand {
     font-size: 1.3rem;
     font-weight: 700;

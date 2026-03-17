@@ -6,7 +6,10 @@
 <header class="main-header">
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="/" class="navbar-brand">Kylian Debonne</a>
+            <div class="header-left">
+                @LeftContent
+                <a href="/" class="navbar-brand">Kylian Debonne</a>
+            </div>
 
             <button class="navbar-toggler" @onclick="ToggleMenu">
                 <span class="toggler-icon"></span>
@@ -43,6 +46,9 @@
 </header>
 
 @code {
+    [Parameter]
+    public RenderFragment? LeftContent { get; set; }
+
     private bool isMenuOpen = false;
     private string currentLang = "fr";
 

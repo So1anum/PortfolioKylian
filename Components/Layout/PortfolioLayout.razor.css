@@ -19,6 +19,10 @@
     z-index: 100;
 }
 
+.sidebar-overlay {
+    display: none;
+}
+
 .portfolio-sidebar::-webkit-scrollbar {
     width: 8px;
 }
@@ -38,21 +42,21 @@
 
 .sidebar-toggle {
     display: none;
-    position: fixed;
-    top: 80px;
-    left: 1rem;
-    z-index: 101;
-    background: rgba(147, 51, 234, 0.2);
-    border: 1px solid rgba(147, 51, 234, 0.3);
+    background: transparent;
+    border: 1px solid rgba(147, 51, 234, 0.4);
     border-radius: 8px;
     padding: 0.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    width: 38px;
 }
 
 .sidebar-toggle:hover {
-    background: rgba(147, 51, 234, 0.3);
-    transform: scale(1.05);
+    background: rgba(147, 51, 234, 0.1);
+    border-color: rgba(147, 51, 234, 0.6);
 }
 
 .toggle-icon {
@@ -61,6 +65,7 @@
     height: 2px;
     background: #fff;
     position: relative;
+    transition: background 0.3s ease;
 }
 
 .toggle-icon::before,
@@ -71,14 +76,29 @@
     height: 2px;
     background: #fff;
     left: 0;
+    transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease;
 }
 
 .toggle-icon::before {
-    top: -6px;
+    top: -7px;
 }
 
 .toggle-icon::after {
-    bottom: -6px;
+    bottom: -7px;
+}
+
+.sidebar-toggle.open .toggle-icon {
+    background: transparent;
+}
+
+.sidebar-toggle.open .toggle-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.sidebar-toggle.open .toggle-icon::after {
+    bottom: 0;
+    transform: rotate(-45deg);
 }
 
 .sidebar-nav {
@@ -190,12 +210,31 @@
 }
 
 @media (max-width: 1024px) {
-    .sidebar-toggle {
+    .sidebar-overlay {
         display: block;
+        position: fixed;
+        inset: 70px 0 0 0;
+        background: rgba(0, 0, 0, 0.45);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+        z-index: 95;
+    }
+
+    .sidebar-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .sidebar-toggle {
+        display: inline-flex;
     }
 
     .portfolio-sidebar {
+        width: min(86vw, 320px);
         transform: translateX(-100%);
+        box-shadow: 8px 0 24px rgba(0, 0, 0, 0.35);
+        z-index: 100;
     }
 
     .portfolio-sidebar.open {
@@ -210,7 +249,7 @@
 
 @media (max-width: 768px) {
     .portfolio-sidebar {
-        width: 250px;
+        width: min(88vw, 300px);
     }
 
     .portfolio-main {
