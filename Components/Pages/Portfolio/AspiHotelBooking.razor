@@ -1,0 +1,236 @@
+@page "/portfolio/my-projects/aspi-hotel-booking"
+@layout Components.Layout.PortfolioLayout
+@using PortfolioKylian.Resources
+@using PortfolioKylian.Models
+@inject LocalizationHelper L
+@inject ICultureService CultureService
+@inject IJSRuntime JS
+@implements IDisposable
+
+<link rel="stylesheet" href="css/portfolio-shared.css" />
+
+<style>
+    .aspi-subtitle {
+        color: rgba(233, 213, 255, 0.98);
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-top: 1.75rem;
+        margin-bottom: 0.85rem;
+        text-shadow: 0 0 12px rgba(147, 51, 234, 0.3);
+    }
+</style>
+
+<PageTitle>@L["Portfolio.AspiHotel.Title"] - Kylian Debonne</PageTitle>
+
+<div class="portfolio-page">
+    <header class="page-header">
+        <h1 class="page-title">@L["Portfolio.AspiHotel.Title"]</h1>
+        <p class="page-subtitle">@L["Portfolio.AspiHotel.Subtitle"]</p>
+    </header>
+
+    <div class="page-content">
+        <section class="content-section">
+            <h2>@L["Portfolio.AspiHotel.Context.Title"]</h2>
+            <p>@L["Portfolio.AspiHotel.Context.Description"]</p>
+        </section>
+
+        <section class="content-section">
+            <h2>@L["Portfolio.AspiHotel.Realization.Title"]</h2>
+
+            <h3 class="aspi-subtitle">@L["Portfolio.AspiHotel.Realization.Navigation.Title"]</h3>
+            <p>@L["Portfolio.AspiHotel.Realization.Navigation.Description"]</p>
+            <div class="text-center mb-4">
+                <img src="@BuildMediaUrl(NavigationSchemaImagePath)" alt="@L["Portfolio.AspiHotel.Realization.Navigation.ImageAlt"]" class="img-fluid rounded shadow" style="border: 1px solid rgba(147, 51, 234, 0.2);" />
+            </div>
+
+            <h3 class="aspi-subtitle">@L["Portfolio.AspiHotel.Realization.Figma.Title"]</h3>
+            <p>@L["Portfolio.AspiHotel.Realization.Figma.Description"]</p>
+
+            <div class="image-carousel mb-4 mt-3">
+                <button class="carousel-button carousel-prev" @onclick="PreviousImage" aria-label="Image précédente">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <div class="carousel-container">
+                    <div class="carousel-track" style="transform: translateX(-@(currentImageIndex * 100)%);">
+                        @foreach (var media in figmaCarouselImages)
+                        {
+                            <div class="carousel-slide">
+                                <img src="@BuildMediaUrl(media.Url)" alt="@L[media.AltKey]" class="carousel-image" loading="lazy" />
+                                @if (!string.IsNullOrEmpty(media.CaptionKey))
+                                {
+                                    <div class="carousel-caption">
+                                        <p>@L[media.CaptionKey]</p>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <button class="carousel-button carousel-next" @onclick="NextImage" aria-label="Image suivante">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+
+                <div class="carousel-indicators">
+                    @for (int i = 0; i < figmaCarouselImages.Count; i++)
+                    {
+                        var index = i;
+                        <button
+                            class="carousel-indicator @(currentImageIndex == index ? "active" : "")"
+                            @onclick="() => GoToImage(index)"
+                            aria-label="Aller à l'image @(index + 1)">
+                        </button>
+                    }
+                </div>
+            </div>
+
+            <h3 class="aspi-subtitle">@L["Portfolio.AspiHotel.Realization.Structure.Title"]</h3>
+            <p>@L["Portfolio.AspiHotel.Realization.Structure.Description"]</p>
+            <div class="text-center mb-4">
+                <img src="@BuildMediaUrl(StructureImagePath)" alt="@L["Portfolio.AspiHotel.Realization.Structure.ImageAlt"]" class="img-fluid rounded shadow" style="border: 1px solid rgba(147, 51, 234, 0.2);" />
+            </div>
+
+            <h3 class="aspi-subtitle">@L["Portfolio.AspiHotel.Realization.Database.Title"]</h3>
+            <p>@L["Portfolio.AspiHotel.Realization.Database.Description"]</p>
+            <div class="text-center mb-4">
+                <img src="@BuildMediaUrl(DatabaseTablesImagePath)" alt="@L["Portfolio.AspiHotel.Realization.Database.ImageAlt"]" class="img-fluid rounded shadow" style="border: 1px solid rgba(147, 51, 234, 0.2);" />
+            </div>
+
+            <h3 class="aspi-subtitle">@L["Portfolio.AspiHotel.Realization.Git.Title"]</h3>
+            <p>@L["Portfolio.AspiHotel.Realization.Git.Description"]</p>
+            <div class="text-center">
+                <img src="@BuildMediaUrl(GitTerminalImagePath)" alt="@L["Portfolio.AspiHotel.Realization.Git.ImageAlt"]" class="img-fluid rounded shadow" style="border: 1px solid rgba(147, 51, 234, 0.2);" />
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>@L["Portfolio.AspiHotel.Conclusion.Title"]</h2>
+            <div class="row align-items-center mt-3">
+                <div class="col-md-7 mb-3 mb-md-0">
+                    <p>@L["Portfolio.AspiHotel.Conclusion.Description"]</p>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        <button type="button" class="btn-portfolio" @onclick="() => OpenExternalLink(ProjectUrl)">
+                            @L["Portfolio.AspiHotel.Conclusion.VisitSiteButton"]
+                        </button>
+                        <button type="button" class="btn-portfolio" @onclick="() => OpenExternalLink(RepositoryUrl)">
+                            @L["Portfolio.AspiHotel.Conclusion.VisitRepoButton"]
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-5 text-center">
+                    <video src="@BuildMediaUrl(VideoPath)"
+                           class="img-fluid rounded shadow"
+                           controls preload="metadata"
+                           style="border: 1px solid rgba(147, 51, 234, 0.2); max-height: 380px;">
+                        @L["VideoError"]
+                    </video>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+@code {
+    private int currentImageIndex = 0;
+
+    private const string ProjectUrl = "https://hotel.enzorv.dev/";
+    private const string RepositoryUrl = "https://github.com/enzo-rndrsvt/R5.05-Application-de-reservation-dhotels";
+    private const string VideoPath = "images/portfolio/BUTInfo/Year3/Skill1/skullking.mp4";
+    private const string NavigationSchemaImagePath = "images/portfolio/PreBUT/skullking/schemanav.png";
+    private const string StructureImagePath = "images/portfolio/BUTInfo/Year3/Skill1/structure.png";
+    private const string DatabaseTablesImagePath = "images/portfolio/PreBUT/skullking/tables.png";
+    private const string GitTerminalImagePath = "images/portfolio/PreBUT/skullking/git.png";
+
+    private readonly List<CarouselItem> figmaCarouselImages =
+    [
+        new CarouselItem
+        {
+            Url = "images/portfolio/PreBUT/skullking/figma1.png",
+            AltKey = "Portfolio.AspiHotel.Realization.Figma.Carousel.Image1Alt",
+            CaptionKey = "Portfolio.AspiHotel.Realization.Figma.Carousel.Image1Caption"
+        },
+        new CarouselItem
+        {
+            Url = "images/portfolio/PreBUT/skullking/figma2.png",
+            AltKey = "Portfolio.AspiHotel.Realization.Figma.Carousel.Image2Alt",
+            CaptionKey = "Portfolio.AspiHotel.Realization.Figma.Carousel.Image2Caption"
+        },
+        new CarouselItem
+        {
+            Url = "images/portfolio/PreBUT/skullking/figma3.png",
+            AltKey = "Portfolio.AspiHotel.Realization.Figma.Carousel.Image3Alt",
+            CaptionKey = "Portfolio.AspiHotel.Realization.Figma.Carousel.Image3Caption"
+        },
+        new CarouselItem
+        {
+            Url = "images/portfolio/PreBUT/skullking/figma4.png",
+            AltKey = "Portfolio.AspiHotel.Realization.Figma.Carousel.Image4Alt",
+            CaptionKey = "Portfolio.AspiHotel.Realization.Figma.Carousel.Image4Caption"
+        },
+        new CarouselItem
+        {
+            Url = "images/portfolio/PreBUT/skullking/figma5.png",
+            AltKey = "Portfolio.AspiHotel.Realization.Figma.Carousel.Image5Alt",
+            CaptionKey = "Portfolio.AspiHotel.Realization.Figma.Carousel.Image5Caption"
+        },
+        new CarouselItem
+        {
+            Url = "images/portfolio/PreBUT/skullking/figma6.png",
+            AltKey = "Portfolio.AspiHotel.Realization.Figma.Carousel.Image6Alt",
+            CaptionKey = "Portfolio.AspiHotel.Realization.Figma.Carousel.Image6Caption"
+        },
+        new CarouselItem
+        {
+            Url = "images/portfolio/PreBUT/skullking/figma7.png",
+            AltKey = "Portfolio.AspiHotel.Realization.Figma.Carousel.Image7Alt",
+            CaptionKey = "Portfolio.AspiHotel.Realization.Figma.Carousel.Image7Caption"
+        }
+    ];
+
+    protected override void OnInitialized()
+    {
+        CultureService.OnCultureChanged += OnCultureChanged;
+    }
+
+    private string BuildMediaUrl(string path)
+    {
+        var baseUrl = Configuration["Media:BaseUrl"]?.TrimEnd('/') ?? string.Empty;
+        var cleanPath = path.TrimStart('/');
+        return $"{baseUrl}/{cleanPath}";
+    }
+
+    private void OnCultureChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void NextImage()
+    {
+        currentImageIndex = (currentImageIndex + 1) % figmaCarouselImages.Count;
+    }
+
+    private void PreviousImage()
+    {
+        currentImageIndex = currentImageIndex == 0 ? figmaCarouselImages.Count - 1 : currentImageIndex - 1;
+    }
+
+    private void GoToImage(int index)
+    {
+        currentImageIndex = index;
+    }
+
+    private async Task OpenExternalLink(string url)
+    {
+        await JS.InvokeVoidAsync("open", url, "_blank", "noopener,noreferrer");
+    }
+
+    public void Dispose()
+    {
+        CultureService.OnCultureChanged -= OnCultureChanged;
+    }
+}
