@@ -6,16 +6,20 @@
 @inject NavigationManager Navigation
 @implements IDisposable
 
-<Header @rendermode="InteractiveServer" />
-
-<div class="portfolio-layout">
-    <aside class="portfolio-sidebar @(isSidebarOpen ? "open" : "")">
-        <button class="sidebar-toggle" @onclick="ToggleSidebar">
+<Header @rendermode="InteractiveServer">
+    <LeftContent>
+        <button class="sidebar-toggle @(isSidebarOpen ? "open" : "")" @onclick="ToggleSidebar" aria-label="Basculer le menu portfolio">
             <span class="toggle-icon"></span>
         </button>
-        
+    </LeftContent>
+</Header>
+
+<div class="portfolio-layout">
+    <div class="sidebar-overlay @(isSidebarOpen ? "open" : "")" @onclick="CloseSidebar"></div>
+
+    <aside class="portfolio-sidebar @(isSidebarOpen ? "open" : "")">
         <nav class="sidebar-nav">
-            <a href="/portfolio" class="nav-item @(IsActive("/portfolio"))">
+            <a href="/portfolio" class="nav-item @(IsActive("/portfolio"))" @onclick="CloseSidebar">
                 <span class="nav-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="3" width="7" height="7"></rect>
@@ -45,13 +49,13 @@
                 </button>
 
                 <div class="nav-submenu @(isMyProjectsMenuOpen ? "open" : "")">
-                    <a href="/portfolio/my-projects" class="nav-subitem @(IsExactActive("/portfolio/my-projects"))">@L["Portfolio.Nav.PreBut.Hub"]</a>
-                    <a href="/portfolio/my-projects/portfolio-website" class="nav-subitem @(IsActive("/portfolio/my-projects/portfolio-website"))">@L["Portfolio.Nav.PreBut.Portfolio"]</a>
-                    <a href="/portfolio/my-projects/aspi-hotel-booking" class="nav-subitem @(IsActive("/portfolio/my-projects/aspi-hotel-booking"))">@L["Portfolio.Nav.PreBut.AspiHotel"]</a>
-                    <a href="/portfolio/my-projects/scratch" class="nav-subitem @(IsActive("/portfolio/my-projects/scratch"))">@L["Portfolio.Nav.PreBut.Scratch"]</a>
-                    <a href="/portfolio/my-projects/arduino-pc" class="nav-subitem @(IsActive("/portfolio/my-projects/arduino-pc"))">@L["Portfolio.Nav.PreBut.ArduinoPc"]</a>
-                    <a href="/portfolio/my-projects/death-ire" class="nav-subitem @(IsActive("/portfolio/my-projects/death-ire"))">@L["Portfolio.Nav.PreBut.DeathIre"]</a>
-                    <a href="/portfolio/my-projects/bac-sti2d" class="nav-subitem @(IsActive("/portfolio/my-projects/bac-sti2d"))">@L["Portfolio.Nav.PreBut.Bac"]</a>
+                    <a href="/portfolio/my-projects" class="nav-subitem @(IsExactActive("/portfolio/my-projects"))" @onclick="CloseSidebar">@L["Portfolio.Nav.PreBut.Hub"]</a>
+                    <a href="/portfolio/my-projects/portfolio-website" class="nav-subitem @(IsActive("/portfolio/my-projects/portfolio-website"))" @onclick="CloseSidebar">@L["Portfolio.Nav.PreBut.Portfolio"]</a>
+                    <a href="/portfolio/my-projects/aspi-hotel-booking" class="nav-subitem @(IsActive("/portfolio/my-projects/aspi-hotel-booking"))" @onclick="CloseSidebar">@L["Portfolio.Nav.PreBut.AspiHotel"]</a>
+                    <a href="/portfolio/my-projects/scratch" class="nav-subitem @(IsActive("/portfolio/my-projects/scratch"))" @onclick="CloseSidebar">@L["Portfolio.Nav.PreBut.Scratch"]</a>
+                    <a href="/portfolio/my-projects/arduino-pc" class="nav-subitem @(IsActive("/portfolio/my-projects/arduino-pc"))" @onclick="CloseSidebar">@L["Portfolio.Nav.PreBut.ArduinoPc"]</a>
+                    <a href="/portfolio/my-projects/death-ire" class="nav-subitem @(IsActive("/portfolio/my-projects/death-ire"))" @onclick="CloseSidebar">@L["Portfolio.Nav.PreBut.DeathIre"]</a>
+                    <a href="/portfolio/my-projects/bac-sti2d" class="nav-subitem @(IsActive("/portfolio/my-projects/bac-sti2d"))" @onclick="CloseSidebar">@L["Portfolio.Nav.PreBut.Bac"]</a>
                 </div>
             </div>
 
@@ -72,13 +76,13 @@
                 </button>
                 
                 <div class="nav-submenu @(isButMenuOpen ? "open" : "")">
-                    <a href="/portfolio/but/year-1" class="nav-subitem @(IsActive("/portfolio/but/year-1"))">@L["Portfolio.Nav.Year1"]</a>
-                    <a href="/portfolio/but/year-2" class="nav-subitem @(IsActive("/portfolio/but/year-2"))">@L["Portfolio.Nav.Year2"]</a>
-                    <a href="/portfolio/but/year-3" class="nav-subitem @(IsActive("/portfolio/but/year-3"))">@L["Portfolio.Nav.Year3"]</a>
+                    <a href="/portfolio/but/year-1" class="nav-subitem @(IsActive("/portfolio/but/year-1"))" @onclick="CloseSidebar">@L["Portfolio.Nav.Year1"]</a>
+                    <a href="/portfolio/but/year-2" class="nav-subitem @(IsActive("/portfolio/but/year-2"))" @onclick="CloseSidebar">@L["Portfolio.Nav.Year2"]</a>
+                    <a href="/portfolio/but/year-3" class="nav-subitem @(IsActive("/portfolio/but/year-3"))" @onclick="CloseSidebar">@L["Portfolio.Nav.Year3"]</a>
                 </div>
             </div>
 
-            <a href="/portfolio/apprenticeship" class="nav-item @(IsActive("/portfolio/apprenticeship"))">
+            <a href="/portfolio/apprenticeship" class="nav-item @(IsActive("/portfolio/apprenticeship"))" @onclick="CloseSidebar">
                 <span class="nav-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
@@ -88,7 +92,7 @@
                 <span class="nav-text">@L["Portfolio.Nav.Apprenticeship"]</span>
             </a>
 
-            <a href="/portfolio/post-but" class="nav-item @(IsActive("/portfolio/post-but"))">
+            <a href="/portfolio/post-but" class="nav-item @(IsActive("/portfolio/post-but"))" @onclick="CloseSidebar">
                 <span class="nav-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
@@ -98,7 +102,7 @@
                 <span class="nav-text">@L["Portfolio.Nav.PostBut"]</span>
             </a>
 
-            <a href="/portfolio/game-engines" class="nav-item @(IsActive("/portfolio/game-engines"))">
+            <a href="/portfolio/game-engines" class="nav-item @(IsActive("/portfolio/game-engines"))" @onclick="CloseSidebar">
                 <span class="nav-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="6" y1="12" x2="10" y2="12"></line>
@@ -128,9 +132,9 @@
                 </button>
                 
                 <div class="nav-submenu @(isHorsLesMursMenuOpen ? "open" : "")">
-                    <a href="/portfolio/beyond-academics/general-knowledge" class="nav-subitem @(IsActive("/portfolio/beyond-academics/general-knowledge"))">@L["Portfolio.Nav.GeneralKnowledge"]</a>
-                    <a href="/portfolio/beyond-academics/sports" class="nav-subitem @(IsActive("/portfolio/beyond-academics/sports"))">@L["Portfolio.Nav.Sports"]</a>
-                    <a href="/portfolio/beyond-academics/travels" class="nav-subitem @(IsActive("/portfolio/beyond-academics/travels"))">@L["Portfolio.Nav.Travels"]</a>
+                    <a href="/portfolio/beyond-academics/general-knowledge" class="nav-subitem @(IsActive("/portfolio/beyond-academics/general-knowledge"))" @onclick="CloseSidebar">@L["Portfolio.Nav.GeneralKnowledge"]</a>
+                    <a href="/portfolio/beyond-academics/sports" class="nav-subitem @(IsActive("/portfolio/beyond-academics/sports"))" @onclick="CloseSidebar">@L["Portfolio.Nav.Sports"]</a>
+                    <a href="/portfolio/beyond-academics/travels" class="nav-subitem @(IsActive("/portfolio/beyond-academics/travels"))" @onclick="CloseSidebar">@L["Portfolio.Nav.Travels"]</a>
                 </div>
             </div>
         </nav>
@@ -142,7 +146,7 @@
 </div>
 
 @code {
-private bool isSidebarOpen = true;
+private bool isSidebarOpen = false;
 private bool isMyProjectsMenuOpen = false;
 private bool isButMenuOpen = true;
 private bool isHorsLesMursMenuOpen = false;
@@ -185,6 +189,11 @@ private void UpdateMenuState()
 private void ToggleSidebar()
 {
     isSidebarOpen = !isSidebarOpen;
+}
+
+private void CloseSidebar()
+{
+    isSidebarOpen = false;
 }
 
 private void ToggleMyProjectsMenu()
