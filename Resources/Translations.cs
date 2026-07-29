@@ -16,16 +16,17 @@ public static class Translations
 
         // Hero
         ["Hero.Subtitle"] = "Développeur logiciel",
-        ["Hero.Description"] = "Développeur logiciel passionné par la création et la maintenance d'applications pour répondre à des problèmes complexes. Je suis actuellement en alternance chez 3MO Performance, où je développe des applications .NET complémentaires à l'ERP SAGE. Je recherche un poste de développeur en Europe pour contribuer à des projets challengeants. Disponible dès septembre 2026.",
+        ["Hero.Description"] = "Développeur logiciel passionné par la création et la maintenance d'applications pour répondre à des problèmes complexes. Je suis actuellement responsable développeur logiciel chez 3MO Performance, où je développe des applications .NET complémentaires à l'ERP SAGE. Je suis à l'écoute d'opportunités pour un poste de développeur en Europe, afin de contribuer à des projets stimulants.",
         ["Hero.ViewProjects"] = "Voir mes projets",
         ["Hero.ContactMe"] = "Me contacter",
 
         // About
         ["About.Title"] = "À propos de moi",
         ["About.Paragraph1"] = "Développeur logiciel passionné et diplômé d'un <strong>Bachelor Universitaire de Technologie en Informatique</strong>, je me spécialise dans la création de solutions techniques robustes et évolutives, tout en explorant diverses technologies afin de rester polyvalent et adaptable aux besoins des projets.",
-        ["About.Paragraph2"] = "Pendant deux ans en alternance chez 3MO Performance, j'ai contribué au développement d'applications .NET complémentaires à l'ERP SAGE, optimisant ainsi la gestion des stocks et des livraisons. Cette expérience m'a permis de comprendre les enjeux métier de l'industrie automobile et de travailler dans un environnement <strong>professionnel</strong> exigeant, en appliquant les bonnes pratiques de développement.",
+        ["About.Paragraph2"] = "<strong>Responsable développeur logiciel</strong> chez 3MO Performance, je conçois, développe et maintiens des applications .NET intégrées à l'ERP SAGE afin d'optimiser les processus métiers. Cette expérience me permet d'évoluer dans un environnement industriel exigeant en appliquant les bonnes pratiques du développement logiciel.",
         ["About.Paragraph3"] = "Au-delà du code, je m'intéresse à l'architecture logicielle, à la sécurité applicative et à l'amélioration continue des processus de développement. <strong>Curieux et autodidacte</strong>, j'aime relever de nouveaux défis techniques et collaborer au sein d'équipes motivées. Je recherche actuellement des opportunités pour contribuer à des projets innovants et continuer à développer mes compétences dans un environnement stimulant.",
-        ["About.MonthsExperience"] = "Mois d'expérience en alternance (développeur .NET)",
+        ["About.MonthsExperience"] = "Années d'expérience en tant que développeur .NET",
+        ["About.Months"] = "mois",
         ["About.LanguagesMastered"] = "Langages maîtrisés",
         ["About.Relocation"] = "Ouvert à la relocalisation en Europe (dont Royaume‑Uni)",
 
@@ -50,7 +51,6 @@ public static class Translations
 
         // Education
         ["Education.Title"] = "Ma formation",
-        ["Education.InProgress"] = "en cours",
         ["Education.BUT"] = "Bachelor Universitaire de Technologie Informatique",
         ["Education.University"] = "I.U.T. de Laval",
         ["Education.BUTDescription"] = "Spécialisation en développement d'applications : conception logicielle, architectures, sécurité et méthodologies agiles en alternance.",
@@ -80,7 +80,7 @@ public static class Translations
         ["CV.FullStack.DownloadLink"] = "ressources/docs/CV_Kylian_DEBONNE_Développeur_Web_FullStack.pdf",
         ["CV.Download"] = "Visualiser",
         ["CV.Recommended"] = "Recommandé",
-        ["CV.FooterNote"] = "Format PDF • Dernière mise à jour : janvier 2025",
+        ["CV.FooterNote"] = "Format PDF • Dernière mise à jour : août 2026",
 
         // Contact
         ["Contact.Title"] = "Contactez-moi",
@@ -664,11 +664,16 @@ public static class Translations
         ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Sub1"] = "Planning prévisionnel",
         ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Th1"] = "Période",
         ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Th2"] = "Objectif",
-        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T1"] = "Septembre", ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C1"] = "Lecture de <em>L’Origine des espèces</em>",
-        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T2"] = "Octobre", ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C2"] = "Analyse et synthèse de l’ouvrage",
-        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T3"] = "Novembre", ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C3"] = "Recherche sur les biais en intelligence artificielle",
-        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T4"] = "Décembre", ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C4"] = "Étude du RGPD et de la protection des données",
-        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T5"] = "Janvier", ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C5"] = "Analyse de l’impact environnemental du numérique et préparation ECRI+",
+        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T1"] = "Septembre",
+        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C1"] = "Lecture de <em>L’Origine des espèces</em>",
+        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T2"] = "Octobre",
+        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C2"] = "Analyse et synthèse de l’ouvrage",
+        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T3"] = "Novembre",
+        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C3"] = "Recherche sur les biais en intelligence artificielle",
+        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T4"] = "Décembre",
+        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C4"] = "Étude du RGPD et de la protection des données",
+        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.T5"] = "Janvier",
+        ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.C5"] = "Analyse de l’impact environnemental du numérique et préparation ECRI+",
         ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Sub2"] = "Planning correctif",
         ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Cor.P1"] = "Afin de m’adapter aux contraintes académiques et aux autres projets du semestre, j’ai mis en place une organisation flexible :",
         ["Portfolio.BeyondAcademics.Culture.Year3.S5.Org.Cor.L1"] = "répartition de la lecture sur plusieurs semaines",
@@ -975,16 +980,17 @@ public static class Translations
 
         // Hero
         ["Hero.Subtitle"] = "Software Developer",
-        ["Hero.Description"] = "Passionate software developer focused on creating and maintaining applications to solve complex problems. Currently in an apprenticeship at 3MO Performance, where I develop .NET applications complementary to SAGE ERP. I am highly motivated to find a developer position abroad to fulfil my greatest dream. Available from September 2026.",
+        ["Hero.Description"] = "Passionate Software Developer with experience in designing, developing, and maintaining .NET applications that solve complex business challenges. Currently working as a Software Development Lead at 3MO Performance, I develop and maintain .NET solutions integrated with the SAGE ERP system. I am seeking software development opportunities across Europe where I can contribute to innovative projects, continue growing professionally, and deliver high-quality solutions.",
         ["Hero.ViewProjects"] = "View my projects",
         ["Hero.ContactMe"] = "Contact me",
 
         // About
         ["About.Title"] = "About me",
         ["About.Paragraph1"] = "Passionate software developer with a <strong>Bachelor's Degree in Computer Science</strong>, I specialize in creating robust and scalable technical solutions while exploring various technologies to remain versatile and adaptable to project needs.",
-        ["About.Paragraph2"] = "During two years of apprenticeship at 3MO Performance, I contributed to the development of .NET applications complementary to SAGE ERP, optimizing inventory and delivery management. This experience allowed me to understand the business challenges of the automotive industry and work in a demanding <strong>professional</strong> environment, applying development best practices.",
+        ["About.Paragraph2"] = "As a <strong>Software Development Lead</strong> at 3MO Performance, I design, develop, and maintain .NET applications integrated with the SAGE ERP system, contributing to the optimization of business processes in a demanding industrial environment while following software development best practices.",
         ["About.Paragraph3"] = "Beyond code, I'm interested in software architecture, application security, and continuous improvement of development processes. <strong>Curious and self-taught</strong>, I enjoy taking on new technical challenges and collaborating within motivated teams. I'm currently seeking opportunities to contribute to innovative projects abroad and continue developing my skills in a stimulating environment.",
-        ["About.MonthsExperience"] = "Months of apprenticeship experience (.NET developer)",
+        ["About.MonthsExperience"] = "Years of experience as a .NET developer",
+        ["About.Months"] = "months",
         ["About.LanguagesMastered"] = "Languages mastered",
         ["About.Relocation"] = "Open to relocation in Europe (including the UK)",
 
@@ -1009,7 +1015,6 @@ public static class Translations
 
         // Education
         ["Education.Title"] = "My education",
-        ["Education.InProgress"] = "in progress",
         ["Education.BUT"] = "Bachelor of Technology in Computer Science",
         ["Education.University"] = "University of Laval, France",
         ["Education.BUTDescription"] = "Specialisation in application development: software design, architectures, security and Agile methodologies on a work-study basis.",
@@ -1039,7 +1044,7 @@ public static class Translations
         ["CV.FullStack.DownloadLink"] = "ressources/docs/CV_Kylian_DEBONNE_Full_Stack_Web_Developer.pdf",
         ["CV.Download"] = "View",
         ["CV.Recommended"] = "Recommended",
-        ["CV.FooterNote"] = "PDF Format • Last updated: January 2025",
+        ["CV.FooterNote"] = "PDF Format • Last updated: august 2026",
 
         // Contact
         ["Contact.Title"] = "Contact me",
