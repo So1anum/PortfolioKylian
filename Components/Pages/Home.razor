@@ -51,6 +51,14 @@
     </div>
 </section>
 
+@{
+    DateTime dateDebut = new DateTime(2024, 7, 1);
+    int nombreDeMois = ((DateTime.Now.Year - dateDebut.Year) * 12) + DateTime.Now.Month - dateDebut.Month;
+    int nombreDAnnées = (int)(DateTime.Now - dateDebut).TotalDays / 365;
+
+    string experience = L["About.MonthsExperience"] + " (" + nombreDeMois + " " + L["About.Months"] + ")";
+}
+
 <!-- Section À propos -->
 <section id="about" class="about-section">
     <div class="section-container">
@@ -63,8 +71,8 @@
             </div>
             <div class="about-stats">
                 <div class="stat-card">
-                    <div class="stat-number">26</div>
-                    <div class="stat-label">@L["About.MonthsExperience"]</div>
+                    <div class="stat-number">@nombreDAnnées</div>
+                    <div class="stat-label">@experience</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">7+</div>
@@ -149,6 +157,7 @@
                     <span class="skill-badge">Kotlin</span>
                     <span class="skill-badge">PHP</span>
                     <span class="skill-badge">C/C++</span>
+                    <span class="skill-badge">MonkeyC</span>
                 </div>
             </div>
 
@@ -265,7 +274,7 @@
                     </svg>
                 </div>
                 <div class="timeline-content">
-                    <span class="timeline-date">2026 (@L["Education.InProgress"])</span>
+                    <span class="timeline-date">2026</span>
                     <h3 class="timeline-title">@L["Education.BUT"]</h3>
                     <p class="timeline-location">@L["Education.University"]</p>
                     <p class="timeline-description">@L["Education.BUTDescription"]</p>
