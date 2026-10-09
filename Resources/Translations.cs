@@ -16,16 +16,16 @@ public static class Translations
 
         // Hero
         ["Hero.Subtitle"] = "Développeur logiciel",
-        ["Hero.Description"] = "Développeur logiciel passionné par la création et la maintenance d'applications pour répondre à des problèmes complexes. Je suis actuellement responsable développeur logiciel chez 3MO Performance, où je développe des applications .NET complémentaires à l'ERP SAGE. Je suis à l'écoute d'opportunités pour un poste de développeur en Europe, afin de contribuer à des projets stimulants.",
+        ["Hero.Description"] = "Développeur logiciel passionné par la création et la maintenance d'applications pour répondre à des problèmes complexes. Je suis actuellement développeur logiciel et applications chez 3MO Performance, où je développe des applications .NET complémentaires à l'ERP SAGE. Je suis à l'écoute d'opportunités pour un poste de développeur en Europe, afin de contribuer à des projets stimulants.",
         ["Hero.ViewProjects"] = "Voir mes projets",
         ["Hero.ContactMe"] = "Me contacter",
 
         // About
         ["About.Title"] = "À propos de moi",
         ["About.Paragraph1"] = "Développeur logiciel passionné et diplômé d'un <strong>Bachelor Universitaire de Technologie en Informatique</strong>, je me spécialise dans la création de solutions techniques robustes et évolutives, tout en explorant diverses technologies afin de rester polyvalent et adaptable aux besoins des projets.",
-        ["About.Paragraph2"] = "<strong>Responsable développeur logiciel</strong> chez 3MO Performance, je conçois, développe et maintiens des applications .NET intégrées à l'ERP SAGE afin d'optimiser les processus métiers. Cette expérience me permet d'évoluer dans un environnement industriel exigeant en appliquant les bonnes pratiques du développement logiciel.",
+        ["About.Paragraph2"] = "<strong>Développeur logiciel et applications</strong> chez 3MO Performance, je conçois, développe et maintiens des applications .NET intégrées à l'ERP SAGE afin d'optimiser les processus métiers. Cette expérience me permet d'évoluer dans un environnement industriel exigeant en appliquant les bonnes pratiques du développement logiciel.",
         ["About.Paragraph3"] = "Au-delà du code, je m'intéresse à l'architecture logicielle, à la sécurité applicative et à l'amélioration continue des processus de développement. <strong>Curieux et autodidacte</strong>, j'aime relever de nouveaux défis techniques et collaborer au sein d'équipes motivées. Je recherche actuellement des opportunités pour contribuer à des projets innovants et continuer à développer mes compétences dans un environnement stimulant.",
-        ["About.MonthsExperience"] = "Années d'expérience en tant que développeur .NET",
+        ["About.MonthsExperience"] = "Années d'expérience en tant que développeur",
         ["About.Months"] = "mois",
         ["About.LanguagesMastered"] = "Langages maîtrisés",
         ["About.Relocation"] = "Ouvert à la relocalisation en Europe (dont Royaume‑Uni)",
@@ -110,7 +110,7 @@ public static class Translations
 
         // Portfolio Navigation
         ["Portfolio.Nav.Home"] = "Accueil",
-        ["Portfolio.Nav.PreBut"] = "Pre-BUT",
+        ["Portfolio.Nav.PreBut"] = "Projets",
         ["Portfolio.Nav.PreBut.Hub"] = "Vue d'ensemble",
         ["Portfolio.Nav.PreBut.Portfolio"] = "Portfolio",
         ["Portfolio.Nav.PreBut.AspiHotel"] = "ASP .NET Hôtel",
@@ -133,8 +133,8 @@ public static class Translations
         // Portfolio Hub
         ["Portfolio.Hub.Title"] = "Mon parcours",
         ["Portfolio.Hub.Subtitle"] = "Découvrez mon parcours académique, professionnel et personnel",
-        ["Portfolio.Hub.PreBachelor.Title"] = "Pre-BUT",
-        ["Portfolio.Hub.PreBachelor.Description"] = "Mon parcours avant les études supérieures",
+        ["Portfolio.Hub.PreBachelor.Title"] = "Projets",
+        ["Portfolio.Hub.PreBachelor.Description"] = "Mes différents projets",
         ["Portfolio.Hub.But.Title"] = "BUT Informatique",
         ["Portfolio.Hub.But.Description"] = "Trois années de formation en développement",
         ["Portfolio.Hub.Apprenticeship.Title"] = "Alternance",
@@ -149,7 +149,7 @@ public static class Translations
         // Game Engines
         ["Portfolio.GameEngines.Title"] = "Moteurs de jeux",
         ["Portfolio.GameEngines.Subtitle"] = "Mes réalisations sur divers moteurs",
-        ["Portfolio.GameEngines.Unity.Title"] = "Projets Unity (Pre-BUT)",
+        ["Portfolio.GameEngines.Unity.Title"] = "Projets Unity (Projet)",
         ["Portfolio.GameEngines.Unity.Desc"] = "Retrouvez mes premiers projets réalisés avec le moteur Unity, comme Death Ire ou la commande via Arduino.",
         ["Portfolio.GameEngines.Unreal.Title"] = "Projets Unreal Engine",
         ["Portfolio.GameEngines.Unreal.Desc"] = "Pendant ma dernière année de Bachelor, nous avons appris la modélisation 3D, Blueprint et l'animation sur Unreal Engine. Ci-dessous, des captures de quelques-uns de mes exercices.",
@@ -165,9 +165,9 @@ public static class Translations
         ["Portfolio.But.Hub.Year3.Title"] = "Troisième année",
         ["Portfolio.But.Hub.Year3.Description"] = "Expertise, spécialisation et poursuite de l'alternance",
 
-        // Pre-Bachelor
-        ["Portfolio.PreBachelor.Title"] = "Pre-BUT",
-        ["Portfolio.PreBachelor.Subtitle"] = "Mon parcours avant les études supérieures",
+        // Projets
+        ["Portfolio.PreBachelor.Title"] = "Projets",
+        ["Portfolio.PreBachelor.Subtitle"] = "Mes projets",
         ["Portfolio.PreBachelor.Section1.Title"] = "Baccalauréat STI2D",
         ["Portfolio.PreBachelor.Section1.Content"] = "Obtention du baccalauréat Sciences et Technologies de l'Industrie et du Développement Durable avec mention bien.",
         ["Portfolio.PreBachelor.Section2.Title"] = "Spécialités",
@@ -807,6 +807,30 @@ public static class Translations
         ["Portfolio.BeyondAcademics.Travels.Voyage9.Highlight2"] = "Culture Néerlandaise",
         ["Portfolio.BeyondAcademics.Travels.Voyage9.Highlight3"] = "Famille",
         ["Portfolio.BeyondAcademics.Travels.Voyage9.PicsCaption1"] = "Photo dans les rues",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.Country"] = "Royaume Uni",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.City"] = "Londres, Birmingham",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.Date"] = "Août 2026",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.Duration"] = "8 jours",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.FlagCode"] = "gb",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.Description"] = "Voyage seul à Londres, Birmingham, Warwick, Tipton... J'ai assisté au festival All Points East, visité des châteaux, monuments, musées et rencontré tout type de personnes.",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.Highlight1"] = "Perfectionnement de mon Anglais",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.Highlight2"] = "Visites",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.Highlight3"] = "Rencontres",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.PicsCaption1"] = "Photo de ma visite du château de Warwick",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.PicsCaption2"] = "Photo du musée Black Living Country Museum, sur la période industrielle au Royaume Uni",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.PicsCaption3"] = "Photo de l'aquarium Sea Life Centre à Birmingham",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.Country"] = "Écosse",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.City"] = "Edinburgh, North Berwick",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.Date"] = "Août 2026",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.Duration"] = "3 jours",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.FlagCode"] = "gb-sct",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.Description"] = "Voyage seul à Edinburgh, North Berwick... J'ai visité le Scottish SeaBird Centre et fait une excursion en bateau pour se rapprocher de la vie marine, j'y ai beaucoup appris.",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.Highlight1"] = "Pratique de l'anglais avec d'autres accents",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.Highlight2"] = "Randonnées",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.Highlight3"] = "Nature",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.PicsCaption1"] = "Photo de ma randonnée à Arthur's Seat à Edinburgh",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.PicsCaption2"] = "Photo de Edinburgh",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.PicsCaption3"] = "Photo de morus de mon excursion bateau à North Berwick",
 
         // Portfolio website page
         ["Portfolio.PortfolioWebsite.Title"] = "Ce portfolio personnel",
@@ -980,16 +1004,16 @@ public static class Translations
 
         // Hero
         ["Hero.Subtitle"] = "Software Developer",
-        ["Hero.Description"] = "Passionate Software Developer with experience in designing, developing, and maintaining .NET applications that solve complex business challenges. Currently working as a Software Development Lead at 3MO Performance, I develop and maintain .NET solutions integrated with the SAGE ERP system. I am seeking software development opportunities across Europe where I can contribute to innovative projects, continue growing professionally, and deliver high-quality solutions.",
+        ["Hero.Description"] = "Passionate Software Developer with experience in designing, developing, and maintaining .NET applications that solve complex business challenges. Currently working as a Software Developer at 3MO Performance, I develop and maintain .NET solutions integrated with the SAGE ERP system. I am seeking software development opportunities across Europe where I can contribute to innovative projects, continue growing professionally, and deliver high-quality solutions.",
         ["Hero.ViewProjects"] = "View my projects",
         ["Hero.ContactMe"] = "Contact me",
 
         // About
         ["About.Title"] = "About me",
         ["About.Paragraph1"] = "Passionate software developer with a <strong>Bachelor's Degree in Computer Science</strong>, I specialize in creating robust and scalable technical solutions while exploring various technologies to remain versatile and adaptable to project needs.",
-        ["About.Paragraph2"] = "As a <strong>Software Development Lead</strong> at 3MO Performance, I design, develop, and maintain .NET applications integrated with the SAGE ERP system, contributing to the optimization of business processes in a demanding industrial environment while following software development best practices.",
+        ["About.Paragraph2"] = "As a <strong>Software Developer</strong> at 3MO Performance, I design, develop, and maintain .NET applications integrated with the SAGE ERP system, contributing to the optimization of business processes in a demanding industrial environment while following software development best practices.",
         ["About.Paragraph3"] = "Beyond code, I'm interested in software architecture, application security, and continuous improvement of development processes. <strong>Curious and self-taught</strong>, I enjoy taking on new technical challenges and collaborating within motivated teams. I'm currently seeking opportunities to contribute to innovative projects abroad and continue developing my skills in a stimulating environment.",
-        ["About.MonthsExperience"] = "Years of experience as a .NET developer",
+        ["About.MonthsExperience"] = "Years of experience as a developer",
         ["About.Months"] = "months",
         ["About.LanguagesMastered"] = "Languages mastered",
         ["About.Relocation"] = "Open to relocation in Europe (including the UK)",
@@ -1074,7 +1098,7 @@ public static class Translations
 
         // Portfolio Navigation
         ["Portfolio.Nav.Home"] = "Home",
-        ["Portfolio.Nav.PreBut"] = "Pre-BUT",
+        ["Portfolio.Nav.PreBut"] = "Projects",
         ["Portfolio.Nav.PreBut.Hub"] = "Overview",
         ["Portfolio.Nav.PreBut.Portfolio"] = "Portfolio",
         ["Portfolio.Nav.PreBut.AspiHotel"] = "ASP .NET Hotel",
@@ -1097,7 +1121,7 @@ public static class Translations
         // Portfolio Hub
         ["Portfolio.Hub.Title"] = "My journey",
         ["Portfolio.Hub.Subtitle"] = "Discover my academic, professional and personal journey",
-        ["Portfolio.Hub.PreBachelor.Title"] = "Pre-BUT",
+        ["Portfolio.Hub.PreBachelor.Title"] = "Projects",
         ["Portfolio.Hub.PreBachelor.Description"] = "My journey before higher education",
         ["Portfolio.Hub.But.Title"] = "BUT Computer Science",
         ["Portfolio.Hub.But.Description"] = "Three years of training in development",
@@ -1113,7 +1137,7 @@ public static class Translations
         // Game Engines
         ["Portfolio.GameEngines.Title"] = "Game engines",
         ["Portfolio.GameEngines.Subtitle"] = "My work across various engines",
-        ["Portfolio.GameEngines.Unity.Title"] = "Unity projects (Pre-BUT)",
+        ["Portfolio.GameEngines.Unity.Title"] = "Unity projects (Projects)",
         ["Portfolio.GameEngines.Unity.Desc"] = "Discover my first projects made with the Unity engine, such as Death Ire or the Arduino PC control project.",
         ["Portfolio.GameEngines.Unreal.Title"] = "Unreal Engine projects",
         ["Portfolio.GameEngines.Unreal.Desc"] = "During my final year of my Bachelor's degree, we learned 3D modeling, Blueprint, and animation with Unreal Engine. Below are screenshots from some of my exercises.",
@@ -1130,8 +1154,8 @@ public static class Translations
         ["Portfolio.But.Hub.Year3.Description"] = "Expertise, specialization and continuation of apprenticeship",
 
         // Pre-Bachelor
-        ["Portfolio.PreBachelor.Title"] = "Pre-BUT",
-        ["Portfolio.PreBachelor.Subtitle"] = "My journey before higher education",
+        ["Portfolio.PreBachelor.Title"] = "Projects",
+        ["Portfolio.PreBachelor.Subtitle"] = "My journey through my projects",
         ["Portfolio.PreBachelor.Section1.Title"] = "STI2D High School Diploma",
         ["Portfolio.PreBachelor.Section1.Content"] = "Obtained a Bachelor's degree in Science and Technology for Industry and Sustainable Development with honours.",
         ["Portfolio.PreBachelor.Section2.Title"] = "Specialties",
@@ -1782,6 +1806,32 @@ public static class Translations
         ["Portfolio.BeyondAcademics.Travels.Voyage9.Highlight2"] = "Dutch culture",
         ["Portfolio.BeyondAcademics.Travels.Voyage9.Highlight3"] = "Family",
         ["Portfolio.BeyondAcademics.Travels.Voyage9.PicsCaption1"] = "Photo in the streets",
+
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.Country"] = "United Kingdom",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.City"] = "London, Birmingham",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.Date"] = "August 2026",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.Duration"] = "8 days",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.FlagCode"] = "gb",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.Description"] = "A solo trip to London, Birmingham, Warwick, Tipton... I attended the All Points East festival, visited castles, monuments and museums, and met all kinds of people.",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.Highlight1"] = "Improving my English",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.Highlight2"] = "Sightseeing",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.Highlight3"] = "Meeting new people",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.PicsCaption1"] = "Photo from my visit to Warwick Castle",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.PicsCaption2"] = "Photo of the Black Country Living Museum, which explores the UK's industrial past",
+        ["Portfolio.BeyondAcademics.Travels.Voyage10.PicsCaption3"] = "Photo of the Sea Life Centre aquarium in Birmingham",
+
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.Country"] = "Scotland",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.City"] = "Edinburgh, North Berwick",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.Date"] = "August 2026",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.Duration"] = "3 days",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.FlagCode"] = "gb-sct",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.Description"] = "A solo trip to Edinburgh, North Berwick... I visited the Scottish Seabird Centre and took a boat trip to get closer to marine wildlife. I learned a lot.",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.Highlight1"] = "Practising English with different accents",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.Highlight2"] = "Hiking",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.Highlight3"] = "Nature",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.PicsCaption1"] = "Photo from my hike up Arthur's Seat in Edinburgh",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.PicsCaption2"] = "Photo of Edinburgh",
+        ["Portfolio.BeyondAcademics.Travels.Voyage11.PicsCaption3"] = "Photo of gannets taken during my boat trip in North Berwick",
 
         // Portfolio website page
         ["Portfolio.PortfolioWebsite.Title"] = "This personal portfolio",
