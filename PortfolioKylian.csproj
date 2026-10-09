@@ -1,23 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Include=".github\workflows\azure-deploy.yml" />
-    <None Include="wwwroot\images\profile-photo.jpg" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include=".github\workflows\azure-deploy.yml" />
+		<None Include="wwwroot\images\profile-photo.jpg" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="wwwroot\images\portfolio\travels\" />
+		<Folder Include="wwwroot\ressources\pictures\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\images\portfolio\travels\" />
-    <Folder Include="wwwroot\ressources\pictures\" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.23.0" />
+	</ItemGroup>
 
 </Project>
